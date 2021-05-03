@@ -18,7 +18,7 @@
         クイックスタート: クライアント ライブラリの使用
       </h1>
 
-      <section class="border-2">
+      <section class="border-2 mb-2 shadow-md">
         <p>
           Pub/Sub
           サービスを使用すると、アプリケーションはメッセージを非同期で、確実かつ迅速に交換できます。これを達成するために、データのプロデューサーは
@@ -31,7 +31,39 @@
         </p>
       </section>
 
-      <div class="border-2 shadow-md">
+      <section class="border-2 shadow-md">
+        <h2 class="text-2xl mb-2">始める前に</h2>
+        <div class="m-4">
+          <ul class="mx-4 list-disc">
+            <li>
+              <p>下記のボタンを押して、Cloud Consoleへ飛びます</p>
+              <button
+                class="bg-indigo-400 py-2 px-4 font-bold text-bold text-white"
+              >
+                プロジェクトの設定
+              </button>
+            </li>
+            <li>
+              <p>下記のスクリーンショットに沿って操作</p>
+              <img
+                src="https://cloud.google.com/docs/images/overview/console.png"
+              />
+              <img
+                src="https://cloud.google.com/docs/images/overview/console.png"
+              />
+              <img
+                src="https://cloud.google.com/docs/images/overview/console.png"
+              />
+            </li>
+            <li>
+              <p>下記のコマンドを実行して、環境変数を設定します</p>
+              <pre><code>export GOOGLE_APPLICATION_CREDENTIALS="KEY_PATH"</code></pre>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="border-2 shadow-md">
         <h2 class="mb-2">This is a task</h2>
         <div class="mx-4">
           <ul class="mx-4 list-disc">
@@ -60,8 +92,9 @@ func main() {
             </li>
           </ul>
         </div>
-      </div>
-      <div class="border-2">this is a task-output</div>
+
+        <div class="border-2">this is ouptut</div>
+      </section>
     </article>
   </body>
   <link

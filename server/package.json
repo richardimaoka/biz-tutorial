@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/richardimaoka/biz-tutorial/issues"
   },
-  "homepage": "https://github.com/richardimaoka/biz-tutorial#readme"
+  "homepage": "https://github.com/richardimaoka/biz-tutorial#readme",
+  "dependencies": {
+    "apollo-server": "^2.25.1",
+    "graphql": "^15.5.0"
+  }
 }

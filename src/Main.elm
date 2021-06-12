@@ -13,29 +13,24 @@ main =
     main0
 
 
-main2 : Program () Model2 Msg2
-main2 =
-    Browser.element
-        { init = init2
-        , update = update2
-        , view = view2
-        , subscriptions = \_ -> Sub.none
-        }
 
-
-init2 : flags -> ( Model2, Cmd Msg2 )
-init2 _ =
-    ( InstalledVersion "0.19.1", Cmd.none )
-
-
-update2 : Msg2 -> Model2 -> ( Model2, Cmd Msg2 )
-update2 _ model =
-    ( model, Cmd.none )
-
-
-view2 : Model2 -> Html Msg2
-view2 model =
-    taskResultView model
+-- main2 : Program () Model2 Msg2
+-- main2 =
+--     Browser.element
+--         { init = init2
+--         , update = update2
+--         , view = view2
+--         , subscriptions = \_ -> Sub.none
+--         }
+-- init2 : flags -> ( Model2, Cmd Msg2 )
+-- init2 _ =
+--     ( InstalledVersion "0.19.1", Cmd.none )
+-- update2 : Msg2 -> Model2 -> ( Model2, Cmd Msg2 )
+-- update2 _ model =
+--     ( model, Cmd.none )
+-- view2 : Model2 -> Html Msg2
+-- view2 model =
+--     taskResultView model
 
 
 type alias Model2 =
@@ -105,7 +100,7 @@ initTasks =
           , title = "Prerequisites"
           , isExpanded = True
           , taskSteps = prerequisiteSteps
-          , result = Nothing
+          , result = Just (InstalledVersion "0.19.1")
           }
         , { id = "aaaa"
           , title = "始める前に"
@@ -130,14 +125,6 @@ prerequisiteSteps : TaskSteps
 prerequisiteSteps =
     taskStepsFromList
         [ TaskStepCode "elm --version"
-        , TaskStepCode
-            """package main
-
-import "fmt"
-
-func main() {
-    fmt.Println("hello world")
-}"""
         ]
 
 
@@ -261,42 +248,61 @@ taskSectionView : Task -> Html Msg
 taskSectionView task =
     section [ class "border-4 mb-2 shadow-md" ]
         [ sectionTitle task.id task.isExpanded task.title
-        , taskView task
-        , case task.result of
-            Just result ->
-                taskResultView result
-
-            Nothing ->
-                div [] []
+        , taskStepsView task
+        , taskResultView task
         ]
 
 
-taskResultView : TaskResult -> Html msg
-taskResultView result =
-    case result of
-        InstalledVersion versionString ->
-            li []
-                [ p [] [ text "以下のバージョン以上が表示される" ]
-                , codeBlock versionString
+taskResultView : Task -> Html msg
+taskResultView task =
+    case task.result of
+        Nothing ->
+            div [] []
+
+        Just result ->
+            let
+                styles =
+                    if task.isExpanded then
+                        [ style "overflow" "hidden" ]
+
+                    else
+                        [ style "overflow" "hidden", style "max-height" "0px" ]
+            in
+            div styles
+                [ h3 [ class "text-2xl mb-2" ] [ text "実行結果" ]
+                , ul [ class "mx-8 list-disc" ]
+                    [ case result of
+                        InstalledVersion versionString ->
+                            li []
+                                [ p [] [ text "以下のバージョン以上が表示される" ]
+                                , codeBlock versionString
+                                ]
+                    ]
                 ]
 
 
-taskView : Task -> Html Msg
-taskView task =
+taskStepsView : Task -> Html Msg
+taskStepsView task =
     let
         styles =
             if task.isExpanded then
                 [ style "overflow" "hidden" ]
 
             else
-                [ style "max-height" "0px", style "overflow" "hidden" ]
+                [ style "overflow" "hidden", style "max-height" "0px" ]
     in
-    div styles [ taskListView task.taskSteps ]
+    div styles
+        [ ul [ class "mx-8 mb-4 list-disc" ]
+            (List.map
+                taskStepView
+                (taskStepsToList task.taskSteps)
+            )
+        ]
 
 
 sectionTitle : String -> Bool -> String -> Html Msg
 sectionTitle id isExpanded title =
-    div [ class "flex flex-row justify-between mx-4 mb-2" ]
+    div [ class "flex flex-row justify-between mx-4 mb-2 bg-blue-200" ]
         [ h3 [ class "text-2xl mb-2" ] [ text title ]
         , button
             [ onClick
@@ -322,15 +328,6 @@ codeBlock codeString =
     pre [ class "bg-gray-800 text-white p-4" ]
         [ code [] [ text codeString ]
         ]
-
-
-taskListView : TaskSteps -> Html Msg
-taskListView taskSteps =
-    ul [ class "mx-8 list-disc" ]
-        (List.map
-            taskStepView
-            (taskStepsToList taskSteps)
-        )
 
 
 taskStepView : TaskStep -> Html Msg

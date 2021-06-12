@@ -5181,6 +5181,9 @@ var $elm$core$Task$perform = F2(
 				A2($elm$core$Task$map, toMessage, task)));
 	});
 var $elm$browser$Browser$element = _Browser_element;
+var $author$project$Main$InstalledVersion = function (a) {
+	return {$: 'InstalledVersion', a: a};
+};
 var $author$project$Main$TaskStepCode = function (a) {
 	return {$: 'TaskStepCode', a: a};
 };
@@ -5225,8 +5228,7 @@ var $author$project$Main$taskStepsFromList = function (list) {
 var $author$project$Main$prerequisiteSteps = $author$project$Main$taskStepsFromList(
 	_List_fromArray(
 		[
-			$author$project$Main$TaskStepCode('elm --version'),
-			$author$project$Main$TaskStepCode('package main\n\nimport "fmt"\n\nfunc main() {\n    fmt.Println("hello world")\n}')
+			$author$project$Main$TaskStepCode('elm --version')
 		]));
 var $author$project$Main$TaskStepButton = function (a) {
 	return {$: 'TaskStepButton', a: a};
@@ -5254,7 +5256,14 @@ var $author$project$Main$tasksFromList = function (list) {
 var $author$project$Main$initTasks = $author$project$Main$tasksFromList(
 	_List_fromArray(
 		[
-			{id: 'prerequisites', isExpanded: true, result: $elm$core$Maybe$Nothing, taskSteps: $author$project$Main$prerequisiteSteps, title: 'Prerequisites'},
+			{
+			id: 'prerequisites',
+			isExpanded: true,
+			result: $elm$core$Maybe$Just(
+				$author$project$Main$InstalledVersion('0.19.1')),
+			taskSteps: $author$project$Main$prerequisiteSteps,
+			title: 'Prerequisites'
+		},
 			{id: 'aaaa', isExpanded: true, result: $elm$core$Maybe$Nothing, taskSteps: $author$project$Main$taskSteps1, title: '始める前に'}
 		]));
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
@@ -5461,7 +5470,6 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 			$elm$json$Json$Encode$string(string));
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
-var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$html$Html$section = _VirtualDom_node('section');
 var $author$project$Main$Collapse = function (a) {
 	return {$: 'Collapse', a: a};
@@ -5470,6 +5478,7 @@ var $author$project$Main$Expand = function (a) {
 	return {$: 'Expand', a: a};
 };
 var $elm$html$Html$button = _VirtualDom_node('button');
+var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$html$Html$h3 = _VirtualDom_node('h3');
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 'Normal', a: a};
@@ -5496,7 +5505,7 @@ var $author$project$Main$sectionTitle = F3(
 			$elm$html$Html$div,
 			_List_fromArray(
 				[
-					$elm$html$Html$Attributes$class('flex flex-row justify-between mx-4 mb-2')
+					$elm$html$Html$Attributes$class('flex flex-row justify-between mx-4 mb-2 bg-blue-200')
 				]),
 			_List_fromArray(
 				[
@@ -5546,25 +5555,67 @@ var $author$project$Main$codeBlock = function (codeString) {
 };
 var $elm$html$Html$li = _VirtualDom_node('li');
 var $elm$html$Html$p = _VirtualDom_node('p');
-var $author$project$Main$taskResultView = function (result) {
-	var versionString = result.a;
-	return A2(
-		$elm$html$Html$li,
-		_List_Nil,
-		_List_fromArray(
-			[
-				A2(
-				$elm$html$Html$p,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$elm$html$Html$text('以下のバージョン以上が表示される')
-					])),
-				$author$project$Main$codeBlock(versionString)
-			]));
-};
 var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
 var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
+var $elm$html$Html$ul = _VirtualDom_node('ul');
+var $author$project$Main$taskResultView = function (task) {
+	var _v0 = task.result;
+	if (_v0.$ === 'Nothing') {
+		return A2($elm$html$Html$div, _List_Nil, _List_Nil);
+	} else {
+		var result = _v0.a;
+		var styles = task.isExpanded ? _List_fromArray(
+			[
+				A2($elm$html$Html$Attributes$style, 'overflow', 'hidden')
+			]) : _List_fromArray(
+			[
+				A2($elm$html$Html$Attributes$style, 'overflow', 'hidden'),
+				A2($elm$html$Html$Attributes$style, 'max-height', '0px')
+			]);
+		return A2(
+			$elm$html$Html$div,
+			styles,
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$h3,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('text-2xl mb-2')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text('実行結果')
+						])),
+					A2(
+					$elm$html$Html$ul,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('mx-8 list-disc')
+						]),
+					_List_fromArray(
+						[
+							function () {
+							var versionString = result.a;
+							return A2(
+								$elm$html$Html$li,
+								_List_Nil,
+								_List_fromArray(
+									[
+										A2(
+										$elm$html$Html$p,
+										_List_Nil,
+										_List_fromArray(
+											[
+												$elm$html$Html$text('以下のバージョン以上が表示される')
+											])),
+										$author$project$Main$codeBlock(versionString)
+									]));
+						}()
+						]))
+				]));
+	}
+};
 var $elm$html$Html$a = _VirtualDom_node('a');
 var $author$project$Main$CopyToClipboard = function (a) {
 	return {$: 'CopyToClipboard', a: a};
@@ -5707,34 +5758,30 @@ var $author$project$Main$taskStepView = function (step) {
 var $author$project$Main$taskStepsToList = function (taskSteps) {
 	return $elm$core$Array$toList(taskSteps);
 };
-var $elm$html$Html$ul = _VirtualDom_node('ul');
-var $author$project$Main$taskListView = function (taskSteps) {
-	return A2(
-		$elm$html$Html$ul,
-		_List_fromArray(
-			[
-				$elm$html$Html$Attributes$class('mx-8 list-disc')
-			]),
-		A2(
-			$elm$core$List$map,
-			$author$project$Main$taskStepView,
-			$author$project$Main$taskStepsToList(taskSteps)));
-};
-var $author$project$Main$taskView = function (task) {
+var $author$project$Main$taskStepsView = function (task) {
 	var styles = task.isExpanded ? _List_fromArray(
 		[
 			A2($elm$html$Html$Attributes$style, 'overflow', 'hidden')
 		]) : _List_fromArray(
 		[
-			A2($elm$html$Html$Attributes$style, 'max-height', '0px'),
-			A2($elm$html$Html$Attributes$style, 'overflow', 'hidden')
+			A2($elm$html$Html$Attributes$style, 'overflow', 'hidden'),
+			A2($elm$html$Html$Attributes$style, 'max-height', '0px')
 		]);
 	return A2(
 		$elm$html$Html$div,
 		styles,
 		_List_fromArray(
 			[
-				$author$project$Main$taskListView(task.taskSteps)
+				A2(
+				$elm$html$Html$ul,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('mx-8 mb-4 list-disc')
+					]),
+				A2(
+					$elm$core$List$map,
+					$author$project$Main$taskStepView,
+					$author$project$Main$taskStepsToList(task.taskSteps)))
 			]));
 };
 var $author$project$Main$taskSectionView = function (task) {
@@ -5747,16 +5794,8 @@ var $author$project$Main$taskSectionView = function (task) {
 		_List_fromArray(
 			[
 				A3($author$project$Main$sectionTitle, task.id, task.isExpanded, task.title),
-				$author$project$Main$taskView(task),
-				function () {
-				var _v0 = task.result;
-				if (_v0.$ === 'Just') {
-					var result = _v0.a;
-					return $author$project$Main$taskResultView(result);
-				} else {
-					return A2($elm$html$Html$div, _List_Nil, _List_Nil);
-				}
-			}()
+				$author$project$Main$taskStepsView(task),
+				$author$project$Main$taskResultView(task)
 			]));
 };
 var $author$project$Main$tasksToList = function (tasks) {

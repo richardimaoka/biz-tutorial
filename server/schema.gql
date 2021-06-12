@@ -1,5 +1,6 @@
 type Query {
   page(id: ID): Page
+  trusty: Boolean
 }
 """
 Page related types
@@ -16,6 +17,7 @@ type Task {
   _: Boolean
 }
 
+"""
 interface IStep {
   number: Int
   optional: Boolean
@@ -30,7 +32,6 @@ type ScreenShot {
   imageUrl: URL
 }
 
-"""
 better be a scala type?
 """
 type URL {

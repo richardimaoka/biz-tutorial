@@ -3,16 +3,19 @@ type Query {
 }
 
 type Page {
+  title: String
   tasks: [Task]
   isPremium: Boolean
 }
 
 type Task {
+  name: String
   steps: [Step]
 }
 
 type Step {
-  _: Boolean
+  number: Int
+  description: String
 }
 """
 interface IStep {

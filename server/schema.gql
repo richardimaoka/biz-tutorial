@@ -17,22 +17,25 @@ type Step {
   number: Int
   description: String
 }
-"""
-interface IStep {
+
+type CommandStep {
   number: Int
-  optional: Boolean
-  premium: Boolean
+  description: String
+  command: String
 }
 
-type HyperlinkStep implements IStep {
-  hyperlink: URL
+type HyperlinkStep {
+  number: Int
+  description: String
+  hyperlink: String
 }
 
-type ScreenShot {
-  imageUrl: URL
+type ScreenShotStep {
+  number: Int
+  description: String
+  imageUrl: String
 }
 
-better be a scala type?
 """
 type URL {
   string: String
@@ -60,4 +63,8 @@ type EmbeddedVideo {
 
 type EmbeddedImage {
   _: Boolean
+}
+"""
+type A {
+  _: Int
 }

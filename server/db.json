@@ -11,6 +11,46 @@
       "id": 2
     }
   ],
+  "pages": [
+    {
+      "title": "CypressをWSL2上で動かす",
+      "isPremium": false,
+      "tasks": [
+        {
+          "name": "prerequisite"
+        },
+        {
+          "name": "Ubuntu/Debian上でCypressに必要な依存パッケージを apt-get insall"
+        },
+        { "name": "Cypressを npm install" },
+        { "name": "SourceForgeからVcXsrvをインストール" },
+        { "name": "xLaunchアプリケーションを立ち上げる" },
+        { "name": "Disable Access controlをチェックすることに注意" },
+        {
+          "name": "Windows Defender ファイアウォールの警告でプライベートアクセスのみを許可"
+        },
+        {
+          "name": "Windows Defender ファイアウォールで「受信の規則」のうち以下のルールを変更"
+        },
+        { "name": "プロファイル: パブリック" },
+        { "name": "プロトコル: TCP" },
+        {
+          "name": "スコープ: プライベートIPアドレスのレンジ(例: 172.16.0.0/12)からのリモートアクセスを許可"
+        },
+        { "name": "WSL2側でDISPLAY環境変数を設定" },
+        {
+          "name": "export DISPLAY=$(cat /etc/resolv.conf | grep namese}rver | awk '{print $2; exit;}'):0.0"
+        },
+        {
+          "name": "xeyesコマンドでWSL2側からWindows側へのVcXsrvを経由した疎通確認"
+        },
+        { "name": "DBUSサーバーの立ち上げ" },
+        {
+          "name": "npx cypress openコマンドでブラウザを自動で立ち上げてテスト開始"
+        }
+      ]
+    }
+  ],
   "comments": [
     {
       "id": 1,

@@ -34,3 +34,21 @@ type CodeSnippetStep {
   explanation: String
   snippet: CodeSnippet
 }
+
+type DecoratedText {
+  text: String
+  boldTextPositions: [Position]
+  inlineCodePositions: [Position]
+  italicPositions: [Position]
+  inlineUrls: [InlineURL]
+}
+
+type Position {
+  start: Int
+  end: Int
+}
+
+type InlineURL {
+  url: String
+  position: Position
+}

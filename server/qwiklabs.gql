@@ -5,3 +5,21 @@ type Query {
 type Image {
   url: String
 }
+
+type Page {
+  title: String
+}
+
+type Overview {
+  body: String
+}
+
+type Step {
+  number: Int
+  explanation: String
+}
+
+type ImageStep {
+  number: Int
+  explanation: String
+}

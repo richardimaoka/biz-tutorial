@@ -22,4 +22,15 @@ type Step {
 type ImageStep {
   number: Int
   explanation: String
+  image: Image
+}
+
+type CodeSnippet {
+  code: String
+}
+
+type CodeSnippetStep {
+  number: Int
+  explanation: String
+  snippet: CodeSnippet
 }

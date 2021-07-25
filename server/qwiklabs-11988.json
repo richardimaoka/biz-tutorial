@@ -13,7 +13,12 @@
       },
       {
         "text": "This lab is recommended for students who have enrolled in the Insights from Data with BigQuery quest. Are you ready for the challenge?",
-        "inlineUrls": [{ "url": "https://google.qwiklabs.com/quests/123" }]
+        "inlineUrls": [
+          {
+            "url": "https://google.qwiklabs.com/quests/123",
+            "position": { "start": 1, "end": 2 }
+          }
+        ]
       }
     ]
   }

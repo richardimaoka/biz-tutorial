@@ -43,7 +43,7 @@ type CodeSnippetStep {
 }
 
 type DecoratedText {
-  text: String
+  text: String!
   boldTextPositions: [Position]
   inlineCodePositions: [Position]
   italicPositions: [Position]
@@ -51,11 +51,11 @@ type DecoratedText {
 }
 
 type Position {
-  start: Int
-  end: Int
+  start: Int!
+  end: Int!
 }
 
 type InlineURL {
-  url: String
-  position: Position
+  url: String!
+  position: Position!
 }

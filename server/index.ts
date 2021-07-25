@@ -20,8 +20,6 @@ const resolvers = {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  mocks: true,
-  mockEntireSchema: false,
   context: async ({ req }: any) => {
     const data = fs.readFileSync(
       __dirname.concat("/qwiklabs-11988.json"),

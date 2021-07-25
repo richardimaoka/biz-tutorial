@@ -2,7 +2,7 @@ const { ApolloServer, gql } = require("apollo-server");
 const fs = require("fs");
 
 const typeDefs = gql`
-  ${fs.readFileSync(__dirname.concat("/schema.gql"), "utf8")}
+  ${fs.readFileSync(__dirname.concat("/qwiklabs.gql"), "utf8")}
 `;
 
 const resolvers = {

@@ -1,5 +1,5 @@
 type Query {
-  field: Stirng
+  page(id: Int): Page
 }
 
 type Image {
@@ -10,6 +10,7 @@ type Page {
   title: String
   estimatedHour: Int
   credit: Int
+  another: Int
 }
 
 type Paragraph {

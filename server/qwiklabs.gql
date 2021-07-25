@@ -10,11 +10,15 @@ type Page {
   title: String
 }
 
+type Paragraph {
+  text: DecoratedText
+}
+
 type Overview {
   body: String
 }
 
-type Step {
+type NumberedStep {
   number: Int
   explanation: String
 }

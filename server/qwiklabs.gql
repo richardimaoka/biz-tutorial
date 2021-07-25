@@ -10,6 +10,7 @@ type Page {
   title: String
   estimatedHour: Int
   credit: Int
+  overview: Overview
 }
 
 type Paragraph {
@@ -17,7 +18,7 @@ type Paragraph {
 }
 
 type Overview {
-  body: DecoratedText
+  paragraphs: [DecoratedText]
 }
 
 type NumberedStep {

@@ -8,6 +8,8 @@ type Image {
 
 type Page {
   title: String
+  estimatedHour: Int
+  credit: Int
 }
 
 type Paragraph {
@@ -15,7 +17,7 @@ type Paragraph {
 }
 
 type Overview {
-  body: String
+  body: DecoratedText
 }
 
 type NumberedStep {

@@ -13,17 +13,6 @@ type Page {
   sections: [Section]
 }
 
-union SectionBlock = Paragraph | Subtitle
-
-type Section {
-  title: String
-  blocks: [SectionBlock]
-}
-
-type Subtitle {
-  text: String!
-}
-
 """
 interface subsection
 1. paragraph with h4 title
@@ -33,6 +22,25 @@ interface subsection
 5. paragraph followed by an image
 6. paragraph followed by a code block
 """
+union SectionBlock = Paragraph | Subtitle | ItemizedList
+
+type Section {
+  title: String!
+  blocks: [SectionBlock]!
+}
+
+type Subtitle {
+  text: String!
+}
+
+type ItemizedList {
+  items: [Item]!
+}
+
+type Item {
+  text: String!
+}
+
 type NumberedStep {
   number: Int
   explanation: String

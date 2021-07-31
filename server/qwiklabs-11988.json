@@ -45,6 +45,56 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Setup and Requirements",
+      "blocks": [
+        {
+          "__typename": "Subtitle",
+          "text": "Before you click the Start Lab button"
+        },
+        {
+          "__typename": "Paragraph",
+          "text": "Read these instructions. Labs are timed and you cannot pause them. The timer, which starts when you click Start Lab, shows how long Google Cloud resources will be made available to you.",
+          "boldTextPositions": [
+            {
+              "start": 1,
+              "end": 2
+            }
+          ]
+        },
+        {
+          "__typename": "Subtitle",
+          "text": "What you need"
+        },
+        {
+          "__typename": "Paragraph",
+          "text": "To complete this lab, you need:"
+        },
+        {
+          "__typename": "ItemizedList",
+          "items": [
+            {
+              "text": "Access to a standard internet browser (Chrome browser recommended)."
+            },
+            {
+              "text": "Time to complete the lab."
+            }
+          ]
+        },
+        {
+          "__typename": "Paragraph",
+          "text": "Note: If you already have your own personal Google Cloud account or project, do not use it for this lab."
+        },
+        {
+          "__typename": "Paragraph",
+          "text": "Note: If you are using a Pixelbook, open an Incognito window to run this lab."
+        },
+        {
+          "__typename": "Paragraph",
+          "text": "How to start your lab and sign in to the Google Cloud Console"
+        }
+      ]
     }
   ]
 }

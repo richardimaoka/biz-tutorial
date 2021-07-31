@@ -37,12 +37,16 @@ type Item {
   text: String!
 }
 
-union NumberedListItem = Paragraph | Image
-
 type NumberedList {
   start: Int
-  items: [NumberedListItem]!
+  items: [NumberedItem]!
 }
+
+type NumberedItem {
+  blocks: [NumberedItemBlock]!
+}
+
+union NumberedItemBlock = Paragraph | Image
 
 type Image {
   url: String

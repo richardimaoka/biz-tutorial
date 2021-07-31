@@ -22,7 +22,7 @@ interface subsection
 5. paragraph followed by an image
 6. paragraph followed by a code block
 """
-union SectionBlock = Paragraph | Subtitle | ItemizedList
+union SectionBlock = Paragraph | Subtitle | ItemizedList | NumberedList
 
 type Section {
   title: String!
@@ -41,9 +41,9 @@ type Item {
   text: String!
 }
 
-type NumberedStep {
-  number: Int
-  explanation: String
+type NumberedList {
+  start: Int
+  items: [Paragraph]!
 }
 
 type ImageStep {

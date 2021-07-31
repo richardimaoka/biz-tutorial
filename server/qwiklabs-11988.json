@@ -93,6 +93,14 @@
         {
           "__typename": "Paragraph",
           "text": "How to start your lab and sign in to the Google Cloud Console"
+        },
+        {
+          "__typename": "NumberedList",
+          "items": [
+            {
+              "text": "Click the Start Lab button. If you need to pay for the lab, a pop-up opens for you to select your payment method. On the left is a panel populated with the temporary credentials that you must use for this lab."
+            }
+          ]
         }
       ]
     }

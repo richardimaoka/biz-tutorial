@@ -2,10 +2,6 @@ type Query {
   page(id: Int): Page
 }
 
-type Image {
-  url: String
-}
-
 type Page {
   title: String
   estimatedHour: Int
@@ -41,15 +37,15 @@ type Item {
   text: String!
 }
 
+union NumberedListItem = Paragraph | Image
+
 type NumberedList {
   start: Int
-  items: [Paragraph]!
+  items: [NumberedListItem]!
 }
 
-type ImageStep {
-  number: Int
-  explanation: String
-  image: Image
+type Image {
+  url: String
 }
 
 type CodeSnippet {

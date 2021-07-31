@@ -98,7 +98,12 @@
           "__typename": "NumberedList",
           "items": [
             {
+              "__typename": "Paragraph",
               "text": "Click the Start Lab button. If you need to pay for the lab, a pop-up opens for you to select your payment method. On the left is a panel populated with the temporary credentials that you must use for this lab."
+            },
+            {
+              "__typename": "Image",
+              "url": "https://cdn.qwiklabs.com/%2FtHp4GI5VSDyTtdqi3qDFtevuY014F88%2BFow%2FadnRgE%3D"
             }
           ]
         }

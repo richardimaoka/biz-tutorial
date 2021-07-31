@@ -31,10 +31,6 @@ type Paragraph {
   text: DecoratedText
 }
 
-type Overview {
-  paragraphs: [DecoratedText]
-}
-
 type NumberedStep {
   number: Int
   explanation: String

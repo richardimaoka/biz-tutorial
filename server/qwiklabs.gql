@@ -10,11 +10,18 @@ type Page {
   title: String
   estimatedHour: Int
   credit: Int
+  sections: [Section]
 }
+
+union SectionBlock = Paragraph | Subtitle
 
 type Section {
   title: String
-  paragraphs: [DecoratedText]
+  blocks: [SectionBlock]
+}
+
+type Subtitle {
+  text: String!
 }
 
 """
@@ -26,10 +33,6 @@ interface subsection
 5. paragraph followed by an image
 6. paragraph followed by a code block
 """
-type Paragraph {
-  text: DecoratedText
-}
-
 type NumberedStep {
   number: Int
   explanation: String
@@ -51,7 +54,7 @@ type CodeSnippetStep {
   snippet: CodeSnippet
 }
 
-type DecoratedText {
+type Paragraph {
   text: String!
   boldTextPositions: [Position]
   inlineCodePositions: [Position]

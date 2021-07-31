@@ -13,6 +13,20 @@ type Page {
   overview: Overview
 }
 
+type Section {
+  title: String
+  paragraphs: [DecoratedText]
+}
+
+"""
+interface subsection
+1. paragraph with h4 title
+2. itemized list
+3. numbered list ... nested?
+4. quiz
+5. paragraph followed by an image
+6. paragraph followed by a code block
+"""
 type Paragraph {
   text: DecoratedText
 }

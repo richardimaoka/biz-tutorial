@@ -46,7 +46,7 @@ type NumberedItem {
   blocks: [NumberedItemBlock]!
 }
 
-union NumberedItemBlock = Paragraph | Image
+union NumberedItemBlock = Paragraph | Image | ItemizedList
 
 type Image {
   url: String

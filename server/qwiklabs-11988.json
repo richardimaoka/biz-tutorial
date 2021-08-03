@@ -197,6 +197,14 @@
         {
           "__typename": "ItemizedList",
           "items": [{ "text": "cumulative_confirmed" }, { "text": "date" }]
+        },
+        {
+          "__typename": "Paragraph",
+          "text": "Click Check my progress to verify the objective."
+        },
+        {
+          "__typename": "CheckProgress",
+          "text": "Total Confirmed Cases"
         }
       ]
     }

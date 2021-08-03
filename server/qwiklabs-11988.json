@@ -182,6 +182,15 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Query 1: Total Confirmed Cases",
+      "blocks": [
+        {
+          "__typename": "Paragraph",
+          "text": "Build a query that will answer \"What was the total count of confirmed cases on Apr 15, 2020?\" The query needs to return a single row containing the sum of confirmed cases across all countries. The name of the column should be total_cases_worldwide."
+        }
+      ]
     }
   ]
 }

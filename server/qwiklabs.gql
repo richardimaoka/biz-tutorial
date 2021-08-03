@@ -18,7 +18,12 @@ interface subsection
 5. paragraph followed by an image
 6. paragraph followed by a code block
 """
-union SectionBlock = Paragraph | Subtitle | ItemizedList | NumberedList
+union SectionBlock =
+    Paragraph
+  | Subtitle
+  | CheckProgress
+  | ItemizedList
+  | NumberedList
 
 type Section {
   title: String!
@@ -26,6 +31,10 @@ type Section {
 }
 
 type Subtitle {
+  text: String!
+}
+
+type CheckProgress {
   text: String!
 }
 

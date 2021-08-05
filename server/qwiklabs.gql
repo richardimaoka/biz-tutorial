@@ -24,6 +24,7 @@ union SectionBlock =
   | CheckProgress
   | ItemizedList
   | NumberedList
+  | CodeSnippet
 
 type Section {
   title: String!
@@ -36,6 +37,10 @@ type Subtitle {
 
 type CheckProgress {
   text: String!
+}
+
+type CodeSnippet {
+  code: String!
 }
 
 type ItemizedList {

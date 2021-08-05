@@ -207,6 +207,27 @@
           "text": "Total Confirmed Cases"
         }
       ]
+    },
+    {
+      "title": "Query 6: Finding days with zero net new cases",
+      "blocks": [
+        {
+          "__typename": "Paragraph",
+          "text": "The following query is written to identify the number of days in India between 21 Feb 2020 and 15 March 2020 when there were zero increases in the number of confirmed cases. However it is not executing properly. You need to update the query to complete it and obtain the result:"
+        },
+        {
+          "__typename": "CodeSnippet",
+          "code": "WITH india_cases_by_date AS"
+        },
+        {
+          "__typename": "Paragraph",
+          "text": "Click Check my progress to verify the objective."
+        },
+        {
+          "__typename": "CheckProgress",
+          "text": "Finding days with zero net new cases"
+        }
+      ]
     }
   ]
 }

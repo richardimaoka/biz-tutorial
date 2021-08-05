@@ -1,0 +1,93 @@
+type Query {
+  page(id: Int): Page
+}
+
+type Page {
+  title: String
+  sections: [Section]
+}
+
+"""
+interface subsection
+1. paragraph with h4 title
+2. itemized list
+3. numbered list ... nested?
+4. quiz
+5. paragraph followed by an image
+6. paragraph followed by a code block
+"""
+union SectionBlock =
+    Paragraph
+  | Subtitle
+  | CheckProgress
+  | ItemizedList
+  | NumberedList
+  | CodeSnippet
+
+type Section {
+  title: String!
+  blocks: [SectionBlock]!
+}
+
+type Subtitle {
+  text: String!
+}
+
+type CheckProgress {
+  text: String!
+}
+
+type CodeSnippet {
+  code: String!
+}
+
+type ItemizedList {
+  items: [Item]!
+}
+
+type Item {
+  text: String!
+}
+
+type NumberedList {
+  start: Int
+  items: [NumberedItem]!
+}
+
+type NumberedItem {
+  blocks: [NumberedItemBlock]!
+}
+
+union NumberedItemBlock = Paragraph | Image | ItemizedList
+
+type Image {
+  url: String
+}
+
+type CodeSnippet {
+  code: String
+}
+
+type CodeSnippetStep {
+  number: Int
+  explanation: String
+  snippet: CodeSnippet
+}
+
+type Paragraph {
+  text: String!
+  boldTextPositions: [Position]
+  inlineCodePositions: [Position]
+  italicPositions: [Position]
+  inlineUrls: [InlineURL]
+}
+
+type Position {
+  start: Int!
+  end: Int!
+}
+
+type InlineURL {
+  url: String!
+  position: Position!
+}

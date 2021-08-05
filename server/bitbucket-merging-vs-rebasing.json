@@ -1,0 +1,59 @@
+{
+  "title": "Merging vs. Rebasing",
+  "sections": [
+    {
+      "title": "Background",
+      "blocks": [
+        {
+          "__typename": "Paragraph",
+          "text": "The git rebase command has a reputation for being magical Git voodoo that beginners should stay away from, but it can actually make life much easier for a development team when used with care. In this article, we’ll compare git rebase with the related git merge command and identify all of the potential opportunities to incorporate rebasing into the typical Git workflow."
+        }
+      ]
+    },
+    {
+      "title": "Conceptual Overview",
+      "blocks": [
+        {
+          "__typename": "Paragraph",
+          "text": "The first thing to understand about git rebase is that it solves the same problem as git merge. Both of these commands are designed to integrate changes from one branch into another branch—they just do it in very different ways."
+        },
+        {
+          "__typename": "Paragraph",
+          "text": "Consider what happens when you start working on a new feature in a dedicated branch, then another team member updates the main branch with new commits. This results in a forked history, which should be familiar to anyone who has used Git as a collaboration tool"
+        },
+        {
+          "__typename": "Image",
+          "url": "https://wac-cdn.atlassian.com/dam/jcr:1523084b-d05a-4f5a-bd1a-01866ec09ca3/01%20A%20forked%20commit%20history.svg?cdnVersion=1742"
+        },
+        {
+          "__typename": "Paragraph",
+          "text": "Now, let’s say that the new commits in main are relevant to the feature that you’re working on. To incorporate the new commits into your feature branch, you have two options: merging or rebasing."
+        },
+        {
+          "__typename": "Subtitle",
+          "text": "The Merge Option"
+        },
+        {
+          "__typename": "Paragraph",
+          "text": "The easiest option is to merge the main branch into the feature branch using something like the following:"
+        },
+        {
+          "__typename": "CodeSnippet",
+          "code": "git checkout feature\ngit merge main"
+        },
+        {
+          "__typename": "Paragraph",
+          "text": "Or, you can condense this to a one-liner:"
+        },
+        {
+          "__typename": "CodeSnippet",
+          "code": "git merge feature main"
+        },
+        {
+          "__typename": "Paragraph",
+          "text": "This creates a new “merge commit” in the feature branch that ties together the histories of both branches, giving you a branch structure that looks like this:"
+        }
+      ]
+    }
+  ]
+}

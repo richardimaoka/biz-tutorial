@@ -9,3 +9,11 @@ type Page {
 input PageCreate {
   title: String
 }
+
+type Section {
+  _: Boolean
+}
+
+type SubSection {
+  _: Boolean
+}

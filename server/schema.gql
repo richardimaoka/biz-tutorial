@@ -1,3 +1,8 @@
+type Query {
+  relatedInstallations(searchText: String, limit: Int): [Section]
+  packageInstallations: [String]
+}
+
 type Mutation {
   addPage(input: PageCreate): Page
 }

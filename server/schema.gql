@@ -1,0 +1,11 @@
+type Mutation {
+  addPage(input: PageCreate): Page
+}
+
+type Page {
+  title: String
+}
+
+input PageCreate {
+  title: String
+}

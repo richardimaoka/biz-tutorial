@@ -1,10 +1,17 @@
 type Query {
   relatedInstallations(searchText: String, limit: Int): [Section]
   packageInstallations: [String]
+  searchPrerequisites(text: String): [Prerequisite]
 }
 
 type Mutation {
   addPage(input: PageCreate): Page
+}
+
+type Prerequisite {
+  name: String!
+  bootstrap: String
+  setup: String
 }
 
 type Page {

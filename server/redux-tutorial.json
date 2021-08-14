@@ -1,0 +1,24 @@
+{
+  "installDependencies": [
+    {
+      "command": "npm install @reduxjs/toolkit",
+      "confirmation": {
+        "command": "npm --version",
+        "result": "本チュートリアル作成時点では7.4.0"
+      },
+      "externalReference": [
+        "https://docs.npmjs.com/downloading-and-installing-node-js-and-npm"
+      ]
+    },
+    {
+      "commands": [
+        "mkdir myproject",
+        "cd myproject",
+        "npm init",
+        "npm install @reduxjs/toolkit"
+      ],
+      "results": "file tree with package.json, etc"
+    }
+  ],
+  "installDependenciesMultiVersion": {}
+}

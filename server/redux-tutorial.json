@@ -20,5 +20,17 @@
       "results": "file tree with package.json, etc"
     }
   ],
-  "installDependenciesMultiVersion": {}
+  "installDependenciesMultiVersion": [
+    {
+      "command": "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash",
+      "confirmation": {
+        "command": "command -v nvm",
+        "result": "nvm"
+      },
+      "whathappened": {
+        "result": "filesystem changes - .nvm"
+      },
+      "externalReference": ["https://github.com/nvm-sh/nvm"]
+    }
+  ]
 }

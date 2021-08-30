@@ -1,0 +1,5 @@
+{
+  "languages": ["Scala", "JavaScript", "Java", "Go", "Python", "Julia"],
+  "clouds": ["GCP", "AWS", "Azure"],
+  "shell": ["bash", "zsh", "sh"]
+}

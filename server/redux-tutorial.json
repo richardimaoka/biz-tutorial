@@ -9,15 +9,6 @@
       "externalReference": [
         "https://docs.npmjs.com/downloading-and-installing-node-js-and-npm"
       ]
-    },
-    {
-      "commands": [
-        "mkdir myproject",
-        "cd myproject",
-        "npm init",
-        "npm install @reduxjs/toolkit"
-      ],
-      "results": "file tree with package.json, etc"
     }
   ],
   "installDependenciesMultiVersion": [
@@ -31,6 +22,17 @@
         "result": "filesystem changes - .nvm"
       },
       "externalReference": ["https://github.com/nvm-sh/nvm"]
+    }
+  ],
+  "setup": [
+    {
+      "commands": [
+        "mkdir myproject",
+        "cd myproject",
+        "npm init",
+        "npm install @reduxjs/toolkit"
+      ],
+      "results": "file tree with package.json, etc"
     }
   ]
 }

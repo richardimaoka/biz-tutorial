@@ -1,6 +1,7 @@
 {
-  "installDependencies": [
+  "sections": [
     {
+      "title": "installDependencies",
       "command": "npm install @reduxjs/toolkit",
       "confirmation": {
         "command": "npm --version",
@@ -9,10 +10,9 @@
       "externalReference": [
         "https://docs.npmjs.com/downloading-and-installing-node-js-and-npm"
       ]
-    }
-  ],
-  "installDependenciesMultiVersion": [
+    },
     {
+      "title": "installDependenciesMultiVersion",
       "command": "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash",
       "confirmation": {
         "command": "command -v nvm",
@@ -22,10 +22,9 @@
         "result": "filesystem changes - .nvm"
       },
       "externalReference": ["https://github.com/nvm-sh/nvm"]
-    }
-  ],
-  "setup": [
+    },
     {
+      "title": "setup",
       "commands": [
         "mkdir myproject",
         "cd myproject",

@@ -25,13 +25,23 @@
     },
     {
       "title": "setup",
-      "commands": [
-        "mkdir myproject",
-        "cd myproject",
-        "npm init",
-        "npm install @reduxjs/toolkit"
-      ],
-      "results": "file tree with package.json, etc"
+      "steps": [
+        {
+          "title": "create react app",
+          "commands": [
+            "npx create-react-app redux-sandbox",
+            "cd redux-sandbox"
+          ],
+          "result": "resulting direstory structure",
+          "confirmation": "see if the dir struc met"
+        },
+        {
+          "title": "install redux",
+          "command": "yarn add @reduxjs/toolkit react-redux",
+          "result": "diff in the source files",
+          "confirmation": "check the diff"
+        }
+      ]
     }
   ]
 }

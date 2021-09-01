@@ -1,5 +1,23 @@
 {
-  "languages": ["Scala", "JavaScript", "Java", "Go", "Python", "Julia"],
-  "clouds": ["GCP", "AWS", "Azure"],
-  "shell": ["bash", "zsh", "sh"]
+  "environments": {
+    "languages": ["Scala", "JavaScript", "Java", "Go", "Python", "Julia"],
+    "clouds": ["GCP", "AWS", "Azure"],
+    "shell": ["bash", "zsh", "sh"],
+    "databases": ["MySQL", "Postgres", "Cassandra"],
+    "middleware": [
+      "Kafka",
+      "RabbitMQ",
+      "Redis",
+      "ElasticSearch",
+      "ZeroMQ",
+      "Zookeeper",
+      "HBase",
+      "HDFS"
+    ],
+    "else": ["Docker", "Kubernetes", "Airflow"],
+    "tools": {
+      "JavaScript": ["emotion/css", "next.js", "redux", "express"]
+    }
+  },
+  "runs": ["command", "button", "IDE actions"]
 }

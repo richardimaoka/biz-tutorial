@@ -40,6 +40,14 @@
           "command": "yarn add @reduxjs/toolkit react-redux",
           "result": "diff in the source files",
           "confirmation": "check the diff"
+        },
+        {
+          "tilte": "add store.js",
+          "result": "still compiles, nothing changed in UI"
+        },
+        {
+          "title": "update index.js",
+          "result": "still compiles, nothing changed in UI"
         }
       ]
     }

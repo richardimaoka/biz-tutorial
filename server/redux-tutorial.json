@@ -48,6 +48,11 @@
         {
           "title": "update index.js",
           "result": "still compiles, nothing changed in UI"
+        },
+        {
+          "title": "add Counter.js, counterSlice.js, update store.js and App.js",
+          "files": ["show only the files with diff"],
+          "result": "counter appears in UI"
         }
       ]
     }

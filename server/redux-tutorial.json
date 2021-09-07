@@ -54,6 +54,21 @@
       "externalReference": ["https://github.com/nvm-sh/nvm"]
     },
     {
+      "title": "confirm depenencies",
+      "steps": [
+        {
+          "command": "npm --version",
+          "result": "7.21.1",
+          "description": "記事執筆時点では…。それより低いバージョンでも動く可能性あり。もし動かなかったらnvmインストールによって、記事執筆バージョンより新しいバージョンを入れてください"
+        },
+        {
+          "command": "node --version",
+          "result": "v16.9.0",
+          "description": "記事執筆時点では…。それより低いバージョンでも動く可能性あり。もし動かなかったらnvmインストールによって、記事執筆バージョンより新しいバージョンを入れてください"
+        }
+      ]
+    },
+    {
       "title": "setup",
       "steps": [
         {

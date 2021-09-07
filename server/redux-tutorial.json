@@ -1,12 +1,42 @@
 {
   "sections": [
     {
+      "title": "install nvm",
+      "steps": [
+        {
+          "command": "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash",
+          "result": "some output in shell",
+          "hyperlink": "https://github.com/nvm-sh/nvm",
+          "description": "We strongly recommend using a Node version manager like nvm to install Node.js and npm."
+        },
+        {
+          "command": "npm --version",
+          "result": ""
+        },
+        {
+          "command": "ls ....",
+          "result": "some files are listed"
+        }
+      ]
+    },
+    {
+      "title": "install npm via nvm",
+      "steps": [
+        {
+          "command": "nvm install npm",
+          "result": "some output to the console"
+        }
+      ]
+    },
+    {
       "title": "installDependencies",
-      "command": "npm install @reduxjs/toolkit",
-      "confirmation": {
-        "command": "npm --version",
-        "result": "本チュートリアル作成時点では7.4.0"
-      },
+      "steps": [
+        { "command": "npm install @reduxjs/toolkit" },
+        {
+          "command": "npm --version",
+          "result": "本チュートリアル作成時点では7.4.0"
+        }
+      ],
       "externalReference": [
         "https://docs.npmjs.com/downloading-and-installing-node-js-and-npm"
       ]

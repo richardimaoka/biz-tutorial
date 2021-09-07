@@ -52,7 +52,8 @@
         {
           "title": "add Counter.js, counterSlice.js, update store.js and App.js",
           "files": ["show only the files with diff"],
-          "result": "counter appears in UI"
+          "result": "counter appears in UI",
+          "resultingImage": "UI image, if needed, with diff"
         }
       ]
     }

@@ -1,0 +1,15 @@
+{
+  "title": "Arrays and slices",
+  "sections": [
+    {
+      "title": "",
+      "steps": [
+        {
+          "type": "description",
+          "description": "You can find all the code for this chapter here\nArrays allow you to store multiple elements of the same type in a variable in a particular order.\nWhen you have an array, it is very common to have to iterate over them. So let's use our new-found knowledge of for to make a Sum function. Sum will take an array of numbers and return the total.\nLet's use our TDD skills"
+        }
+      ]
+    },
+    {}
+  ]
+}

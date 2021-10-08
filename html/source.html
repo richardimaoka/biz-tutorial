@@ -108,5 +108,46 @@ function counterReducer(state = { value: 0 }, action) {
   }
 }</code></pre>
     </div>
+
+    <div
+      style="
+        color: black;
+        background-color: #f9f9e3;
+        width: 800px;
+        padding: 4px 8px;
+      "
+    >
+      <pre
+        style="color: black; background-color: #f9f9e3"
+      ><code style="color: black; ;"  class="language-command">=> nvm is already installed in /home/richardimaoka/.nvm, trying to update using git
+=> => Compressing and cleaning up git repository
+
+=> Appending nvm source string to /home/richardimaoka/.bashrc
+=> Appending bash_completion source string to /home/richardimaoka/.bashrc
+
+=> You currently have modules installed globally with `npm`. These will no
+=> longer be linked to the active version of Node when you install a new node
+=> with `nvm`; and they may (depending on how you construct your `$PATH`)
+=> override the binaries of modules installed with `nvm`:
+
+/home/richardimaoka/.npm-global/lib
+├── create-elm-app@5.22.0
+├── elm-format@0.8.5
+├── elm-test@0.19.1-revision6
+├── elm@0.19.1-5
+=> If you wish to uninstall them at a later point (or re-install them under your
+=> `nvm` Nodes), you can remove them from the system Node as follows:
+
+     $ nvm use system
+     $ npm uninstall -g a_module
+
+=> Close and reopen your terminal to start using nvm or run the following to use it now:
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+      </code></pre>
+    </div>
   </body>
 </html>

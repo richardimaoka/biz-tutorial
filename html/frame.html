@@ -17,7 +17,8 @@
 
     <!--row with flexbox -->
     <section style="display: flex; flex-direction: row">
-      <div style="width: 300px">
+      <!-- column sidemenu -->
+      <div style="width: 300px; padding-left: 10px">
         <div style="width: 100%">Subscription retry policy</div>
         <div>Prerequisites</div>
         <div>Testing apps locally with the emulator</div>
@@ -25,7 +26,42 @@
         <div>Using Spring Cloud GCP Pub/Sub Starter</div>
       </div>
 
-      <div style="width: 800px">main</div>
+      <!-- column main part -->
+      <div style="width: 800px">
+        <div>
+          <h1>
+            A tutorial on Linux sort, msort*, and uniq comamnds from the Unicage
+            development book.
+          </h1>
+        </div>
+
+        <div>
+          <h2>Pre-requisites</h2>
+        </div>
+
+        <div style="padding: 10px">
+          <h2>Subscription retry policy</h2>
+          <p>
+            If Pub/Sub attempts to deliver a message but the subscriber can't
+            acknowledge it, Pub/Sub will retry sending the message. By default,
+            Pub/Sub will try resending the message immediately. However, the
+            conditions that prevented message acknowledgement may not have had
+            time to change when using immediate redelivery, resulting in the
+            message being unacknowledged again, and the message being
+            continuously redelivered. To address this issue, Pub/Sub lets you
+            configure an exponential backoff policy for better flow control.
+          </p>
+          <p>
+            The idea behind exponential backoff is to add progressively longer
+            delays between retry attempts. After the first delivery failure,
+            Pub/Sub will wait for a minimum backoff time before retrying. For
+            each consecutive failure on that message, more time will be added to
+            the delay, up to a maximum delay. The maximum and minimum delay
+            intervals are not fixed, and should be configured based on local
+            factors to your application.
+          </p>
+        </div>
+      </div>
     </section>
   </body>
 </html>

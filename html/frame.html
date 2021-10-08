@@ -61,6 +61,23 @@
             factors to your application.
           </p>
         </div>
+
+        <div style="padding: 10px">
+          <h2>Subscription retry policy</h2>
+        </div>
+
+        <div style="padding: 10px">
+          <h2>Configuring exponential backoff</h2>
+          <p>
+            To create a new subscription with an exponential backoff retry
+            policy, run the gcloud pubsub create command with the flags shown
+            below:
+          </p>
+          <pre><code>> gcloud pubsub subscriptions create SUBSCRIPTION_ID \
+--topic=TOPIC_ID \
+--min-retry-delay=MIN_RETRY_DELAY \
+--max-retry-delay=MAX_RETRY_DELAY \</code></pre>
+        </div>
       </div>
     </section>
   </body>

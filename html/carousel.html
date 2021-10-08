@@ -4,13 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      div {
+        border: 1px solid;
+      }
+    </style>
   </head>
   <body>
     <div>
-      <!-- carousel container -->
-      <div>
+      <!-- carousel container, position relative is needed to place the right cursor within the container -->
+      <div style="width: 750px; margin: 0px; position: relative">
         <!-- carousel inner -->
         <div>
+          <div style="position: absolute; top: 0px; right: 0px; height: 100%">
+            <div style="display: inline; margin-top: auto; margin-bottom: auto">
+              arrow
+            </div>
+          </div>
+
           <!-- carousel item -->
           <div><img src="./unixsort.png" alt="" /></div>
           <!-- carousel item -->

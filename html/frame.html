@@ -7,7 +7,7 @@
   </head>
   <style>
     div {
-      border: 0px solid;
+      border: 1px solid;
     }
   </style>
   <body>
@@ -15,14 +15,17 @@
       <div style="font-size: 32px">Tutorials</div>
     </header>
 
-    <div>
-      <div>Subscription retry policy</div>
-      <div>Prerequisites</div>
-      <div>Testing apps locally with the emulator</div>
-      <div>Using Pub/Sub in Spring applications</div>
-      <div>Using Spring Cloud GCP Pub/Sub Starter</div>
-    </div>
+    <!--row with flexbox -->
+    <section style="display: flex; flex-direction: row">
+      <div style="width: 300px">
+        <div style="width: 100%">Subscription retry policy</div>
+        <div>Prerequisites</div>
+        <div>Testing apps locally with the emulator</div>
+        <div>Using Pub/Sub in Spring applications</div>
+        <div>Using Spring Cloud GCP Pub/Sub Starter</div>
+      </div>
 
-    <div>main</div>
+      <div style="width: 800px">main</div>
+    </section>
   </body>
 </html>

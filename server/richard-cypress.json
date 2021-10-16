@@ -6,6 +6,43 @@
       {
         "type": "paragraph",
         "body": "Cypressはフロントエンドのend-to-endテストフレームワークの代表格です。ローカル開発環境で npx cypress open コマンドを実行すれば、Cypressはブラウザを自動で立ち上げて、高速で次々にテストを完了していきます。その軽快な動作は非常に心地よく、フロントエンドのテスト駆動開発を推進するのにピッタリなツールです。CIサーバー上ではブラウザを立ち上げることなくheadlessモードで動作します。"
+      },
+      {
+        "type": "video",
+        "url": "https://vimeo.com/237527670"
+      },
+      {
+        "type": "paragraph",
+        "body": "そんなCypressですが、困ったことにWindows Subsystem for Linux2(以下WSL2)上では、単純にインストール後 npx cypress open コマンドを打ち込むだけでは動いてくれません。ターミナルは何もせず待ち続けるだけで、テストを実行してくれないのです。"
+      },
+      {
+        "type": "image",
+        "subtype": "single",
+        "url": ".gif",
+        "caption": "(この後何も起こりません、ブラウザが自動で立ち上がってほしいのですが)"
+      },
+      {
+        "type": "foldable",
+        "shortdescription": "WSL1における注意点",
+        "elements": [
+          {
+            "type": "paragraph",
+            "body": "この記事では、WSL2上でCypressを動かす方法を、その技術的背景とともにお伝えします。注意点として、ここで紹介する解決法はWSL2向けであって、WSL1ではまた別の問題が発生するようです。"
+          },
+          {
+            "type": "itemizedlist",
+            "points": [
+              {
+                "type": "itemizeditem",
+                "body": "GitHub: Cypressのレポジトリ内のイシューを「wsl」で検索した一覧"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "body": "この記事では、WSL2上でCypressを動かす方法を、その技術的背景とともにお伝えします。注意点として、ここで紹介する解決法はWSL2向けであって、WSL1ではまた別の問題が発生するようです。"
+          }
+        ]
       }
     ]
   }

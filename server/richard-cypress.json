@@ -66,6 +66,62 @@
           ]
         }
       ]
+    },
+    {
+      "type": "page",
+      "title": "prerequisites",
+      "elements": [
+        {
+          "type": "paragraph",
+          "body": "以下のコマンドを実行してください"
+        },
+        {
+          "type": "command",
+          "node": "node --version"
+        },
+        {
+          "type": "description",
+          "body": "以下のようにバージョンが表示されたら成功です。"
+        },
+        {
+          "type": "output",
+          "body": "v15.6.0"
+        },
+        {
+          "type": "description",
+          "body": "バージョンの数字自体に対して指定はありません"
+        },
+        {
+          "type": "foldable",
+          "shortdescription": "もしnodeがインストールされていなかったら",
+          "elements": []
+        },
+        {
+          "type": "paragraph",
+          "body": "以下のコマンドを実行してください"
+        },
+        {
+          "type": "command",
+          "node": "npm --version"
+        },
+        {
+          "type": "description",
+          "body": "以下のようにバージョンが表示されたら成功です。"
+        },
+        {
+          "type": "output",
+          "body": "7.4.0"
+        },
+        {
+          "type": "description",
+          "body": "バージョンの数字自体に対して指定はありません"
+        },
+        {
+          "type": "foldable",
+          "shortdescription": "もしnpmがインストールされていなかったら",
+          "elements": []
+        }
+      ]
     }
   ]
 }

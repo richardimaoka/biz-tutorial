@@ -178,7 +178,76 @@
     {
       "type": "page",
       "title": "Cypress install and verify",
-      "elements": []
+      "platforms": ["WSL Ubuntu"],
+      "elements": [
+        {
+          "type": "command",
+          "purpose": "project setup",
+          "body": "mkdir cypress-sandbox"
+        },
+        {
+          "type": "command",
+          "purpose": "project setup",
+          "body": "cd cypress-sandbox"
+        },
+        {
+          "type": "command",
+          "purpose": "project setup",
+          "body": "npm init"
+        },
+        {
+          "type": "description",
+          "body": "以下の質問付きのメッセージが順に表示されるので、すべてYESで答えてEnterを押してください"
+        },
+        {
+          "type": "output",
+          "body": "This utility will walk you through creating a package.json file......"
+        },
+        {
+          "type": "paragraph",
+          "body": "以下のようなディレクトリ構成になっていることを確認してください"
+        },
+        {
+          "type": "directorystructure",
+          "contents": []
+        },
+        {
+          "type": "confirmation",
+          "message": "上記のようなディレクトリ構成になっていましたか？"
+        },
+        {
+          "type": "command",
+          "purpose": "install",
+          "body": "npm install cypress --save-dev"
+        },
+        {
+          "type": "paragraph",
+          "body": "下記のような変更が加えられましたか？"
+        },
+        {
+          "type": "directorystructure",
+          "contents": [],
+          "diff": []
+        },
+        {
+          "type": "paragraph",
+          "body": "以下のコマンドを実行して、期待される実行結果と一致しているか確認してください"
+        },
+        {
+          "type": "command",
+          "purpose": "confirmation",
+          "body": "npx cypress verify"
+        },
+        {
+          "type": "output",
+          "body": "✔  Verified Cypress! /home/richardimaoka/.cache/Cypress/6.8.0/Cypress"
+        },
+        {
+          "type": "foldable",
+          "shortdescription": "もしVerified Cypress!と表示されなかったら",
+          "elements": []
+        }
+      ]
     }
   ]
 }

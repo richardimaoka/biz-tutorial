@@ -120,8 +120,65 @@
           "type": "foldable",
           "shortdescription": "もしnpmがインストールされていなかったら",
           "elements": []
+        },
+        {
+          "type": "paragraph",
+          "body": "セットアップの最初の手順として、Cypress公式の手順に従ってインストールを終える必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "variant:os": "Ubuntu/Debian",
+          "body": "以下のコマンドを実行してください"
+        },
+        {
+          "type": "command",
+          "body": "apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb"
+        },
+        {
+          "type": "output",
+          "body": "Reading package lists... Done\nBuilding dependency tree\nReading state information... Done\nlibgtk2.0-0 is already the newest version (2.24.32-4ubuntu4).\nlibnotify-dev is already the newest version (0.7.9-1ubuntu2).\nlibxss1 is already the newest version (1:1.2.3-1).\nlibxtst6 is already the newest version (2:1.2.3-1).\nxauth is already the newest version (1:1.1-0ubuntu1).\nlibgconf-2-4 is already the newest version (3.2.6-6ubuntu1).\nlibgtk-3-0 is already the newest version (3.24.20-0ubuntu1).\nlibnss3 is already the newest version (2:3.49.1-1ubuntu1.5).\nSome packages could not be installed. This may mean that you have\nrequested an impossible situation or if you are using the unstable\ndistribution that some required packages have not yet been created\nor been moved out of Incoming.\nThe following information may help to resolve the situation:\n \nThe following packages have unmet dependencies:\n gnome-user-docs : Depends: ubuntu-docs (>= 18.04.1~) but it is not going to be installed\n                   Depends: yelp (>= 3) but it is not going to be installed\n libcheese-gtk25 : Depends: libclutter-1.0-0 (>= 1.16) but it is not going to be installed\n                   Depends: libclutter-gtk-1.0-0 (>= 0.91.8) but it is not going to be installed\n                   Depends: libcogl20 (>= 1.17.4) but it is not going to be installed\n                   Depends: gstreamer1.0-clutter-3.0 but it is not going to be installed\n libcheese8 : Depends: libclutter-1.0-0 (>= 1.16) but it is not going to be installed\n              Depends: libclutter-gst-3.0-0 (>= 3.0.4) but it is not going to be installed\n libegl1 : Depends: libegl-mesa0 but it is not going to be installed\nE: Error, pkgProblemResolver::Resolve generated breaks, this may be caused by held packages.\n"
+        },
+        {
+          "type": "foldable",
+          "shortdescription": "もし `Permission denied` というエラーが出たら",
+          "elements": [
+            {
+              "type": "paragraph",
+              "body": "もしエラーメッセージが `Permission denied` であったら、 `sudo` をつけた 以下のコマンドを試してみてください。"
+            }
+          ]
+        },
+        {
+          "type": "foldable",
+          "shortdescription": "もし `Some packages could not be installed` というエラーが出たら",
+          "elements": [
+            {
+              "type": "paragraph",
+              "body": "もしエラーメッセージが `Permission denied` であったら、 `sudo` をつけた 以下のコマンドを試してみてください。"
+            }
+          ]
+        },
+        {
+          "type": "foldable",
+          "shortdescription": "どんなファイルがインストールされたか気になる",
+          "elements": [
+            {
+              "type": "paragraph",
+              "body": "以下のコマンドを実行してください"
+            },
+            {
+              "type": "command",
+              "body": "apt list --installed | grep -e libgtk2.0-0 -e libgtk-3-0 -e libgbm-dev -e libnotify-dev",
+              "---": "dpkg -L coreutilsで見える"
+            }
+          ]
         }
       ]
+    },
+    {
+      "type": "page",
+      "title": "Cypress install and verify",
+      "elements": []
     }
   ]
 }

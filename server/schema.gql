@@ -1,0 +1,31 @@
+type Page {
+  title: String
+}
+
+union PageElement = Paragraph
+
+type Paragraph {
+  body: String
+}
+
+type Foldable {
+  shortDescription: String
+  elements: [PageElement]
+}
+
+type Command {
+  command: String
+}
+
+type CommandAndOutput {
+  command: String
+  output: String
+}
+
+type DirectoryStructure {
+  contents: [String]
+}
+
+type Note {
+  body: String
+}

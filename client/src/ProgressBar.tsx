@@ -10,7 +10,7 @@ interface ProgressBarProps {
   pages: Page[];
 }
 
-const ProgressBar = ({ currentPage, pages }: ProgressBarProps) => (
+export const ProgressBar = ({ currentPage, pages }: ProgressBarProps) => (
   <div
     css={css`
       display: flex;

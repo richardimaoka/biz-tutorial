@@ -16,6 +16,7 @@
     "web-vitals": "^1.1.2"
   },
   "devDependencies": {
+    "@types/prismjs": "^1.16.6",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
     "eslint": "^7.32.0",

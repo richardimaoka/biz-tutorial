@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { FileNameTab } from "./FileNameTab";
-
+import { File } from "./File";
 interface FileNameTabBarProps {
   files: File[];
   selectFileIndex: number;

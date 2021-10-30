@@ -1,5 +1,6 @@
 import { FileNameTabBar } from "./FileNameTabBar";
 import { FileContent } from "./FileContent";
+import { File } from "./File";
 
 interface FileViewerProps {
   files: File[];

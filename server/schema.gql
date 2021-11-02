@@ -1,8 +1,19 @@
-type Page {
-  title: String
+type Query {
+  tutorial(owner: String, name: String)
 }
 
-union PageElement = Paragraph
+type Tutorial {
+  title: String
+  pages: [Page]
+}
+
+type Page {
+  title: String
+  elements: [PageElement]
+}
+
+union PageElement = Foldable | PlainElement
+union PlainElement = Paragraph | Command | Output
 
 type Paragraph {
   body: String
@@ -10,7 +21,7 @@ type Paragraph {
 
 type Foldable {
   shortDescription: String
-  elements: [PageElement]
+  elements: [PlainElement]
 }
 
 type Command {

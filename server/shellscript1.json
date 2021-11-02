@@ -1,0 +1,26 @@
+{
+  "title": "1日1問、半年以内に習得-シェル・ワンライナー160本ノック 1章",
+  "pages": [
+    {
+      "title": "pre-requisites",
+      "elements": [
+        {
+          "type": "action",
+          "chunks": [{ "text": "次のレポジトリをgit cloneしてください" }]
+        },
+        {
+          "type": "command",
+          "command": "git clone https://shellscript-sample/sample-repo1"
+        },
+        {
+          "type": "command",
+          "command": "cd sample-repo1"
+        },
+        {
+          "type": "subtitle",
+          "text": "lsコマンド"
+        }
+      ]
+    }
+  ]
+}

@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/richardimaoka/biz-tutorial#readme",
   "dependencies": {
-    "apollo-server": "^2.25.1",
-    "graphql": "^15.5.0"
+    "apollo-server": "^3.4.0",
+    "graphql": "^15.7.2"
   },
   "devDependencies": {
     "json-server": "^0.16.3",

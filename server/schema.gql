@@ -1,5 +1,5 @@
 type Query {
-  tutorial(owner: String, name: String)
+  tutorial(owner: String, name: String): Tutorial
 }
 
 type Tutorial {
@@ -12,8 +12,12 @@ type Page {
   elements: [PageElement]
 }
 
-union PageElement = Foldable | PlainElement
+union PageElement = Paragraph | Command | Output | Foldable
 union PlainElement = Paragraph | Command | Output
+
+type Output {
+  body: String
+}
 
 type Paragraph {
   body: String

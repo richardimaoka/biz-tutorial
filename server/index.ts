@@ -2,31 +2,17 @@ const { ApolloServer, gql } = require("apollo-server");
 const fs = require("fs");
 
 const typeDefs = gql`
-  ${fs.readFileSync(__dirname.concat("/qwiklabs.gql"), "utf8")}
+  ${fs.readFileSync(__dirname.concat("/schema.gql"), "utf8")}
 `;
 
 const resolvers = {
-  Query: {
-    page(parent: any, args: any, context: any, info: any) {
-      if (args.id === 11988) {
-        return context.data_11988;
-      } else {
-        null;
-      }
-    },
-  },
+  Query: {},
 };
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: async ({ req }: any) => {
-    const data = fs.readFileSync(
-      __dirname.concat("/qwiklabs-11988.json"),
-      "utf8"
-    );
-    return { data_11988: JSON.parse(data) };
-  },
+  mocks: true,
 });
 
 // The `listen` method launches a web server.

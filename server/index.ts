@@ -13,6 +13,19 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   mocks: true,
+  context: async ({ req }: any) => {
+    try {
+      const dataFileContent = await fs.promises.readFile(
+        __dirname.concat("/richard-cypress.json"),
+        "utf8"
+      );
+      const data = JSON.parse(dataFileContent);
+      return data;
+    } catch (err) {
+      console.log("***ERROR OCURRED***");
+      console.log(err);
+    }
+  },
 });
 
 // The `listen` method launches a web server.

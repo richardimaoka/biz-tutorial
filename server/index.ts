@@ -6,13 +6,18 @@ const typeDefs = gql`
 `;
 
 const resolvers = {
-  Query: {},
+  Query: {
+    tutorial(parent: object, args: object, context: any, info: object) {
+      return {
+        title: context.data.title,
+      };
+    },
+  },
 };
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  mocks: true,
   context: async ({ req }: any) => {
     try {
       const dataFileContent = await fs.promises.readFile(
@@ -20,7 +25,7 @@ const server = new ApolloServer({
         "utf8"
       );
       const data = JSON.parse(dataFileContent);
-      return data;
+      return { data: data };
     } catch (err) {
       console.log("***ERROR OCURRED***");
       console.log(err);

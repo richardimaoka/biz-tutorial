@@ -21,16 +21,16 @@
   },
   "devDependencies": {
     "@graphql-codegen/cli": "2.2.2",
+    "@graphql-codegen/introspection": "2.1.0",
+    "@graphql-codegen/typescript": "2.3.0",
+    "@graphql-codegen/typescript-operations": "2.2.0",
+    "@graphql-codegen/typescript-react-apollo": "3.2.0",
     "@types/prismjs": "^1.16.6",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
     "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.26.1",
-    "react-scripts": "4.0.3",
-    "@graphql-codegen/typescript": "2.3.0",
-    "@graphql-codegen/typescript-operations": "2.2.0",
-    "@graphql-codegen/typescript-react-apollo": "3.2.0",
-    "@graphql-codegen/introspection": "2.1.0"
+    "react-scripts": "4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",

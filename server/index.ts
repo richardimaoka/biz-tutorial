@@ -10,6 +10,7 @@ const resolvers = {
     tutorial(parent: object, args: object, context: any, info: object) {
       return {
         title: context.data.title,
+        pages: context.data.pages,
       };
     },
   },

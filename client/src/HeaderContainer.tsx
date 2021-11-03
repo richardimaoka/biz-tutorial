@@ -4,7 +4,7 @@ import { css } from "@emotion/react";
 import { HeaderTitle } from "./HeaderTitle";
 import { HeaderIcon } from "./HeaderIcon";
 
-const HeaderContainer = ({ title }: { title: string }) => (
+export const HeaderContainer = ({ title }: { title: string }) => (
   <header>
     <div
       css={css`

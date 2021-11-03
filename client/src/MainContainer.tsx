@@ -13,9 +13,7 @@ export const MainContainer = () => {
           justify-content: center;
         `}
       >
-        <PrevPageBar />
         <LessonContent />
-        <NextPageBar />
       </div>
     </main>
   );

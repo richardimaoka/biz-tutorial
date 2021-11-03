@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 
 interface Page {
-  page: number;
+  pageNumber: number;
 }
 
 interface ProgressBarProps {
@@ -30,7 +30,7 @@ export const ProgressBar = ({ currentPage, pages }: ProgressBarProps) => (
   >
     {pages.map((page) => (
       <div
-        key={page.page}
+        key={page.pageNumber}
         css={css`
           flex-grow: 1;
           height: 20px;

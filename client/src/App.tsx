@@ -10,35 +10,24 @@ import {
   useQuery,
 } from "@apollo/client";
 import React from "react";
+import { useToplevelQuery } from "./generated/graphql";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000",
   cache: new InMemoryCache(),
 });
 
-const query = gql`
-  query {
-    tutorial {
-      title
-      pages {
-        title
-        elements {
-          ... on Paragraph {
-            body
-          }
-        }
-      }
-    }
-  }
-`;
-
 const Internal = (): JSX.Element => {
-  const { loading, error, data } = useQuery(query);
+  const { loading, error, data } = useToplevelQuery();
 
   if (loading) {
     return <div>{"Loading..."}</div>;
   } else if (error) {
     return <div>{`Error! ${error.message}`}</div>;
+  } else if (!data) {
+    return <div>{`Error! returned data is undefined or null`}</div>;
+  } else if (!data.tutorial) {
+    return <div>{`Error! returned data.tutorial is undefined or null`}</div>;
   } else {
     return (
       <React.Fragment>

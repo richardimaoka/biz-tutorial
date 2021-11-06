@@ -78,14 +78,14 @@ export type Tutorial = {
   title?: Maybe<Scalars['String']>;
 };
 
-export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
+export type ToplevelQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_1_Query = { __typename?: 'Query', tutorial?: { __typename?: 'Tutorial', title?: string | null | undefined, pages?: Array<{ __typename?: 'Page', title?: string | null | undefined, elements?: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable' } | { __typename?: 'Output' } | { __typename?: 'Paragraph', body?: string | null | undefined } | null | undefined> | null | undefined } | null | undefined> | null | undefined } | null | undefined };
+export type ToplevelQuery = { __typename?: 'Query', tutorial?: { __typename?: 'Tutorial', title?: string | null | undefined, pages?: Array<{ __typename?: 'Page', title?: string | null | undefined, elements?: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable' } | { __typename?: 'Output' } | { __typename?: 'Paragraph', body?: string | null | undefined } | null | undefined> | null | undefined } | null | undefined> | null | undefined } | null | undefined };
 
 
-export const Document = gql`
-    {
+export const ToplevelDocument = gql`
+    query toplevel {
   tutorial {
     title
     pages {
@@ -101,28 +101,28 @@ export const Document = gql`
     `;
 
 /**
- * __useQuery__
+ * __useToplevelQuery__
  *
- * To run a query within a React component, call `useQuery` and pass it any options that fit your needs.
- * When your component renders, `useQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useToplevelQuery` and pass it any options that fit your needs.
+ * When your component renders, `useToplevelQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useQuery({
+ * const { data, loading, error } = useToplevelQuery({
  *   variables: {
  *   },
  * });
  */
-export function useQuery(baseOptions?: Apollo.QueryHookOptions<Query, QueryVariables>) {
+export function useToplevelQuery(baseOptions?: Apollo.QueryHookOptions<ToplevelQuery, ToplevelQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<Query, QueryVariables>(Document, options);
+        return Apollo.useQuery<ToplevelQuery, ToplevelQueryVariables>(ToplevelDocument, options);
       }
-export function useLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Query, QueryVariables>) {
+export function useToplevelLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ToplevelQuery, ToplevelQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<Query, QueryVariables>(Document, options);
+          return Apollo.useLazyQuery<ToplevelQuery, ToplevelQueryVariables>(ToplevelDocument, options);
         }
-export type QueryHookResult = ReturnType<typeof useQuery>;
-export type LazyQueryHookResult = ReturnType<typeof useLazyQuery>;
-export type QueryResult = Apollo.QueryResult<Query, QueryVariables>;
+export type ToplevelQueryHookResult = ReturnType<typeof useToplevelQuery>;
+export type ToplevelLazyQueryHookResult = ReturnType<typeof useToplevelLazyQuery>;
+export type ToplevelQueryResult = Apollo.QueryResult<ToplevelQuery, ToplevelQueryVariables>;

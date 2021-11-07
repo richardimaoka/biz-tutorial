@@ -1,23 +1,32 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { PrevPageBar } from "./PrevPageBar";
-import { LessonContent, LessonContentProps } from "./LessonContent";
-import { NextPageBar } from "./NextPageBar";
-
+import { ProgressBar, ProgressBarProps } from "./ProgressBar";
+import { Page, PageProps } from "./Page";
 export interface MainProps {
-  lesson: LessonContentProps | null;
+  currentPage: PageProps | null;
+  progress: ProgressBarProps | null;
 }
 
-export const MainContainer = ({ lesson }: MainProps) => {
+export const MainContainer = ({ currentPage, progress }: MainProps) => {
   return (
     <main>
       <div
         css={css`
           display: flex;
           justify-content: center;
+          max-width: 768px;
+          border: solid 1px #f9f9f9;
         `}
       >
-        {lesson ? <LessonContent progress={lesson.progress} /> : <div />}
+        {progress ? (
+          <ProgressBar
+            currentPageNum={progress.currentPageNum}
+            numPages={progress.numPages}
+          />
+        ) : (
+          <div />
+        )}
+        {currentPage ? <Page title={currentPage.title} /> : <div />}
       </div>
     </main>
   );

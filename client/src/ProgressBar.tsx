@@ -2,12 +2,12 @@
 import { css } from "@emotion/react";
 
 export interface ProgressBarProps {
-  currentPage: number | null;
+  currentPageNum: number | null;
   numPages: number | null;
 }
 
-export const ProgressBar = ({ currentPage, numPages }: ProgressBarProps) => {
-  if (!currentPage || !numPages) {
+export const ProgressBar = ({ currentPageNum, numPages }: ProgressBarProps) => {
+  if (!currentPageNum || !numPages) {
     return <div />;
   } else {
     const arraySizeOfNumPages = new Array(numPages).fill("");
@@ -24,7 +24,7 @@ export const ProgressBar = ({ currentPage, numPages }: ProgressBarProps) => {
             margin-right: 0px;
           }
 
-          div:nth-of-type(${currentPage}) {
+          div:nth-of-type(${currentPageNum}) {
             background-color: #3edf33;
           }
         `}

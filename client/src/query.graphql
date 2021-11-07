@@ -3,7 +3,17 @@ query toplevel {
     title
     progress {
       numPages
-      currentPage
+      currentPageNum
+    }
+    currentPage {
+      title
+      elements {
+        ... on Paragraph {
+          chunks {
+            text
+          }
+        }
+      }
     }
     pages {
       title

@@ -26,7 +26,10 @@ const Internal = (): JSX.Element => {
     return (
       <React.Fragment>
         <HeaderContainer title={data.tutorial.title}></HeaderContainer>
-        <MainContainer lesson={data.tutorial}></MainContainer>
+        <MainContainer
+          progress={data.tutorial.progress}
+          currentPage={data.tutorial.currentPage}
+        ></MainContainer>
       </React.Fragment>
     );
   }

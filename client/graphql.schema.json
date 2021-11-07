@@ -325,7 +325,7 @@
         "description": null,
         "fields": [
           {
-            "name": "currentPage",
+            "name": "currentPageNum",
             "description": null,
             "args": [],
             "type": {
@@ -488,6 +488,18 @@
         "name": "Tutorial",
         "description": null,
         "fields": [
+          {
+            "name": "currentPage",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Page",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "pages",
             "description": null,

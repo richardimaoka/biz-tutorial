@@ -6,6 +6,7 @@ type Tutorial {
   title: String
   progress: Progress
   pages: [Page]
+  currentPage: Page
 }
 
 type Page {
@@ -22,7 +23,7 @@ type Output {
 
 type Progress {
   numPages: Int
-  currentPage: Int
+  currentPageNum: Int
 }
 
 type Paragraph {

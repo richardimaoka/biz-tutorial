@@ -8,10 +8,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     tutorial(parent: object, args: object, context: any, info: object) {
-      return {
-        title: context.data.title,
-        pages: context.data.pages,
-      };
+      return context.data.tutorial;
     },
   },
 };
@@ -22,7 +19,7 @@ const server = new ApolloServer({
   context: async ({ req }: any) => {
     try {
       const dataFileContent = await fs.promises.readFile(
-        __dirname.concat("/richard-cypress.json"),
+        __dirname.concat("/data.json"),
         "utf8"
       );
       const data = JSON.parse(dataFileContent);

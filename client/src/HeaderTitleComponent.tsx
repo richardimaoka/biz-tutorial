@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-export const HeaderTitle = ({ title }: { title: string }) => (
+export const HeaderTitleComponent = ({ title }: { title: string }) => (
   <h1
     css={css`
       margin: 0px;

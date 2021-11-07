@@ -1,10 +1,8 @@
 import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-const defaultOptions =  {}
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -95,67 +93,10 @@ export type Tutorial = {
   title: Maybe<Scalars['String']>;
 };
 
-export type ToplevelQueryVariables = Exact<{ [key: string]: never; }>;
+export type HeaderContainerFragment = { __typename?: 'Tutorial', title: string | null };
 
-
-export type ToplevelQuery = { __typename?: 'Query', tutorial: { __typename?: 'Tutorial', title: string | null, progress: { __typename?: 'Progress', numPages: number | null, currentPageNum: number | null } | null, currentPage: { __typename?: 'Page', title: string | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable' } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null } | null> | null } | null> | null } | null, pages: Array<{ __typename?: 'Page', title: string | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable' } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null } | null> | null } | null> | null } | null> | null } | null };
-
-
-export const ToplevelDocument = gql`
-    query toplevel {
-  tutorial {
-    title
-    progress {
-      numPages
-      currentPageNum
-    }
-    currentPage {
-      title
-      pageElements {
-        ... on Paragraph {
-          chunks {
-            text
-          }
-        }
-      }
-    }
-    pages {
-      title
-      pageElements {
-        ... on Paragraph {
-          chunks {
-            text
-          }
-        }
-      }
-    }
-  }
+export const HeaderContainerFragmentDoc = gql`
+    fragment HeaderContainer on Tutorial {
+  title
 }
     `;
-
-/**
- * __useToplevelQuery__
- *
- * To run a query within a React component, call `useToplevelQuery` and pass it any options that fit your needs.
- * When your component renders, `useToplevelQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useToplevelQuery({
- *   variables: {
- *   },
- * });
- */
-export function useToplevelQuery(baseOptions?: Apollo.QueryHookOptions<ToplevelQuery, ToplevelQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ToplevelQuery, ToplevelQueryVariables>(ToplevelDocument, options);
-      }
-export function useToplevelLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ToplevelQuery, ToplevelQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ToplevelQuery, ToplevelQueryVariables>(ToplevelDocument, options);
-        }
-export type ToplevelQueryHookResult = ReturnType<typeof useToplevelQuery>;
-export type ToplevelLazyQueryHookResult = ReturnType<typeof useToplevelLazyQuery>;
-export type ToplevelQueryResult = Apollo.QueryResult<ToplevelQuery, ToplevelQueryVariables>;

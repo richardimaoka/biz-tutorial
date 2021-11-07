@@ -1,10 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-
-import { HeaderTitle } from "./HeaderTitleComponent";
+import { gql } from "@apollo/client";
+import { HeaderTitleComponent } from "./HeaderTitleComponent";
 import { HeaderIcon } from "./HeaderIcon";
+import { HeaderContainerFragment } from "./generated/graphql";
 
-export const HeaderContainer = ({ title }: { title: string | null }) => (
+export interface HeaderContainerProps {
+  header: HeaderContainerFragment;
+}
+
+export const HeaderContainer = ({ header }: HeaderContainerProps) => (
   <header>
     <div
       css={css`
@@ -14,7 +19,19 @@ export const HeaderContainer = ({ title }: { title: string | null }) => (
       `}
     >
       <HeaderIcon />
-      {title ? <HeaderTitle title={title} /> : <HeaderTitle title="" />}
+      {header.title ? (
+        <HeaderTitleComponent title={header.title} />
+      ) : (
+        <HeaderTitleComponent title="" />
+      )}
     </div>
   </header>
 );
+
+HeaderContainer.fragments = {
+  header: gql`
+    fragment HeaderContainer on Tutorial {
+      title
+    }
+  `,
+};

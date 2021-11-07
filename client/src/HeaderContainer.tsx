@@ -6,10 +6,10 @@ import { HeaderIcon } from "./HeaderIcon";
 import { HeaderContainerFragment } from "./generated/graphql";
 
 export interface HeaderContainerProps {
-  header: HeaderContainerFragment;
+  fragment: HeaderContainerFragment;
 }
 
-export const HeaderContainer = ({ header }: HeaderContainerProps) => (
+export const HeaderContainer = ({ fragment }: HeaderContainerProps) => (
   <header>
     <div
       css={css`
@@ -19,8 +19,8 @@ export const HeaderContainer = ({ header }: HeaderContainerProps) => (
       `}
     >
       <HeaderIcon />
-      {header.title ? (
-        <HeaderTitleComponent title={header.title} />
+      {fragment.title ? (
+        <HeaderTitleComponent title={fragment.title} />
       ) : (
         <HeaderTitleComponent title="" />
       )}

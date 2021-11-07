@@ -6,10 +6,10 @@ import { MainContainerFragment } from "./generated/graphql";
 import { gql } from "@apollo/client";
 
 export interface MainProps {
-  main: MainContainerFragment;
+  fragment: MainContainerFragment;
 }
 
-export const MainContainer = ({ main }: MainProps) => {
+export const MainContainer = ({ fragment }: MainProps) => {
   return (
     <main>
       <div
@@ -24,9 +24,13 @@ export const MainContainer = ({ main }: MainProps) => {
             border: solid 1px #f9f9f9;
           `}
         >
-          {main.progress ? <ProgressBar progress={main.progress} /> : <div />}
-          {main.currentPage ? (
-            <PageComponent page={main.currentPage} />
+          {fragment.progress ? (
+            <ProgressBar fragment={fragment.progress} />
+          ) : (
+            <div />
+          )}
+          {fragment.currentPage ? (
+            <PageComponent fragment={fragment.currentPage} />
           ) : (
             <div />
           )}

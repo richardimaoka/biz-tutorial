@@ -10,6 +10,7 @@ import {
   useQuery,
 } from "@apollo/client";
 import React from "react";
+import { useTopLevdelQueryQuery } from "./generated/graphql";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000",
@@ -17,7 +18,7 @@ const client = new ApolloClient({
 });
 
 const TOP_LEVEL_QUERY = gql`
-  query TspLevdelQuery {
+  query TopLevdelQuery {
     tutorial {
       ...HeaderContainer
       ...MainContainer
@@ -29,7 +30,7 @@ const TOP_LEVEL_QUERY = gql`
 `;
 
 const InternalComponent = (): JSX.Element => {
-  const { loading, error, data } = useQuery(TOP_LEVEL_QUERY);
+  const { loading, error, data } = useTopLevdelQueryQuery();
 
   if (loading) {
     return <div>{"Loading..."}</div>;
@@ -40,11 +41,10 @@ const InternalComponent = (): JSX.Element => {
   } else if (!data.tutorial) {
     return <div>{`Error! returned data.tutorial is undefined or null`}</div>;
   } else {
-    console.log(data);
     return (
       <React.Fragment>
-        <HeaderContainer header={data.tutorial}></HeaderContainer>
-        <MainContainer main={data.tutorial}></MainContainer>
+        <HeaderContainer fragment={data.tutorial}></HeaderContainer>
+        <MainContainer fragment={data.tutorial}></MainContainer>
       </React.Fragment>
     );
   }

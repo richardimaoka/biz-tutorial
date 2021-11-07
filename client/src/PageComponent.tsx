@@ -5,11 +5,15 @@ import { gql } from "@apollo/client";
 import { PageComponentFragment } from "./generated/graphql";
 
 export interface PageComponentProps {
-  page: PageComponentFragment;
+  fragment: PageComponentFragment;
 }
 
-export const PageComponent = ({ page }: PageComponentProps): JSX.Element => {
-  return <div>{page.title ? <PageTitle title={page.title} /> : <div />}</div>;
+export const PageComponent = ({
+  fragment,
+}: PageComponentProps): JSX.Element => {
+  return (
+    <div>{fragment.title ? <PageTitle title={fragment.title} /> : <div />}</div>
+  );
 };
 
 PageComponent.fragments = gql`

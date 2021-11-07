@@ -4,14 +4,14 @@ import { gql } from "@apollo/client";
 import { ProgressBarFragment } from "./generated/graphql";
 
 export interface ProgressBarProps {
-  progress: ProgressBarFragment;
+  fragment: ProgressBarFragment;
 }
 
-export const ProgressBar = ({ progress }: ProgressBarProps) => {
-  if (!progress.currentPageNum || !progress.numPages) {
+export const ProgressBar = ({ fragment }: ProgressBarProps) => {
+  if (!fragment.currentPageNum || !fragment.numPages) {
     return <div />;
   } else {
-    const arraySizeOfNumPages = new Array(progress.numPages).fill("");
+    const arraySizeOfNumPages = new Array(fragment.numPages).fill("");
     return (
       <div
         css={css`
@@ -23,7 +23,7 @@ export const ProgressBar = ({ progress }: ProgressBarProps) => {
           div:last-of-type {
             margin-right: 0px;
           }
-          div:nth-of-type(${progress.currentPageNum}) {
+          div:nth-of-type(${fragment.currentPageNum}) {
             background-color: #3edf33;
           }
         `}

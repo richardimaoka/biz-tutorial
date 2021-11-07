@@ -202,7 +202,7 @@
         "description": null,
         "fields": [
           {
-            "name": "elements",
+            "name": "pageElements",
             "description": null,
             "args": [],
             "type": {

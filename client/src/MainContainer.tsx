@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { ProgressBar, ProgressBarProps } from "./ProgressBar";
 import { PageComponent, PageComponentProps } from "./PageComponent";
 export interface MainProps {
-  currentPage: PageProps | null;
+  currentPage: PageComponentProps | null;
   progress: ProgressBarProps | null;
 }
 

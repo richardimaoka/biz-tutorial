@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-import { HeaderTitle } from "./HeaderTitle";
+import { HeaderTitle } from "./HeaderTitleComponent";
 import { HeaderIcon } from "./HeaderIcon";
 
 export const HeaderContainer = ({ title }: { title: string | null }) => (

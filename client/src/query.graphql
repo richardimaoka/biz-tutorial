@@ -7,7 +7,7 @@ query toplevel {
     }
     currentPage {
       title
-      elements {
+      pageElements {
         ... on Paragraph {
           chunks {
             text
@@ -17,7 +17,7 @@ query toplevel {
     }
     pages {
       title
-      elements {
+      pageElements {
         ... on Paragraph {
           chunks {
             text

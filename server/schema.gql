@@ -11,7 +11,7 @@ type Tutorial {
 
 type Page {
   title: String
-  elements: [PageElement]
+  pageElements: [PageElement]
 }
 
 union PageElement = Paragraph | Command | Output | Foldable

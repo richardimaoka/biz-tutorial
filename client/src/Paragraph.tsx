@@ -28,7 +28,6 @@ export const Paragraph = ({ chunks }: ParagraphProps): JSX.Element => {
             text={chunk.text}
             highlight={chunk.highlight}
             bold={chunk.bold}
-            hyperlinked={chunk.hyperlinked}
             hyperlinkUrl={chunk.hyperlinkUrl}
             strikeout={chunk.strikeout}
           />

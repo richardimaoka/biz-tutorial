@@ -6,39 +6,46 @@ interface Page {
 }
 
 interface ProgressBarProps {
-  currentPage: number;
-  pages: Page[];
+  currentPage: number | null;
+  numPages: number | null;
 }
 
-export const ProgressBar = ({ currentPage, pages }: ProgressBarProps) => (
-  <div
-    css={css`
-      display: flex;
-
-      div:first-of-type {
-        margin-left: 0px;
-      }
-
-      div:last-of-type {
-        margin-right: 0px;
-      }
-
-      div:nth-of-type(${currentPage}) {
-        background-color: #3edf33;
-      }
-    `}
-  >
-    {pages.map((page) => (
+export const ProgressBar = ({ currentPage, numPages }: ProgressBarProps) => {
+  if (!currentPage || !numPages) {
+    return <div />;
+  } else {
+    const arraySizeOfNumPages = new Array(numPages).fill("");
+    return (
       <div
-        key={page.pageNumber}
         css={css`
-          flex-grow: 1;
-          height: 20px;
-          background-color: #dfdfdf;
-          margin-left: 5px;
-          margin-right: 5px;
+          display: flex;
+
+          div:first-of-type {
+            margin-left: 0px;
+          }
+
+          div:last-of-type {
+            margin-right: 0px;
+          }
+
+          div:nth-of-type(${currentPage}) {
+            background-color: #3edf33;
+          }
         `}
-      ></div>
-    ))}
-  </div>
-);
+      >
+        {arraySizeOfNumPages.map((_, index) => (
+          <div
+            key={index}
+            css={css`
+              flex-grow: 1;
+              height: 20px;
+              background-color: #dfdfdf;
+              margin-left: 5px;
+              margin-right: 5px;
+            `}
+          ></div>
+        ))}
+      </div>
+    );
+  }
+};

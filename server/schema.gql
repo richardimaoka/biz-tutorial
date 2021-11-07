@@ -20,7 +20,15 @@ type Output {
 }
 
 type Paragraph {
-  body: String
+  chunks: [TextChunk]
+}
+
+type TextChunk {
+  text: String
+  highlight: Boolean
+  bold: Boolean
+  hyperlinkUrl: String
+  strikeout: Boolean
 }
 
 type Foldable {

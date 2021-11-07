@@ -1,14 +1,8 @@
 /** @jsxImportSource @emotion/react */
 //import { css } from "@emotion/react";
 import { HeaderContainer } from "./HeaderContainer";
-import { MainContainer } from "./MainContainer";
-import {
-  InMemoryCache,
-  ApolloClient,
-  ApolloProvider,
-  gql,
-  useQuery,
-} from "@apollo/client";
+import { MainContainer, MainProps } from "./MainContainer";
+import { InMemoryCache, ApolloClient, ApolloProvider } from "@apollo/client";
 import React from "react";
 import { useToplevelQuery } from "./generated/graphql";
 
@@ -32,7 +26,7 @@ const Internal = (): JSX.Element => {
     return (
       <React.Fragment>
         <HeaderContainer title={data.tutorial.title}></HeaderContainer>
-        <MainContainer></MainContainer>
+        <MainContainer lesson={data.tutorial}></MainContainer>
       </React.Fragment>
     );
   }

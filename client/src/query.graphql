@@ -1,11 +1,17 @@
 query toplevel {
   tutorial {
     title
+    progress {
+      numPages
+      currentPage
+    }
     pages {
       title
       elements {
         ... on Paragraph {
-          body
+          chunks {
+            text
+          }
         }
       }
     }

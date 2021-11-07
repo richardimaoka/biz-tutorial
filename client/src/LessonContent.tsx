@@ -1,18 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { ProgressBar } from "./ProgressBar";
+import { ProgressBar, ProgressBarProps } from "./ProgressBar";
 import { PageElements } from "./PageElements";
 
-export const LessonContent = () => {
-  const pages = [
-    { pageNumber: 1 },
-    { pageNumber: 2 },
-    { pageNumber: 3 },
-    { pageNumber: 4 },
-    { pageNumber: 5 },
-    { pageNumber: 6 },
-  ];
+export interface LessonContentProps {
+  progress: ProgressBarProps | null;
+}
 
+export const LessonContent = ({ progress }: LessonContentProps) => {
   return (
     <div
       css={css`
@@ -20,8 +15,10 @@ export const LessonContent = () => {
         border: solid 1px #f9f9f9;
       `}
     >
-      <ProgressBar currentPage={3} pages={pages} />
-      <PageElements />
+      <ProgressBar
+        currentPage={progress.currentPage}
+        numPages={progress.numPages}
+      />
     </div>
   );
 };

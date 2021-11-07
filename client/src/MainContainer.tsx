@@ -1,10 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { PrevPageBar } from "./PrevPageBar";
-import { LessonContent } from "./LessonContent";
+import { LessonContent, LessonContentProps } from "./LessonContent";
 import { NextPageBar } from "./NextPageBar";
 
-export const MainContainer = () => {
+export interface MainProps {
+  lesson: LessonContentProps | null;
+}
+
+export const MainContainer = ({ lesson }: MainProps) => {
   return (
     <main>
       <div
@@ -13,7 +17,7 @@ export const MainContainer = () => {
           justify-content: center;
         `}
       >
-        <LessonContent />
+        {lesson ? <LessonContent progress={lesson.progress} /> : <div />}
       </div>
     </main>
   );

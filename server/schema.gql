@@ -4,6 +4,7 @@ type Query {
 
 type Tutorial {
   title: String
+  progress: Progress
   pages: [Page]
 }
 
@@ -17,6 +18,11 @@ union PlainElement = Paragraph | Command | Output
 
 type Output {
   body: String
+}
+
+type Progress {
+  numPages: Int
+  currentPage: Int
 }
 
 type Paragraph {

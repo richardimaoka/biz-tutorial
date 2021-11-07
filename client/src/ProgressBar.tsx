@@ -1,11 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-interface Page {
-  pageNumber: number;
-}
-
-interface ProgressBarProps {
+export interface ProgressBarProps {
   currentPage: number | null;
   numPages: number | null;
 }

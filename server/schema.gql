@@ -30,6 +30,10 @@ type Paragraph {
   chunks: [TextChunk]
 }
 
+type Action {
+  paragraph: Paragraph
+}
+
 type TextChunk {
   text: String
   highlight: Boolean

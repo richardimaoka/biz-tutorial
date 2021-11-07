@@ -1,34 +1,38 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { gql } from "@apollo/client";
+import { TextChunkComponentFragment } from "./generated/graphql";
 
-export interface DecoratableTextChunkProps {
-  text: string;
-  highlight: boolean | null;
-  bold: boolean | null;
-  hyperlinkUrl: string | null;
-  strikeout: boolean | null;
+export interface TextChunkProps {
+  fragment: TextChunkComponentFragment;
 }
 
-export const DecoratableTextChunk = ({
-  text,
-  highlight,
-  bold,
-  hyperlinkUrl,
-  strikeout,
-}: DecoratableTextChunkProps): JSX.Element => {
+export const TextChunkComponent = ({
+  fragment,
+}: TextChunkProps): JSX.Element => {
   const cssProperties = css`
-    background-color: ${highlight ? "#E6FF01" : "transparent"};
-    font-weight: ${bold ? "bold" : "normal"};
-    text-decoration: ${strikeout ? "line-through" : "no"};
+    background-color: ${fragment.highlight ? "#E6FF01" : "transparent"};
+    font-weight: ${fragment.bold ? "bold" : "normal"};
+    text-decoration: ${fragment.strikeout ? "line-through" : "no"};
   `;
 
-  if (hyperlinkUrl) {
+  if (fragment.hyperlinkUrl) {
     return (
       <span css={cssProperties}>
-        <a href={hyperlinkUrl}>{text}</a>
+        <a href={fragment.hyperlinkUrl}>{fragment.text}</a>
       </span>
     );
   } else {
-    return <span css={cssProperties}>{text}</span>;
+    return <span css={cssProperties}>{fragment.text}</span>;
   }
 };
+
+TextChunkComponent.fragments = gql`
+  fragment TextChunkComponent on TextChunk {
+    text
+    highlight
+    bold
+    hyperlinkUrl
+    strikeout
+  }
+`;

@@ -1,5 +1,4 @@
 import { PageTitle } from "./PageTitleComponent";
-import { Paragraph } from "./ParagraphComponent";
 import { VideoComponent } from "./VideoComponent";
 
 export const PageElements = () => (

@@ -20,6 +20,11 @@ export type Scalars = {
   Float: number;
 };
 
+export type Action = {
+  __typename?: "Action";
+  paragraph: Maybe<Paragraph>;
+};
+
 export type Command = {
   __typename?: "Command";
   command: Maybe<Scalars["String"]>;
@@ -100,6 +105,21 @@ export type Tutorial = {
   title: Maybe<Scalars["String"]>;
 };
 
+export type ActionComponentFragment = {
+  __typename?: "Action";
+  paragraph: {
+    __typename?: "Paragraph";
+    chunks: Array<{
+      __typename?: "TextChunk";
+      text: string | null;
+      highlight: boolean | null;
+      bold: boolean | null;
+      hyperlinkUrl: string | null;
+      strikeout: boolean | null;
+    } | null> | null;
+  } | null;
+};
+
 export type TopLevdelQueryQueryVariables = Exact<{ [key: string]: never }>;
 
 export type TopLevdelQueryQuery = {
@@ -136,12 +156,58 @@ export type PageComponentFragment = {
   title: string | null;
 };
 
+export type ParagraphComponentFragment = {
+  __typename?: "Paragraph";
+  chunks: Array<{
+    __typename?: "TextChunk";
+    text: string | null;
+    highlight: boolean | null;
+    bold: boolean | null;
+    hyperlinkUrl: string | null;
+    strikeout: boolean | null;
+  } | null> | null;
+};
+
 export type ProgressBarFragment = {
   __typename?: "Progress";
   currentPageNum: number | null;
   numPages: number | null;
 };
 
+export type TextChunkComponentFragment = {
+  __typename?: "TextChunk";
+  text: string | null;
+  highlight: boolean | null;
+  bold: boolean | null;
+  hyperlinkUrl: string | null;
+  strikeout: boolean | null;
+};
+
+export const TextChunkComponentFragmentDoc = gql`
+  fragment TextChunkComponent on TextChunk {
+    text
+    highlight
+    bold
+    hyperlinkUrl
+    strikeout
+  }
+`;
+export const ParagraphComponentFragmentDoc = gql`
+  fragment ParagraphComponent on Paragraph {
+    chunks {
+      ...TextChunkComponent
+    }
+  }
+  ${TextChunkComponentFragmentDoc}
+`;
+export const ActionComponentFragmentDoc = gql`
+  fragment ActionComponent on Action {
+    paragraph {
+      ...ParagraphComponent
+    }
+  }
+  ${ParagraphComponentFragmentDoc}
+`;
 export const HeaderContainerFragmentDoc = gql`
   fragment HeaderContainer on Tutorial {
     title

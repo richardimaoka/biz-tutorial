@@ -1,38 +1,52 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import {
-  DecoratableTextChunk,
-  DecoratableTextChunkProps,
-} from "./TextChunkComponent";
+import { TextChunkComponent, TextChunkProps } from "./TextChunkComponent";
+import { gql } from "@apollo/client";
+import { ParagraphComponentFragment } from "./generated/graphql";
+import React from "react";
+
 interface ParagraphProps {
-  chunks: DecoratableTextChunkProps[];
+  fragment: ParagraphComponentFragment;
 }
 
-export const Paragraph = ({ chunks }: ParagraphProps): JSX.Element => {
-  return (
-    <div
-      css={css`
-        padding: 8px;
-      `}
-    >
-      <p
+export const ParagraphComponent = ({
+  fragment,
+}: ParagraphProps): JSX.Element => {
+  if (!fragment.chunks) {
+    return <React.Fragment />;
+  } else {
+    return (
+      <div
         css={css`
-          color: #0a0a0a;
-          margin: 0px;
+          padding: 8px;
         `}
-        contentEditable={true}
       >
-        {chunks.map((chunk, index) => (
-          <DecoratableTextChunk
-            key={index}
-            text={chunk.text}
-            highlight={chunk.highlight}
-            bold={chunk.bold}
-            hyperlinkUrl={chunk.hyperlinkUrl}
-            strikeout={chunk.strikeout}
-          />
-        ))}
-      </p>
-    </div>
-  );
+        <p
+          css={css`
+            color: #0a0a0a;
+            margin: 0px;
+          `}
+          contentEditable={true}
+        >
+          {fragment.chunks.map((chunk, index) =>
+            chunk ? (
+              <TextChunkComponent key={index} fragment={chunk} />
+            ) : (
+              <React.Fragment />
+            )
+          )}
+        </p>
+      </div>
+    );
+  }
 };
+
+ParagraphComponent.fragments = gql`
+  fragment ParagraphComponent on Paragraph {
+    chunks {
+      ...TextChunkComponent
+    }
+  }
+
+  ${TextChunkComponent.fragments}
+`;

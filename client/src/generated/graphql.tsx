@@ -132,7 +132,27 @@ export type TopLevdelQueryQuery = {
       currentPageNum: number | null;
       numPages: number | null;
     } | null;
-    currentPage: { __typename?: "Page"; title: string | null } | null;
+    currentPage: {
+      __typename?: "Page";
+      title: string | null;
+      pageElements: Array<
+        | { __typename?: "Command" }
+        | { __typename?: "Foldable" }
+        | { __typename?: "Output" }
+        | {
+            __typename?: "Paragraph";
+            chunks: Array<{
+              __typename?: "TextChunk";
+              text: string | null;
+              highlight: boolean | null;
+              bold: boolean | null;
+              hyperlinkUrl: string | null;
+              strikeout: boolean | null;
+            } | null> | null;
+          }
+        | null
+      > | null;
+    } | null;
   } | null;
 };
 
@@ -148,12 +168,49 @@ export type MainContainerFragment = {
     currentPageNum: number | null;
     numPages: number | null;
   } | null;
-  currentPage: { __typename?: "Page"; title: string | null } | null;
+  currentPage: {
+    __typename?: "Page";
+    title: string | null;
+    pageElements: Array<
+      | { __typename?: "Command" }
+      | { __typename?: "Foldable" }
+      | { __typename?: "Output" }
+      | {
+          __typename?: "Paragraph";
+          chunks: Array<{
+            __typename?: "TextChunk";
+            text: string | null;
+            highlight: boolean | null;
+            bold: boolean | null;
+            hyperlinkUrl: string | null;
+            strikeout: boolean | null;
+          } | null> | null;
+        }
+      | null
+    > | null;
+  } | null;
 };
 
 export type PageComponentFragment = {
   __typename?: "Page";
   title: string | null;
+  pageElements: Array<
+    | { __typename?: "Command" }
+    | { __typename?: "Foldable" }
+    | { __typename?: "Output" }
+    | {
+        __typename?: "Paragraph";
+        chunks: Array<{
+          __typename?: "TextChunk";
+          text: string | null;
+          highlight: boolean | null;
+          bold: boolean | null;
+          hyperlinkUrl: string | null;
+          strikeout: boolean | null;
+        } | null> | null;
+      }
+    | null
+  > | null;
 };
 
 export type ParagraphComponentFragment = {
@@ -222,7 +279,15 @@ export const ProgressBarFragmentDoc = gql`
 export const PageComponentFragmentDoc = gql`
   fragment PageComponent on Page {
     title
+    pageElements {
+      ... on Paragraph {
+        chunks {
+          ...TextChunkComponent
+        }
+      }
+    }
   }
+  ${TextChunkComponentFragmentDoc}
 `;
 export const MainContainerFragmentDoc = gql`
   fragment MainContainer on Tutorial {

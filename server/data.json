@@ -2,7 +2,17 @@
   "tutorial": {
     "title": "CypressをWSL2上で動かすために必要な作業",
     "currentPage": {
-      "title": "概要"
+      "title": "概要",
+      "pageElements": [
+        {
+          "__typename": "Paragraph",
+          "chunks": [
+            {
+              "text": "Cypressはフロントエンドのend-to-endテストフレームワークの代表格です。`cypress open`コマンドを実行すると実際のブラウザ上で高速にテストを完了する動作の軽快さや、充実した各種機能は、フロントエンドのテスト駆動開発を推進するのにピッタリなツールです。"
+            }
+          ]
+        }
+      ]
     },
     "progress": {
       "numPages": 7,

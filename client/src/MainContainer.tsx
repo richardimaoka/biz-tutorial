@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { ProgressBar, ProgressBarProps } from "./ProgressBar";
-import { Page, PageProps } from "./Page";
+import { PageComponent, PageComponentProps } from "./PageComponent";
 export interface MainProps {
   currentPage: PageProps | null;
   progress: ProgressBarProps | null;
@@ -30,7 +30,7 @@ export const MainContainer = ({ currentPage, progress }: MainProps) => {
           ) : (
             <div />
           )}
-          {currentPage ? <Page title={currentPage.title} /> : <div />}
+          {currentPage ? <PageComponent title={currentPage.title} /> : <div />}
         </div>
       </div>
     </main>

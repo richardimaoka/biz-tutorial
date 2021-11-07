@@ -4,6 +4,10 @@
     "currentPage": {
       "title": "概要"
     },
+    "progress": {
+      "numPages": 7,
+      "currentPageNum": 1
+    },
     "pages": [
       {
         "__typename": "page",

@@ -14,19 +14,24 @@ export const MainContainer = ({ currentPage, progress }: MainProps) => {
         css={css`
           display: flex;
           justify-content: center;
-          max-width: 768px;
-          border: solid 1px #f9f9f9;
         `}
       >
-        {progress ? (
-          <ProgressBar
-            currentPageNum={progress.currentPageNum}
-            numPages={progress.numPages}
-          />
-        ) : (
-          <div />
-        )}
-        {currentPage ? <Page title={currentPage.title} /> : <div />}
+        <div
+          css={css`
+            width: 768px;
+            border: solid 1px #f9f9f9;
+          `}
+        >
+          {progress ? (
+            <ProgressBar
+              currentPageNum={progress.currentPageNum}
+              numPages={progress.numPages}
+            />
+          ) : (
+            <div />
+          )}
+          {currentPage ? <Page title={currentPage.title} /> : <div />}
+        </div>
       </div>
     </main>
   );

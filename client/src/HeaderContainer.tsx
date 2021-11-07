@@ -28,10 +28,8 @@ export const HeaderContainer = ({ header }: HeaderContainerProps) => (
   </header>
 );
 
-HeaderContainer.fragments = {
-  header: gql`
-    fragment HeaderContainer on Tutorial {
-      title
-    }
-  `,
-};
+HeaderContainer.fragments = gql`
+  fragment HeaderContainer on Tutorial {
+    title
+  }
+`;

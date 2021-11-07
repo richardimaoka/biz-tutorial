@@ -2,17 +2,55 @@
 //import { css } from "@emotion/react";
 import { HeaderContainer } from "./HeaderContainer";
 import { MainContainer, MainProps } from "./MainContainer";
-import { InMemoryCache, ApolloClient, ApolloProvider } from "@apollo/client";
+import {
+  InMemoryCache,
+  ApolloClient,
+  ApolloProvider,
+  gql,
+  useQuery,
+} from "@apollo/client";
 import React from "react";
-import { useToplevelQuery } from "./generated/graphql";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000",
   cache: new InMemoryCache(),
 });
 
+const TOP_LEVEL_QUERY = gql`
+  query TspLevdelQuery {
+    tutorial {
+      ...HeaderContainer
+      progress {
+        numPages
+        currentPageNum
+      }
+      currentPage {
+        title
+        pageElements {
+          ... on Paragraph {
+            chunks {
+              text
+            }
+          }
+        }
+      }
+      pages {
+        title
+        pageElements {
+          ... on Paragraph {
+            chunks {
+              text
+            }
+          }
+        }
+      }
+    }
+  }
+  ${HeaderContainer.fragments}
+`;
+
 const InternalComponent = (): JSX.Element => {
-  const { loading, error, data } = useToplevelQuery();
+  const { loading, error, data } = useQuery(TOP_LEVEL_QUERY);
 
   if (loading) {
     return <div>{"Loading..."}</div>;
@@ -25,7 +63,7 @@ const InternalComponent = (): JSX.Element => {
   } else {
     return (
       <React.Fragment>
-        <HeaderContainer title={data.tutorial.title}></HeaderContainer>
+        <HeaderContainer header={data.tutorial.title}></HeaderContainer>
         <MainContainer
           progress={data.tutorial.progress}
           currentPage={data.tutorial.currentPage}
@@ -34,6 +72,8 @@ const InternalComponent = (): JSX.Element => {
     );
   }
 };
+
+InternalComponent.fragments = {};
 
 const AppComponent = (): JSX.Element => (
   <ApolloProvider client={client}>

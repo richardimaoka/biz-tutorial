@@ -20,33 +20,12 @@ const TOP_LEVEL_QUERY = gql`
   query TspLevdelQuery {
     tutorial {
       ...HeaderContainer
-      progress {
-        numPages
-        currentPageNum
-      }
-      currentPage {
-        title
-        pageElements {
-          ... on Paragraph {
-            chunks {
-              text
-            }
-          }
-        }
-      }
-      pages {
-        title
-        pageElements {
-          ... on Paragraph {
-            chunks {
-              text
-            }
-          }
-        }
-      }
+      ...MainContainer
     }
   }
+
   ${HeaderContainer.fragments}
+  ${MainContainer.fragments}
 `;
 
 const InternalComponent = (): JSX.Element => {
@@ -61,19 +40,15 @@ const InternalComponent = (): JSX.Element => {
   } else if (!data.tutorial) {
     return <div>{`Error! returned data.tutorial is undefined or null`}</div>;
   } else {
+    console.log(data);
     return (
       <React.Fragment>
-        <HeaderContainer header={data.tutorial.title}></HeaderContainer>
-        <MainContainer
-          progress={data.tutorial.progress}
-          currentPage={data.tutorial.currentPage}
-        ></MainContainer>
+        <HeaderContainer header={data.tutorial}></HeaderContainer>
+        <MainContainer main={data.tutorial}></MainContainer>
       </React.Fragment>
     );
   }
 };
-
-InternalComponent.fragments = {};
 
 const AppComponent = (): JSX.Element => (
   <ApolloProvider client={client}>

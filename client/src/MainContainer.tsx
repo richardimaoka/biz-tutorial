@@ -2,12 +2,14 @@
 import { css } from "@emotion/react";
 import { ProgressBar, ProgressBarProps } from "./ProgressBar";
 import { PageComponent, PageComponentProps } from "./PageComponent";
+import { MainContainerFragment } from "./generated/graphql";
+import { gql } from "@apollo/client";
+
 export interface MainProps {
-  currentPage: PageComponentProps | null;
-  progress: ProgressBarProps | null;
+  main: MainContainerFragment;
 }
 
-export const MainContainer = ({ currentPage, progress }: MainProps) => {
+export const MainContainer = ({ main }: MainProps) => {
   return (
     <main>
       <div
@@ -22,17 +24,28 @@ export const MainContainer = ({ currentPage, progress }: MainProps) => {
             border: solid 1px #f9f9f9;
           `}
         >
-          {progress ? (
-            <ProgressBar
-              currentPageNum={progress.currentPageNum}
-              numPages={progress.numPages}
-            />
+          {main.progress ? <ProgressBar progress={main.progress} /> : <div />}
+          {main.currentPage ? (
+            <PageComponent page={main.currentPage} />
           ) : (
             <div />
           )}
-          {currentPage ? <PageComponent title={currentPage.title} /> : <div />}
         </div>
       </div>
     </main>
   );
 };
+
+MainContainer.fragments = gql`
+  fragment MainContainer on Tutorial {
+    progress {
+      ...ProgressBar
+    }
+    currentPage {
+      ...PageComponent
+    }
+  }
+
+  ${ProgressBar.fragments}
+  ${PageComponent.fragments}
+`;

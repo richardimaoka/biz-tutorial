@@ -98,46 +98,52 @@ export type Tutorial = {
 export type TspLevdelQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type TspLevdelQueryQuery = { __typename?: 'Query', tutorial: { __typename?: 'Tutorial', title: string | null, progress: { __typename?: 'Progress', numPages: number | null, currentPageNum: number | null } | null, currentPage: { __typename?: 'Page', title: string | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable' } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null } | null> | null } | null> | null } | null, pages: Array<{ __typename?: 'Page', title: string | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable' } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null } | null> | null } | null> | null } | null> | null } | null };
+export type TspLevdelQueryQuery = { __typename?: 'Query', tutorial: { __typename?: 'Tutorial', title: string | null, progress: { __typename?: 'Progress', currentPageNum: number | null, numPages: number | null } | null, currentPage: { __typename?: 'Page', title: string | null } | null } | null };
 
 export type HeaderContainerFragment = { __typename?: 'Tutorial', title: string | null };
+
+export type MainContainerFragment = { __typename?: 'Tutorial', progress: { __typename?: 'Progress', currentPageNum: number | null, numPages: number | null } | null, currentPage: { __typename?: 'Page', title: string | null } | null };
+
+export type PageComponentFragment = { __typename?: 'Page', title: string | null };
+
+export type ProgressBarFragment = { __typename?: 'Progress', currentPageNum: number | null, numPages: number | null };
 
 export const HeaderContainerFragmentDoc = gql`
     fragment HeaderContainer on Tutorial {
   title
 }
     `;
+export const ProgressBarFragmentDoc = gql`
+    fragment ProgressBar on Progress {
+  currentPageNum
+  numPages
+}
+    `;
+export const PageComponentFragmentDoc = gql`
+    fragment PageComponent on Page {
+  title
+}
+    `;
+export const MainContainerFragmentDoc = gql`
+    fragment MainContainer on Tutorial {
+  progress {
+    ...ProgressBar
+  }
+  currentPage {
+    ...PageComponent
+  }
+}
+    ${ProgressBarFragmentDoc}
+${PageComponentFragmentDoc}`;
 export const TspLevdelQueryDocument = gql`
     query TspLevdelQuery {
   tutorial {
     ...HeaderContainer
-    progress {
-      numPages
-      currentPageNum
-    }
-    currentPage {
-      title
-      pageElements {
-        ... on Paragraph {
-          chunks {
-            text
-          }
-        }
-      }
-    }
-    pages {
-      title
-      pageElements {
-        ... on Paragraph {
-          chunks {
-            text
-          }
-        }
-      }
-    }
+    ...MainContainer
   }
 }
-    ${HeaderContainerFragmentDoc}`;
+    ${HeaderContainerFragmentDoc}
+${MainContainerFragmentDoc}`;
 
 /**
  * __useTspLevdelQueryQuery__

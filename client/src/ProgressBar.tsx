@@ -1,16 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { gql } from "@apollo/client";
+import { ProgressBarFragment } from "./generated/graphql";
 
 export interface ProgressBarProps {
-  currentPageNum: number | null;
-  numPages: number | null;
+  progress: ProgressBarFragment;
 }
 
-export const ProgressBar = ({ currentPageNum, numPages }: ProgressBarProps) => {
-  if (!currentPageNum || !numPages) {
+export const ProgressBar = ({ progress }: ProgressBarProps) => {
+  if (!progress.currentPageNum || !progress.numPages) {
     return <div />;
   } else {
-    const arraySizeOfNumPages = new Array(numPages).fill("");
+    const arraySizeOfNumPages = new Array(progress.numPages).fill("");
     return (
       <div
         css={css`
@@ -19,12 +20,10 @@ export const ProgressBar = ({ currentPageNum, numPages }: ProgressBarProps) => {
           div:first-of-type {
             margin-left: 0px;
           }
-
           div:last-of-type {
             margin-right: 0px;
           }
-
-          div:nth-of-type(${currentPageNum}) {
+          div:nth-of-type(${progress.currentPageNum}) {
             background-color: #3edf33;
           }
         `}
@@ -45,3 +44,10 @@ export const ProgressBar = ({ currentPageNum, numPages }: ProgressBarProps) => {
     );
   }
 };
+
+ProgressBar.fragments = gql`
+  fragment ProgressBar on Progress {
+    currentPageNum
+    numPages
+  }
+`;

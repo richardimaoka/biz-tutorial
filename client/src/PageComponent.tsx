@@ -1,17 +1,21 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import { PageTitle } from "./PageTitleComponent";
 import { gql } from "@apollo/client";
 import { PageComponentFragment } from "./generated/graphql";
 import React from "react";
 import { VideoComponent } from "./VideoComponent";
-import { TextChunkComponent } from "./TextChunkComponent";
+import { ParagraphComponent } from "./ParagraphComponent";
 
 export interface PageComponentProps {
   fragment: PageComponentFragment;
 }
 
-const exhaustivenessCheck = (v: never) => {
+// To be called in the default: case of a swich statement.
+// If the calling switch statement is NOT exhaustive, calling this function will produce a TypeScript error.
+// If the calling switch statement IS exhaustive, this function is not reacheable, and TypeScript compiles OK.
+//
+// See https://www.typescriptlang.org/docs/handbook/2/narrowing.html#exhaustiveness-checking
+const switchExhaustivenessCheck = (v: never) => {
   return v;
 };
 
@@ -38,9 +42,9 @@ export const PageComponent = ({
               case "Output":
                 return <React.Fragment />;
               case "Paragraph":
-                return <React.Fragment />;
+                return <ParagraphComponent fragment={element} />;
               default:
-                return exhaustivenessCheck(element.__typename);
+                return switchExhaustivenessCheck(element.__typename);
             }
           }
         })}
@@ -57,12 +61,10 @@ PageComponent.fragments = gql`
         ...VideoComponent
       }
       ... on Paragraph {
-        chunks {
-          ...TextChunkComponent
-        }
+        ...ParagraphComponent
       }
     }
   }
   ${VideoComponent.fragments}
-  ${TextChunkComponent.fragments}
+  ${ParagraphComponent.fragments}
 `;

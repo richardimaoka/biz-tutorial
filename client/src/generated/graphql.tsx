@@ -180,14 +180,12 @@ export const PageComponentFragmentDoc = gql`
       ...VideoComponent
     }
     ... on Paragraph {
-      chunks {
-        ...TextChunkComponent
-      }
+      ...ParagraphComponent
     }
   }
 }
     ${VideoComponentFragmentDoc}
-${TextChunkComponentFragmentDoc}`;
+${ParagraphComponentFragmentDoc}`;
 export const MainContainerFragmentDoc = gql`
     fragment MainContainer on Tutorial {
   progress {

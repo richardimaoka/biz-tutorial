@@ -286,6 +286,11 @@
             "kind": "OBJECT",
             "name": "Paragraph",
             "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "Video",
+            "ofType": null
           }
         ]
       },
@@ -338,6 +343,11 @@
           {
             "kind": "OBJECT",
             "name": "Paragraph",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "Video",
             "ofType": null
           }
         ]

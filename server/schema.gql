@@ -14,8 +14,8 @@ type Page {
   pageElements: [PageElement]
 }
 
-union PageElement = Paragraph | Command | Output | Foldable
-union PlainElement = Paragraph | Command | Output
+union PageElement = Paragraph | Command | Output | Video | Foldable
+union PlainElement = Paragraph | Command | Output | Video
 
 enum VideoPlatform {
   YOUTUBE

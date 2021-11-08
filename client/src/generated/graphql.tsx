@@ -116,15 +116,13 @@ export type ActionComponentFragment = { __typename?: 'Action', paragraph: { __ty
 export type TopLevdelQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type TopLevdelQueryQuery = { __typename?: 'Query', tutorial: { __typename?: 'Tutorial', title: string | null, progress: { __typename?: 'Progress', currentPageNum: number | null, numPages: number | null } | null, currentPage: { __typename?: 'Page', title: string | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable' } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video' } | null> | null } | null } | null };
+export type TopLevdelQueryQuery = { __typename?: 'Query', tutorial: { __typename?: 'Tutorial', title: string | null, progress: { __typename?: 'Progress', currentPageNum: number | null, numPages: number | null } | null, currentPage: { __typename?: 'Page', title: string | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable' } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null } | null> | null } | null } | null };
 
 export type HeaderContainerFragment = { __typename?: 'Tutorial', title: string | null };
 
-export type MainContainerFragment = { __typename?: 'Tutorial', progress: { __typename?: 'Progress', currentPageNum: number | null, numPages: number | null } | null, currentPage: { __typename?: 'Page', title: string | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable' } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video' } | null> | null } | null };
+export type MainContainerFragment = { __typename?: 'Tutorial', progress: { __typename?: 'Progress', currentPageNum: number | null, numPages: number | null } | null, currentPage: { __typename?: 'Page', title: string | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable' } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null } | null> | null } | null };
 
-export type PageComponentFragment = { __typename?: 'Page', title: string | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable' } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video' } | null> | null };
-
-export type PageElementsComponentFragment = { __typename?: 'Page', pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable' } | { __typename?: 'Output' } | { __typename?: 'Paragraph' } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null } | null> | null };
+export type PageComponentFragment = { __typename?: 'Page', title: string | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable' } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null } | null> | null };
 
 export type ParagraphComponentFragment = { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null };
 
@@ -168,10 +166,19 @@ export const ProgressBarFragmentDoc = gql`
   numPages
 }
     `;
+export const VideoComponentFragmentDoc = gql`
+    fragment VideoComponent on Video {
+  platform
+  url
+}
+    `;
 export const PageComponentFragmentDoc = gql`
     fragment PageComponent on Page {
   title
   pageElements {
+    ... on Video {
+      ...VideoComponent
+    }
     ... on Paragraph {
       chunks {
         ...TextChunkComponent
@@ -179,7 +186,8 @@ export const PageComponentFragmentDoc = gql`
     }
   }
 }
-    ${TextChunkComponentFragmentDoc}`;
+    ${VideoComponentFragmentDoc}
+${TextChunkComponentFragmentDoc}`;
 export const MainContainerFragmentDoc = gql`
     fragment MainContainer on Tutorial {
   progress {
@@ -191,21 +199,6 @@ export const MainContainerFragmentDoc = gql`
 }
     ${ProgressBarFragmentDoc}
 ${PageComponentFragmentDoc}`;
-export const VideoComponentFragmentDoc = gql`
-    fragment VideoComponent on Video {
-  platform
-  url
-}
-    `;
-export const PageElementsComponentFragmentDoc = gql`
-    fragment PageElementsComponent on Page {
-  pageElements {
-    ... on Video {
-      ...VideoComponent
-    }
-  }
-}
-    ${VideoComponentFragmentDoc}`;
 export const TopLevdelQueryDocument = gql`
     query TopLevdelQuery {
   tutorial {

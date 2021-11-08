@@ -3,13 +3,17 @@ import { css } from "@emotion/react";
 import { PageTitle } from "./PageTitleComponent";
 import { gql } from "@apollo/client";
 import { PageComponentFragment } from "./generated/graphql";
-import { TextChunkComponent } from "./TextChunkComponent";
 import React from "react";
-import { ParagraphComponent } from "./ParagraphComponent";
+import { VideoComponent } from "./VideoComponent";
+import { TextChunkComponent } from "./TextChunkComponent";
 
 export interface PageComponentProps {
   fragment: PageComponentFragment;
 }
+
+const exhaustivenessCheck = (v: never) => {
+  return v;
+};
 
 export const PageComponent = ({
   fragment,
@@ -21,17 +25,23 @@ export const PageComponent = ({
       <div>
         <PageTitle title={fragment.title} />
         {fragment.pageElements.map((element, index) => {
-          if (element) {
-            switch (element.__typename) {
-              case "Paragraph": {
-                return <ParagraphComponent key={index} fragment={element} />;
-              }
-              default: {
-                return <React.Fragment key={index} />;
-              }
-            }
-          } else {
+          if (!element || !element.__typename) {
             return <React.Fragment key={index} />;
+          } else {
+            switch (element.__typename) {
+              case "Video":
+                return <VideoComponent fragment={element} />;
+              case "Command":
+                return <React.Fragment />;
+              case "Foldable":
+                return <React.Fragment />;
+              case "Output":
+                return <React.Fragment />;
+              case "Paragraph":
+                return <React.Fragment />;
+              default:
+                return exhaustivenessCheck(element.__typename);
+            }
           }
         })}
       </div>
@@ -43,6 +53,9 @@ PageComponent.fragments = gql`
   fragment PageComponent on Page {
     title
     pageElements {
+      ... on Video {
+        ...VideoComponent
+      }
       ... on Paragraph {
         chunks {
           ...TextChunkComponent
@@ -50,6 +63,6 @@ PageComponent.fragments = gql`
       }
     }
   }
-
+  ${VideoComponent.fragments}
   ${TextChunkComponent.fragments}
 `;

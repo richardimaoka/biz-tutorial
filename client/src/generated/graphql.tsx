@@ -1,16 +1,10 @@
-import { gql } from "@apollo/client";
-import * as Apollo from "@apollo/client";
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
-const defaultOptions = {};
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+const defaultOptions =  {}
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -21,296 +15,195 @@ export type Scalars = {
 };
 
 export type Action = {
-  __typename?: "Action";
+  __typename?: 'Action';
   paragraph: Maybe<Paragraph>;
 };
 
 export type Command = {
-  __typename?: "Command";
-  command: Maybe<Scalars["String"]>;
+  __typename?: 'Command';
+  command: Maybe<Scalars['String']>;
 };
 
 export type CommandAndOutput = {
-  __typename?: "CommandAndOutput";
-  command: Maybe<Scalars["String"]>;
-  output: Maybe<Scalars["String"]>;
+  __typename?: 'CommandAndOutput';
+  command: Maybe<Scalars['String']>;
+  output: Maybe<Scalars['String']>;
 };
 
 export type DirectoryStructure = {
-  __typename?: "DirectoryStructure";
-  contents: Maybe<Array<Maybe<Scalars["String"]>>>;
+  __typename?: 'DirectoryStructure';
+  contents: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type Foldable = {
-  __typename?: "Foldable";
+  __typename?: 'Foldable';
   elements: Maybe<Array<Maybe<PlainElement>>>;
-  shortDescription: Maybe<Scalars["String"]>;
+  shortDescription: Maybe<Scalars['String']>;
 };
 
 export type Note = {
-  __typename?: "Note";
-  body: Maybe<Scalars["String"]>;
+  __typename?: 'Note';
+  body: Maybe<Scalars['String']>;
 };
 
 export type Output = {
-  __typename?: "Output";
-  body: Maybe<Scalars["String"]>;
+  __typename?: 'Output';
+  body: Maybe<Scalars['String']>;
 };
 
 export type Page = {
-  __typename?: "Page";
+  __typename?: 'Page';
   pageElements: Maybe<Array<Maybe<PageElement>>>;
-  title: Maybe<Scalars["String"]>;
+  title: Maybe<Scalars['String']>;
 };
 
 export type PageElement = Command | Foldable | Output | Paragraph;
 
 export type Paragraph = {
-  __typename?: "Paragraph";
+  __typename?: 'Paragraph';
   chunks: Maybe<Array<Maybe<TextChunk>>>;
 };
 
 export type PlainElement = Command | Output | Paragraph;
 
 export type Progress = {
-  __typename?: "Progress";
-  currentPageNum: Maybe<Scalars["Int"]>;
-  numPages: Maybe<Scalars["Int"]>;
+  __typename?: 'Progress';
+  currentPageNum: Maybe<Scalars['Int']>;
+  numPages: Maybe<Scalars['Int']>;
 };
 
 export type Query = {
-  __typename?: "Query";
+  __typename?: 'Query';
   tutorial: Maybe<Tutorial>;
 };
 
+
 export type QueryTutorialArgs = {
-  name: Maybe<Scalars["String"]>;
-  owner: Maybe<Scalars["String"]>;
+  name: Maybe<Scalars['String']>;
+  owner: Maybe<Scalars['String']>;
 };
 
 export type TextChunk = {
-  __typename?: "TextChunk";
-  bold: Maybe<Scalars["Boolean"]>;
-  highlight: Maybe<Scalars["Boolean"]>;
-  hyperlinkUrl: Maybe<Scalars["String"]>;
-  strikeout: Maybe<Scalars["Boolean"]>;
-  text: Maybe<Scalars["String"]>;
+  __typename?: 'TextChunk';
+  bold: Maybe<Scalars['Boolean']>;
+  highlight: Maybe<Scalars['Boolean']>;
+  hyperlinkUrl: Maybe<Scalars['String']>;
+  strikeout: Maybe<Scalars['Boolean']>;
+  text: Maybe<Scalars['String']>;
 };
 
 export type Tutorial = {
-  __typename?: "Tutorial";
+  __typename?: 'Tutorial';
   currentPage: Maybe<Page>;
   pages: Maybe<Array<Maybe<Page>>>;
   progress: Maybe<Progress>;
-  title: Maybe<Scalars["String"]>;
+  title: Maybe<Scalars['String']>;
 };
 
-export type ActionComponentFragment = {
-  __typename?: "Action";
-  paragraph: {
-    __typename?: "Paragraph";
-    chunks: Array<{
-      __typename?: "TextChunk";
-      text: string | null;
-      highlight: boolean | null;
-      bold: boolean | null;
-      hyperlinkUrl: string | null;
-      strikeout: boolean | null;
-    } | null> | null;
-  } | null;
+export type Video = {
+  __typename?: 'Video';
+  platform: Maybe<VideoPlatform>;
+  url: Maybe<Scalars['String']>;
 };
 
-export type TopLevdelQueryQueryVariables = Exact<{ [key: string]: never }>;
+export enum VideoPlatform {
+  Vimeo = 'VIMEO',
+  Youtube = 'YOUTUBE'
+}
 
-export type TopLevdelQueryQuery = {
-  __typename?: "Query";
-  tutorial: {
-    __typename?: "Tutorial";
-    title: string | null;
-    progress: {
-      __typename?: "Progress";
-      currentPageNum: number | null;
-      numPages: number | null;
-    } | null;
-    currentPage: {
-      __typename?: "Page";
-      title: string | null;
-      pageElements: Array<
-        | { __typename?: "Command" }
-        | { __typename?: "Foldable" }
-        | { __typename?: "Output" }
-        | {
-            __typename?: "Paragraph";
-            chunks: Array<{
-              __typename?: "TextChunk";
-              text: string | null;
-              highlight: boolean | null;
-              bold: boolean | null;
-              hyperlinkUrl: string | null;
-              strikeout: boolean | null;
-            } | null> | null;
-          }
-        | null
-      > | null;
-    } | null;
-  } | null;
-};
+export type ActionComponentFragment = { __typename?: 'Action', paragraph: { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | null };
 
-export type HeaderContainerFragment = {
-  __typename?: "Tutorial";
-  title: string | null;
-};
+export type TopLevdelQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
-export type MainContainerFragment = {
-  __typename?: "Tutorial";
-  progress: {
-    __typename?: "Progress";
-    currentPageNum: number | null;
-    numPages: number | null;
-  } | null;
-  currentPage: {
-    __typename?: "Page";
-    title: string | null;
-    pageElements: Array<
-      | { __typename?: "Command" }
-      | { __typename?: "Foldable" }
-      | { __typename?: "Output" }
-      | {
-          __typename?: "Paragraph";
-          chunks: Array<{
-            __typename?: "TextChunk";
-            text: string | null;
-            highlight: boolean | null;
-            bold: boolean | null;
-            hyperlinkUrl: string | null;
-            strikeout: boolean | null;
-          } | null> | null;
-        }
-      | null
-    > | null;
-  } | null;
-};
 
-export type PageComponentFragment = {
-  __typename?: "Page";
-  title: string | null;
-  pageElements: Array<
-    | { __typename?: "Command" }
-    | { __typename?: "Foldable" }
-    | { __typename?: "Output" }
-    | {
-        __typename?: "Paragraph";
-        chunks: Array<{
-          __typename?: "TextChunk";
-          text: string | null;
-          highlight: boolean | null;
-          bold: boolean | null;
-          hyperlinkUrl: string | null;
-          strikeout: boolean | null;
-        } | null> | null;
-      }
-    | null
-  > | null;
-};
+export type TopLevdelQueryQuery = { __typename?: 'Query', tutorial: { __typename?: 'Tutorial', title: string | null, progress: { __typename?: 'Progress', currentPageNum: number | null, numPages: number | null } | null, currentPage: { __typename?: 'Page', title: string | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable' } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | null> | null } | null } | null };
 
-export type ParagraphComponentFragment = {
-  __typename?: "Paragraph";
-  chunks: Array<{
-    __typename?: "TextChunk";
-    text: string | null;
-    highlight: boolean | null;
-    bold: boolean | null;
-    hyperlinkUrl: string | null;
-    strikeout: boolean | null;
-  } | null> | null;
-};
+export type HeaderContainerFragment = { __typename?: 'Tutorial', title: string | null };
 
-export type ProgressBarFragment = {
-  __typename?: "Progress";
-  currentPageNum: number | null;
-  numPages: number | null;
-};
+export type MainContainerFragment = { __typename?: 'Tutorial', progress: { __typename?: 'Progress', currentPageNum: number | null, numPages: number | null } | null, currentPage: { __typename?: 'Page', title: string | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable' } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | null> | null } | null };
 
-export type TextChunkComponentFragment = {
-  __typename?: "TextChunk";
-  text: string | null;
-  highlight: boolean | null;
-  bold: boolean | null;
-  hyperlinkUrl: string | null;
-  strikeout: boolean | null;
-};
+export type PageComponentFragment = { __typename?: 'Page', title: string | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable' } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | null> | null };
+
+export type ParagraphComponentFragment = { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null };
+
+export type ProgressBarFragment = { __typename?: 'Progress', currentPageNum: number | null, numPages: number | null };
+
+export type TextChunkComponentFragment = { __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null };
+
+export type VideoComponentFragment = { __typename?: 'Video', platform: VideoPlatform | null, url: string | null };
 
 export const TextChunkComponentFragmentDoc = gql`
-  fragment TextChunkComponent on TextChunk {
-    text
-    highlight
-    bold
-    hyperlinkUrl
-    strikeout
-  }
-`;
+    fragment TextChunkComponent on TextChunk {
+  text
+  highlight
+  bold
+  hyperlinkUrl
+  strikeout
+}
+    `;
 export const ParagraphComponentFragmentDoc = gql`
-  fragment ParagraphComponent on Paragraph {
-    chunks {
-      ...TextChunkComponent
-    }
+    fragment ParagraphComponent on Paragraph {
+  chunks {
+    ...TextChunkComponent
   }
-  ${TextChunkComponentFragmentDoc}
-`;
+}
+    ${TextChunkComponentFragmentDoc}`;
 export const ActionComponentFragmentDoc = gql`
-  fragment ActionComponent on Action {
-    paragraph {
-      ...ParagraphComponent
-    }
+    fragment ActionComponent on Action {
+  paragraph {
+    ...ParagraphComponent
   }
-  ${ParagraphComponentFragmentDoc}
-`;
+}
+    ${ParagraphComponentFragmentDoc}`;
 export const HeaderContainerFragmentDoc = gql`
-  fragment HeaderContainer on Tutorial {
-    title
-  }
-`;
+    fragment HeaderContainer on Tutorial {
+  title
+}
+    `;
 export const ProgressBarFragmentDoc = gql`
-  fragment ProgressBar on Progress {
-    currentPageNum
-    numPages
-  }
-`;
+    fragment ProgressBar on Progress {
+  currentPageNum
+  numPages
+}
+    `;
 export const PageComponentFragmentDoc = gql`
-  fragment PageComponent on Page {
-    title
-    pageElements {
-      ... on Paragraph {
-        chunks {
-          ...TextChunkComponent
-        }
+    fragment PageComponent on Page {
+  title
+  pageElements {
+    ... on Paragraph {
+      chunks {
+        ...TextChunkComponent
       }
     }
   }
-  ${TextChunkComponentFragmentDoc}
-`;
+}
+    ${TextChunkComponentFragmentDoc}`;
 export const MainContainerFragmentDoc = gql`
-  fragment MainContainer on Tutorial {
-    progress {
-      ...ProgressBar
-    }
-    currentPage {
-      ...PageComponent
-    }
+    fragment MainContainer on Tutorial {
+  progress {
+    ...ProgressBar
   }
-  ${ProgressBarFragmentDoc}
-  ${PageComponentFragmentDoc}
-`;
+  currentPage {
+    ...PageComponent
+  }
+}
+    ${ProgressBarFragmentDoc}
+${PageComponentFragmentDoc}`;
+export const VideoComponentFragmentDoc = gql`
+    fragment VideoComponent on Video {
+  platform
+  url
+}
+    `;
 export const TopLevdelQueryDocument = gql`
-  query TopLevdelQuery {
-    tutorial {
-      ...HeaderContainer
-      ...MainContainer
-    }
+    query TopLevdelQuery {
+  tutorial {
+    ...HeaderContainer
+    ...MainContainer
   }
-  ${HeaderContainerFragmentDoc}
-  ${MainContainerFragmentDoc}
-`;
+}
+    ${HeaderContainerFragmentDoc}
+${MainContainerFragmentDoc}`;
 
 /**
  * __useTopLevdelQueryQuery__
@@ -327,37 +220,14 @@ export const TopLevdelQueryDocument = gql`
  *   },
  * });
  */
-export function useTopLevdelQueryQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    TopLevdelQueryQuery,
-    TopLevdelQueryQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<TopLevdelQueryQuery, TopLevdelQueryQueryVariables>(
-    TopLevdelQueryDocument,
-    options
-  );
-}
-export function useTopLevdelQueryLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    TopLevdelQueryQuery,
-    TopLevdelQueryQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<TopLevdelQueryQuery, TopLevdelQueryQueryVariables>(
-    TopLevdelQueryDocument,
-    options
-  );
-}
-export type TopLevdelQueryQueryHookResult = ReturnType<
-  typeof useTopLevdelQueryQuery
->;
-export type TopLevdelQueryLazyQueryHookResult = ReturnType<
-  typeof useTopLevdelQueryLazyQuery
->;
-export type TopLevdelQueryQueryResult = Apollo.QueryResult<
-  TopLevdelQueryQuery,
-  TopLevdelQueryQueryVariables
->;
+export function useTopLevdelQueryQuery(baseOptions?: Apollo.QueryHookOptions<TopLevdelQueryQuery, TopLevdelQueryQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TopLevdelQueryQuery, TopLevdelQueryQueryVariables>(TopLevdelQueryDocument, options);
+      }
+export function useTopLevdelQueryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TopLevdelQueryQuery, TopLevdelQueryQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TopLevdelQueryQuery, TopLevdelQueryQueryVariables>(TopLevdelQueryDocument, options);
+        }
+export type TopLevdelQueryQueryHookResult = ReturnType<typeof useTopLevdelQueryQuery>;
+export type TopLevdelQueryLazyQueryHookResult = ReturnType<typeof useTopLevdelQueryLazyQuery>;
+export type TopLevdelQueryQueryResult = Apollo.QueryResult<TopLevdelQueryQuery, TopLevdelQueryQueryVariables>;

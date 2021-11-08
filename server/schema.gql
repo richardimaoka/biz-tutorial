@@ -17,6 +17,16 @@ type Page {
 union PageElement = Paragraph | Command | Output | Foldable
 union PlainElement = Paragraph | Command | Output
 
+enum VideoPlatform {
+  YOUTUBE
+  VIMEO
+}
+
+type Video {
+  platform: VideoPlatform
+  url: String
+}
+
 type Output {
   body: String
 }

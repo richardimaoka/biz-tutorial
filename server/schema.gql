@@ -25,6 +25,7 @@ enum VideoPlatform {
 type Video {
   platform: VideoPlatform
   url: String
+  caption: String
 }
 
 type Output {

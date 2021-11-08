@@ -13,15 +13,14 @@ export const VideoComponent = ({ fragment }: VideoComponentProps) => {
     return <React.Fragment />;
   } else {
     return (
-      <div
-        css={css`
-          padding: 4px;
-          display: flex;
-          justify-content: center;
-          max-width: 768px;
-        `}
-      >
-        <div>
+      <div>
+        <div
+          css={css`
+            padding: 4px;
+            display: flex;
+            justify-content: center;
+          `}
+        >
           <iframe
             src={fragment.url}
             width="640"
@@ -31,6 +30,7 @@ export const VideoComponent = ({ fragment }: VideoComponentProps) => {
             allowFullScreen
           ></iframe>
         </div>
+        <div>{fragment.caption}</div>
       </div>
     );
   }
@@ -40,5 +40,6 @@ VideoComponent.fragments = gql`
   fragment VideoComponent on Video {
     platform
     url
+    caption
   }
 `;

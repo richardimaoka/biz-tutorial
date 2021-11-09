@@ -7,19 +7,11 @@ import { VideoComponent } from "./VideoComponent";
 import { ParagraphComponent } from "./ParagraphComponent";
 import { ImageGroupComponent } from "./ImageGroupComponent";
 import { FoldableComponent } from "./FoldableComponent";
+import { switchExhaustivenessCheck } from "./switchExhaustivenessCheck";
 
 export interface PageComponentProps {
   fragment: PageComponentFragment;
 }
-
-// To be called in the default: case of a swich statement.
-// If the calling switch statement is NOT exhaustive, calling this function will produce a TypeScript error.
-// If the calling switch statement IS exhaustive, this function is not reacheable, and TypeScript compiles OK.
-//
-// See https://www.typescriptlang.org/docs/handbook/2/narrowing.html#exhaustiveness-checking
-const switchExhaustivenessCheck = (v: never) => {
-  return v;
-};
 
 export const PageComponent = ({
   fragment,

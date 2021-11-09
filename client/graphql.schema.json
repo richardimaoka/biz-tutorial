@@ -404,6 +404,11 @@
           },
           {
             "kind": "OBJECT",
+            "name": "ImageGroup",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
             "name": "Output",
             "ofType": null
           },

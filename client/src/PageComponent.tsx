@@ -6,6 +6,7 @@ import React from "react";
 import { VideoComponent } from "./VideoComponent";
 import { ParagraphComponent } from "./ParagraphComponent";
 import { ImageGroupComponent } from "./ImageGroupComponent";
+import { FoldableComponent } from "./FoldableComponent";
 
 export interface PageComponentProps {
   fragment: PageComponentFragment;
@@ -39,7 +40,7 @@ export const PageComponent = ({
               case "Command":
                 return <React.Fragment />;
               case "Foldable":
-                return <React.Fragment />;
+                return <FoldableComponent fragment={element} />;
               case "Output":
                 return <React.Fragment />;
               case "Paragraph":
@@ -69,9 +70,13 @@ PageComponent.fragments = gql`
       ... on ImageGroup {
         ...ImageGroupComponent
       }
+      ... on Foldable {
+        ...FoldableComponent
+      }
     }
   }
   ${VideoComponent.fragments}
   ${ParagraphComponent.fragments}
   ${ImageGroupComponent.fragments}
+  ${FoldableComponent.fragments}
 `;

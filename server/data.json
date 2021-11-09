@@ -34,6 +34,24 @@
               "caption": "この後何も起こりません、ブラウザが自動で立ち上がってほしいのですが"
             }
           ]
+        },
+        {
+          "__typename": "Paragraph",
+          "chunks": [
+            {
+              "text": "この記事では、私がこの問題をどう解決したか、問題と解決策の技術的背景とともにお伝えします。"
+            }
+          ]
+        },
+        {
+          "__typename": "Foldable",
+          "shortDescription": "注意点: WSL1での問題",
+          "elements": []
+        },
+        {
+          "__typename": "Foldable",
+          "shortDescription": "良いニュース:将来はこの記事で紹介する面倒な手順は必要なくなります",
+          "elements": []
         }
       ]
     },

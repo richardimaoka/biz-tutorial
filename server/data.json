@@ -46,7 +46,17 @@
         {
           "__typename": "Foldable",
           "shortDescription": "注意点: WSL1での問題",
-          "elements": []
+          "elements": [
+            {
+              "__typename": "Paragraph",
+              "chunks": [
+                {
+                  "__typename": "TextChunk",
+                  "text": "ここで紹介する解決法はWSL2向けであって、WSL1ではまた別の問題が発生するようです。(GitHub: Cypressのレポジトリ内のイシューを「wsl」で検索した一覧) WSL2上でCypressを動かせなくて苦労した人は私以外にもいるようで、Twitter検索でも何人か見かけました。WSL2で快適にフロントエンドのテスト駆動開発をしたい人に向けて、この記事が助けになれば幸いです。"
+                }
+              ]
+            }
+          ]
         },
         {
           "__typename": "Foldable",

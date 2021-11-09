@@ -5,7 +5,9 @@ import { VideoComponent } from "./VideoComponent";
 import { ParagraphComponent } from "./ParagraphComponent";
 import { ImageGroupComponent } from "./ImageGroupComponent";
 import { FoldableComponentFragment } from "./generated/graphql";
-import React from "react";
+import React, { useState } from "react";
+import { FoldedIcon } from "./FoldedIcon";
+import { UnfoldedIcon } from "./UnFoldedIcon";
 
 export interface FoldableComponentProps {
   fragment: FoldableComponentFragment;
@@ -14,12 +16,29 @@ export interface FoldableComponentProps {
 export const FoldableComponent = ({
   fragment,
 }: FoldableComponentProps): JSX.Element => {
+  const [folded, setFolded] = useState(true);
+  const unfold = () => {
+    setFolded(false);
+  };
+  const fold = () => {
+    setFolded(true);
+  };
   return fragment.shortDescription ? (
     <div
       css={css`
         background-color: #aed5f3;
+        display: flex;
       `}
     >
+      {folded ? (
+        <div onClick={unfold}>
+          <FoldedIcon />
+        </div>
+      ) : (
+        <div onClick={fold}>
+          <UnfoldedIcon />
+        </div>
+      )}
       {fragment.shortDescription}
     </div>
   ) : (

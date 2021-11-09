@@ -125,7 +125,9 @@ export enum VideoPlatform {
 
 export type ActionComponentFragment = { __typename?: 'Action', paragraph: { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | null };
 
-export type TopLevdelQueryQueryVariables = Exact<{ [key: string]: never; }>;
+export type TopLevdelQueryQueryVariables = Exact<{
+  currentPageNum: Scalars['Int'];
+}>;
 
 
 export type TopLevdelQueryQuery = { __typename?: 'Query', tutorial: { __typename?: 'Tutorial', title: string | null, progress: { __typename?: 'Progress', currentPageNum: number | null, numPages: number | null } | null, currentPage: { __typename?: 'Page', title: string | null, progress: { __typename?: 'Progress', numPages: number | null, currentPageNum: number | null } | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable', shortDescription: string | null, elements: Array<{ __typename?: 'Command' } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | null, pages: Array<{ __typename?: 'Page', title: string | null, progress: { __typename?: 'Progress', numPages: number | null, currentPageNum: number | null } | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable', shortDescription: string | null, elements: Array<{ __typename?: 'Command' } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | null> | null } | null };
@@ -271,8 +273,8 @@ export const MainContainerFragmentDoc = gql`
     ${ProgressBarFragmentDoc}
 ${PageComponentFragmentDoc}`;
 export const TopLevdelQueryDocument = gql`
-    query TopLevdelQuery {
-  tutorial(currentPageNum: 1) {
+    query TopLevdelQuery($currentPageNum: Int!) {
+  tutorial(currentPageNum: $currentPageNum) {
     ...HeaderContainer
     ...MainContainer
   }
@@ -292,10 +294,11 @@ ${MainContainerFragmentDoc}`;
  * @example
  * const { data, loading, error } = useTopLevdelQueryQuery({
  *   variables: {
+ *      currentPageNum: // value for 'currentPageNum'
  *   },
  * });
  */
-export function useTopLevdelQueryQuery(baseOptions?: Apollo.QueryHookOptions<TopLevdelQueryQuery, TopLevdelQueryQueryVariables>) {
+export function useTopLevdelQueryQuery(baseOptions: Apollo.QueryHookOptions<TopLevdelQueryQuery, TopLevdelQueryQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<TopLevdelQueryQuery, TopLevdelQueryQueryVariables>(TopLevdelQueryDocument, options);
       }

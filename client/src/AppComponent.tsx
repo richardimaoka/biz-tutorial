@@ -18,8 +18,8 @@ const client = new ApolloClient({
 });
 
 const TOP_LEVEL_QUERY = gql`
-  query TopLevdelQuery {
-    tutorial(currentPageNum: 1) {
+  query TopLevdelQuery($currentPageNum: Int!) {
+    tutorial(currentPageNum: $currentPageNum) {
       ...HeaderContainer
       ...MainContainer
     }
@@ -30,7 +30,9 @@ const TOP_LEVEL_QUERY = gql`
 `;
 
 const InternalComponent = (): JSX.Element => {
-  const { loading, error, data } = useTopLevdelQueryQuery();
+  const { loading, error, data } = useTopLevdelQueryQuery({
+    variables: { currentPageNum: 1 },
+  });
 
   if (loading) {
     return <div>{"Loading..."}</div>;

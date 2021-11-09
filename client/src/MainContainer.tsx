@@ -48,6 +48,9 @@ MainContainer.fragments = gql`
     currentPage {
       ...PageComponent
     }
+    pages {
+      ...PageComponent
+    }
   }
 
   ${ProgressBar.fragments}

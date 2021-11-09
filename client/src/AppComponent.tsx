@@ -19,7 +19,7 @@ const client = new ApolloClient({
 
 const TOP_LEVEL_QUERY = gql`
   query TopLevdelQuery {
-    tutorial {
+    tutorial(currentPageNum: 1) {
       ...HeaderContainer
       ...MainContainer
     }

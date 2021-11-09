@@ -8,6 +8,7 @@ import { ParagraphComponent } from "./ParagraphComponent";
 import { ImageGroupComponent } from "./ImageGroupComponent";
 import { FoldableComponent } from "./FoldableComponent";
 import { switchExhaustivenessCheck } from "./switchExhaustivenessCheck";
+import { PageTransitionComponent } from "./PageTransitionComponent";
 
 export interface PageComponentProps {
   fragment: PageComponentFragment;
@@ -44,6 +45,11 @@ export const PageComponent = ({
             }
           }
         })}
+        {fragment.progress ? (
+          <PageTransitionComponent fragment={fragment.progress} />
+        ) : (
+          <React.Fragment />
+        )}
       </div>
     );
   }
@@ -52,6 +58,9 @@ export const PageComponent = ({
 PageComponent.fragments = gql`
   fragment PageComponent on Page {
     title
+    progress {
+      ...PageTransitionComponent
+    }
     pageElements {
       ... on Video {
         ...VideoComponent
@@ -67,6 +76,7 @@ PageComponent.fragments = gql`
       }
     }
   }
+  ${PageTransitionComponent.fragments}
   ${VideoComponent.fragments}
   ${ParagraphComponent.fragments}
   ${ImageGroupComponent.fragments}

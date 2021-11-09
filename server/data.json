@@ -17,6 +17,14 @@
           "url": "https://player.vimeo.com/video/237527670?h=5c82f4424c&title=0&byline=0&portrait=0",
           "platform": "VIMEO",
           "caption": "この軽快な動作を見ていただきたいです！ https://vimeo.com/237527670"
+        },
+        {
+          "__typename": "Paragraph",
+          "chunks": [
+            {
+              "text": "そんなCypressですが、Windows Subsystem for Linux2(以下WSL2)上では、単純にインストールするだけでは動作せず、いくつかのWSL2独自の設定が必要です。"
+            }
+          ]
         }
       ]
     },

@@ -26,7 +26,7 @@ export const ParagraphComponent = ({
             color: #0a0a0a;
             margin: 0px;
           `}
-          contentEditable={true}
+          contentEditable={false}
         >
           {fragment.chunks.map((chunk, index) =>
             chunk ? (

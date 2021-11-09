@@ -11,10 +11,8 @@ export interface ImageComponentProps {
 export const ImageComponent = ({
   fragment,
 }: ImageComponentProps): JSX.Element => {
-  if (!fragment.url) {
-    return <React.Fragment />;
-  } else {
-    return (
+  return fragment.url ? (
+    <div>
       <div
         css={css`
           padding: 4px;
@@ -24,12 +22,16 @@ export const ImageComponent = ({
       >
         <img src={fragment.url} alt="" />;
       </div>
-    );
-  }
+      {fragment.caption ? <div>{fragment.caption}</div> : <React.Fragment />}
+    </div>
+  ) : (
+    <React.Fragment />
+  );
 };
 
 ImageComponent.fragments = gql`
   fragment ImageComponent on Image {
     url
+    caption
   }
 `;

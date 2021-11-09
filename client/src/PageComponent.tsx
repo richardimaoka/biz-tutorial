@@ -5,6 +5,7 @@ import { PageComponentFragment } from "./generated/graphql";
 import React from "react";
 import { VideoComponent } from "./VideoComponent";
 import { ParagraphComponent } from "./ParagraphComponent";
+import { ImageGroupComponent } from "./ImageGroupComponent";
 
 export interface PageComponentProps {
   fragment: PageComponentFragment;
@@ -43,6 +44,8 @@ export const PageComponent = ({
                 return <React.Fragment />;
               case "Paragraph":
                 return <ParagraphComponent fragment={element} />;
+              case "ImageGroup":
+                return <ImageGroupComponent fragment={element} />;
               default:
                 return switchExhaustivenessCheck(element.__typename);
             }
@@ -63,8 +66,12 @@ PageComponent.fragments = gql`
       ... on Paragraph {
         ...ParagraphComponent
       }
+      ... on ImageGroup {
+        ...ImageGroupComponent
+      }
     }
   }
   ${VideoComponent.fragments}
   ${ParagraphComponent.fragments}
+  ${ImageGroupComponent.fragments}
 `;

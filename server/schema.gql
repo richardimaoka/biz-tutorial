@@ -14,7 +14,7 @@ type Page {
   pageElements: [PageElement]
 }
 
-union PageElement = Paragraph | Command | Output | Video | Foldable
+union PageElement = Paragraph | Command | Output | Video | ImageGroup | Foldable
 union PlainElement = Paragraph | Command | Output | Video
 
 enum VideoPlatform {
@@ -26,6 +26,14 @@ type Video {
   platform: VideoPlatform
   url: String
   caption: String
+}
+
+type ImageGroup {
+  images: [Image]
+}
+
+type Image {
+  url: String
 }
 
 type Output {

@@ -1,3 +1,26 @@
 extend type Tutorial {
   unusedParam: Int
 }
+
+type TextChunkModifyOperation {
+  bold: Boolean
+  highlight: Boolean
+  hyperlinkUrl: String
+  strikeout: Boolean
+  text: String
+}
+
+type TextChunkSplitOperation {
+  splitAt: Int!
+  splitFirstHalfOperation: TextModifyOperation
+  splitFirstHalfOperation: TextModifyOperation
+}
+
+type TextChunkOperation {
+  chunk: TextChunk!
+  operation: TextChunkModifyOperation | TextChunkSplitOperation
+}
+
+type DecorateTextChunksInput {
+  chunks: TextChunkOperation[]!
+}

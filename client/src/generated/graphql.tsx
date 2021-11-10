@@ -109,6 +109,7 @@ export type Tutorial = {
   pages: Maybe<Array<Maybe<Page>>>;
   progress: Maybe<Progress>;
   title: Maybe<Scalars['String']>;
+  unusedParam: Maybe<Scalars['Int']>;
 };
 
 export type Video = {

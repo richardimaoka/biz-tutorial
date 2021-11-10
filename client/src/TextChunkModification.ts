@@ -22,3 +22,28 @@ export const splitTextChunk = (
 
   return [firstHalf, secondHalf];
 };
+
+export const modifyTextChunk = (
+  chunk: TextChunk,
+  bold?: boolean,
+  highlight?: boolean,
+  hyperlinkUrl?: string,
+  strikeout?: boolean
+): TextChunk => {
+  const modified = { ...chunk };
+
+  if (bold) {
+    modified.bold = bold;
+  }
+  if (highlight) {
+    modified.highlight = highlight;
+  }
+  if (hyperlinkUrl) {
+    modified.hyperlinkUrl = hyperlinkUrl;
+  }
+  if (strikeout) {
+    modified.strikeout = strikeout;
+  }
+
+  return modified;
+};

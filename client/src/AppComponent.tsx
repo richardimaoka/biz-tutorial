@@ -10,6 +10,7 @@ import {
   useQuery,
 } from "@apollo/client";
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useTopLevdelQueryQuery } from "./generated/graphql";
 
 const client = new ApolloClient({
@@ -54,7 +55,12 @@ const InternalComponent = (): JSX.Element => {
 
 const AppComponent = (): JSX.Element => (
   <ApolloProvider client={client}>
-    <InternalComponent />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<InternalComponent />} />
+        <Route path="*" element={<div>404</div>} />
+      </Routes>
+    </BrowserRouter>
   </ApolloProvider>
 );
 

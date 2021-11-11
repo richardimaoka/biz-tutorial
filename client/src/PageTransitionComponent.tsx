@@ -21,7 +21,7 @@ export const PageTransitionComponent = ({
       `}
     >
       <PrevPageButton />
-      <NextPageButton />
+      <NextPageButton nextPage={"1"} />
     </div>
   ) : (
     <React.Fragment />

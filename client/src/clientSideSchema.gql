@@ -12,15 +12,17 @@ type TextChunkModifyOperation {
 
 type TextChunkSplitOperation {
   splitAt: Int!
-  splitFirstHalfOperation: TextModifyOperation
-  splitFirstHalfOperation: TextModifyOperation
+  splitFirstHalfOperation: TextChunkModifyOperation
+  splitSecondHalfOperation: TextChunkModifyOperation
 }
 
-type TextChunkOperation {
+union TextChunkOperation = TextChunkModifyOperation | TextChunkSplitOperation
+
+type TextChunkWithOperation {
   chunk: TextChunk!
-  operation: TextChunkModifyOperation | TextChunkSplitOperation
+  operation: TextChunkOperation
 }
 
 type DecorateTextChunksInput {
-  chunks: TextChunkOperation[]!
+  chunks: [TextChunkWithOperation]!
 }

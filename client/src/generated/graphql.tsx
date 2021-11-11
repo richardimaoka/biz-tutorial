@@ -1,16 +1,10 @@
-import { gql } from "@apollo/client";
-import * as Apollo from "@apollo/client";
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
-const defaultOptions = {};
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+const defaultOptions =  {}
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -21,756 +15,302 @@ export type Scalars = {
 };
 
 export type Action = {
-  __typename?: "Action";
+  __typename?: 'Action';
   paragraph: Maybe<Paragraph>;
 };
 
 export type Command = {
-  __typename?: "Command";
-  command: Maybe<Scalars["String"]>;
+  __typename?: 'Command';
+  command: Maybe<Scalars['String']>;
 };
 
 export type CommandAndOutput = {
-  __typename?: "CommandAndOutput";
-  command: Maybe<Scalars["String"]>;
-  output: Maybe<Scalars["String"]>;
+  __typename?: 'CommandAndOutput';
+  command: Maybe<Scalars['String']>;
+  output: Maybe<Scalars['String']>;
+};
+
+export type DecorateTextChunksInput = {
+  __typename?: 'DecorateTextChunksInput';
+  chunks: Array<Maybe<TextChunkWithOperation>>;
 };
 
 export type DirectoryStructure = {
-  __typename?: "DirectoryStructure";
-  contents: Maybe<Array<Maybe<Scalars["String"]>>>;
+  __typename?: 'DirectoryStructure';
+  contents: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type Foldable = {
-  __typename?: "Foldable";
+  __typename?: 'Foldable';
   elements: Maybe<Array<Maybe<PlainElement>>>;
-  shortDescription: Maybe<Scalars["String"]>;
+  shortDescription: Maybe<Scalars['String']>;
 };
 
 export type Image = {
-  __typename?: "Image";
-  caption: Maybe<Scalars["String"]>;
-  url: Maybe<Scalars["String"]>;
+  __typename?: 'Image';
+  caption: Maybe<Scalars['String']>;
+  url: Maybe<Scalars['String']>;
 };
 
 export type ImageGroup = {
-  __typename?: "ImageGroup";
+  __typename?: 'ImageGroup';
   images: Maybe<Array<Maybe<Image>>>;
 };
 
 export type Note = {
-  __typename?: "Note";
-  body: Maybe<Scalars["String"]>;
+  __typename?: 'Note';
+  body: Maybe<Scalars['String']>;
 };
 
 export type Output = {
-  __typename?: "Output";
-  body: Maybe<Scalars["String"]>;
+  __typename?: 'Output';
+  body: Maybe<Scalars['String']>;
 };
 
 export type Page = {
-  __typename?: "Page";
+  __typename?: 'Page';
   pageElements: Maybe<Array<Maybe<PageElement>>>;
   progress: Maybe<Progress>;
-  title: Maybe<Scalars["String"]>;
+  title: Maybe<Scalars['String']>;
 };
 
-export type PageElement =
-  | Command
-  | Foldable
-  | ImageGroup
-  | Output
-  | Paragraph
-  | Video;
+export type PageElement = Command | Foldable | ImageGroup | Output | Paragraph | Video;
 
 export type Paragraph = {
-  __typename?: "Paragraph";
+  __typename?: 'Paragraph';
   chunks: Maybe<Array<Maybe<TextChunk>>>;
 };
 
 export type PlainElement = Command | ImageGroup | Output | Paragraph | Video;
 
 export type Progress = {
-  __typename?: "Progress";
-  currentPageNum: Maybe<Scalars["Int"]>;
-  numPages: Maybe<Scalars["Int"]>;
+  __typename?: 'Progress';
+  currentPageNum: Maybe<Scalars['Int']>;
+  numPages: Maybe<Scalars['Int']>;
 };
 
 export type Query = {
-  __typename?: "Query";
+  __typename?: 'Query';
   tutorial: Maybe<Tutorial>;
 };
 
+
 export type QueryTutorialArgs = {
-  currentPageNum: Scalars["Int"];
+  currentPageNum: Scalars['Int'];
 };
 
 export type TextChunk = {
-  __typename?: "TextChunk";
-  bold: Maybe<Scalars["Boolean"]>;
-  highlight: Maybe<Scalars["Boolean"]>;
-  hyperlinkUrl: Maybe<Scalars["String"]>;
-  strikeout: Maybe<Scalars["Boolean"]>;
-  text: Maybe<Scalars["String"]>;
+  __typename?: 'TextChunk';
+  bold: Maybe<Scalars['Boolean']>;
+  highlight: Maybe<Scalars['Boolean']>;
+  hyperlinkUrl: Maybe<Scalars['String']>;
+  strikeout: Maybe<Scalars['Boolean']>;
+  text: Maybe<Scalars['String']>;
+};
+
+export type TextChunkModifyOperation = {
+  __typename?: 'TextChunkModifyOperation';
+  bold: Maybe<Scalars['Boolean']>;
+  highlight: Maybe<Scalars['Boolean']>;
+  hyperlinkUrl: Maybe<Scalars['String']>;
+  strikeout: Maybe<Scalars['Boolean']>;
+  text: Maybe<Scalars['String']>;
+};
+
+export type TextChunkOperation = TextChunkModifyOperation | TextChunkSplitOperation;
+
+export type TextChunkSplitOperation = {
+  __typename?: 'TextChunkSplitOperation';
+  splitAt: Scalars['Int'];
+  splitFirstHalfOperation: Maybe<TextChunkModifyOperation>;
+  splitSecondHalfOperation: Maybe<TextChunkModifyOperation>;
+};
+
+export type TextChunkWithOperation = {
+  __typename?: 'TextChunkWithOperation';
+  chunk: TextChunk;
+  operation: Maybe<TextChunkOperation>;
 };
 
 export type Tutorial = {
-  __typename?: "Tutorial";
+  __typename?: 'Tutorial';
   currentPage: Maybe<Page>;
   pages: Maybe<Array<Maybe<Page>>>;
   progress: Maybe<Progress>;
-  title: Maybe<Scalars["String"]>;
-  unusedParam: Maybe<Scalars["Int"]>;
+  title: Maybe<Scalars['String']>;
+  unusedParam: Maybe<Scalars['Int']>;
 };
 
 export type Video = {
-  __typename?: "Video";
-  caption: Maybe<Scalars["String"]>;
+  __typename?: 'Video';
+  caption: Maybe<Scalars['String']>;
   platform: Maybe<VideoPlatform>;
-  url: Maybe<Scalars["String"]>;
+  url: Maybe<Scalars['String']>;
 };
 
 export enum VideoPlatform {
-  Vimeo = "VIMEO",
-  Youtube = "YOUTUBE",
+  Vimeo = 'VIMEO',
+  Youtube = 'YOUTUBE'
 }
 
-export type ActionComponentFragment = {
-  __typename?: "Action";
-  paragraph: {
-    __typename?: "Paragraph";
-    chunks: Array<{
-      __typename?: "TextChunk";
-      text: string | null;
-      highlight: boolean | null;
-      bold: boolean | null;
-      hyperlinkUrl: string | null;
-      strikeout: boolean | null;
-    } | null> | null;
-  } | null;
-};
+export type ActionComponentFragment = { __typename?: 'Action', paragraph: { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | null };
 
 export type TopLevdelQueryQueryVariables = Exact<{
-  currentPageNum: Scalars["Int"];
+  currentPageNum: Scalars['Int'];
 }>;
 
-export type TopLevdelQueryQuery = {
-  __typename?: "Query";
-  tutorial: {
-    __typename?: "Tutorial";
-    title: string | null;
-    progress: {
-      __typename?: "Progress";
-      currentPageNum: number | null;
-      numPages: number | null;
-    } | null;
-    currentPage: {
-      __typename?: "Page";
-      title: string | null;
-      progress: {
-        __typename?: "Progress";
-        numPages: number | null;
-        currentPageNum: number | null;
-      } | null;
-      pageElements: Array<
-        | { __typename?: "Command" }
-        | {
-            __typename?: "Foldable";
-            shortDescription: string | null;
-            elements: Array<
-              | { __typename?: "Command" }
-              | {
-                  __typename?: "ImageGroup";
-                  images: Array<{
-                    __typename?: "Image";
-                    url: string | null;
-                    caption: string | null;
-                  } | null> | null;
-                }
-              | { __typename?: "Output" }
-              | {
-                  __typename?: "Paragraph";
-                  chunks: Array<{
-                    __typename?: "TextChunk";
-                    text: string | null;
-                    highlight: boolean | null;
-                    bold: boolean | null;
-                    hyperlinkUrl: string | null;
-                    strikeout: boolean | null;
-                  } | null> | null;
-                }
-              | {
-                  __typename?: "Video";
-                  platform: VideoPlatform | null;
-                  url: string | null;
-                  caption: string | null;
-                }
-              | null
-            > | null;
-          }
-        | {
-            __typename?: "ImageGroup";
-            images: Array<{
-              __typename?: "Image";
-              url: string | null;
-              caption: string | null;
-            } | null> | null;
-          }
-        | { __typename?: "Output" }
-        | {
-            __typename?: "Paragraph";
-            chunks: Array<{
-              __typename?: "TextChunk";
-              text: string | null;
-              highlight: boolean | null;
-              bold: boolean | null;
-              hyperlinkUrl: string | null;
-              strikeout: boolean | null;
-            } | null> | null;
-          }
-        | {
-            __typename?: "Video";
-            platform: VideoPlatform | null;
-            url: string | null;
-            caption: string | null;
-          }
-        | null
-      > | null;
-    } | null;
-    pages: Array<{
-      __typename?: "Page";
-      title: string | null;
-      progress: {
-        __typename?: "Progress";
-        numPages: number | null;
-        currentPageNum: number | null;
-      } | null;
-      pageElements: Array<
-        | { __typename?: "Command" }
-        | {
-            __typename?: "Foldable";
-            shortDescription: string | null;
-            elements: Array<
-              | { __typename?: "Command" }
-              | {
-                  __typename?: "ImageGroup";
-                  images: Array<{
-                    __typename?: "Image";
-                    url: string | null;
-                    caption: string | null;
-                  } | null> | null;
-                }
-              | { __typename?: "Output" }
-              | {
-                  __typename?: "Paragraph";
-                  chunks: Array<{
-                    __typename?: "TextChunk";
-                    text: string | null;
-                    highlight: boolean | null;
-                    bold: boolean | null;
-                    hyperlinkUrl: string | null;
-                    strikeout: boolean | null;
-                  } | null> | null;
-                }
-              | {
-                  __typename?: "Video";
-                  platform: VideoPlatform | null;
-                  url: string | null;
-                  caption: string | null;
-                }
-              | null
-            > | null;
-          }
-        | {
-            __typename?: "ImageGroup";
-            images: Array<{
-              __typename?: "Image";
-              url: string | null;
-              caption: string | null;
-            } | null> | null;
-          }
-        | { __typename?: "Output" }
-        | {
-            __typename?: "Paragraph";
-            chunks: Array<{
-              __typename?: "TextChunk";
-              text: string | null;
-              highlight: boolean | null;
-              bold: boolean | null;
-              hyperlinkUrl: string | null;
-              strikeout: boolean | null;
-            } | null> | null;
-          }
-        | {
-            __typename?: "Video";
-            platform: VideoPlatform | null;
-            url: string | null;
-            caption: string | null;
-          }
-        | null
-      > | null;
-    } | null> | null;
-  } | null;
-};
 
-export type FoldableComponentFragment = {
-  __typename?: "Foldable";
-  shortDescription: string | null;
-  elements: Array<
-    | { __typename?: "Command" }
-    | {
-        __typename?: "ImageGroup";
-        images: Array<{
-          __typename?: "Image";
-          url: string | null;
-          caption: string | null;
-        } | null> | null;
-      }
-    | { __typename?: "Output" }
-    | {
-        __typename?: "Paragraph";
-        chunks: Array<{
-          __typename?: "TextChunk";
-          text: string | null;
-          highlight: boolean | null;
-          bold: boolean | null;
-          hyperlinkUrl: string | null;
-          strikeout: boolean | null;
-        } | null> | null;
-      }
-    | {
-        __typename?: "Video";
-        platform: VideoPlatform | null;
-        url: string | null;
-        caption: string | null;
-      }
-    | null
-  > | null;
-};
+export type TopLevdelQueryQuery = { __typename?: 'Query', tutorial: { __typename?: 'Tutorial', title: string | null, progress: { __typename?: 'Progress', currentPageNum: number | null, numPages: number | null } | null, currentPage: { __typename?: 'Page', title: string | null, progress: { __typename?: 'Progress', numPages: number | null, currentPageNum: number | null } | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable', shortDescription: string | null, elements: Array<{ __typename?: 'Command' } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | null, pages: Array<{ __typename?: 'Page', title: string | null, progress: { __typename?: 'Progress', numPages: number | null, currentPageNum: number | null } | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable', shortDescription: string | null, elements: Array<{ __typename?: 'Command' } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | null> | null } | null };
 
-export type HeaderContainerFragment = {
-  __typename?: "Tutorial";
-  title: string | null;
-};
+export type FoldableComponentFragment = { __typename?: 'Foldable', shortDescription: string | null, elements: Array<{ __typename?: 'Command' } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null };
 
-export type ImageComponentFragment = {
-  __typename?: "Image";
-  url: string | null;
-  caption: string | null;
-};
+export type HeaderContainerFragment = { __typename?: 'Tutorial', title: string | null };
 
-export type ImageGroupComponentFragment = {
-  __typename?: "ImageGroup";
-  images: Array<{
-    __typename?: "Image";
-    url: string | null;
-    caption: string | null;
-  } | null> | null;
-};
+export type ImageComponentFragment = { __typename?: 'Image', url: string | null, caption: string | null };
 
-export type MainContainerFragment = {
-  __typename?: "Tutorial";
-  progress: {
-    __typename?: "Progress";
-    currentPageNum: number | null;
-    numPages: number | null;
-  } | null;
-  currentPage: {
-    __typename?: "Page";
-    title: string | null;
-    progress: {
-      __typename?: "Progress";
-      numPages: number | null;
-      currentPageNum: number | null;
-    } | null;
-    pageElements: Array<
-      | { __typename?: "Command" }
-      | {
-          __typename?: "Foldable";
-          shortDescription: string | null;
-          elements: Array<
-            | { __typename?: "Command" }
-            | {
-                __typename?: "ImageGroup";
-                images: Array<{
-                  __typename?: "Image";
-                  url: string | null;
-                  caption: string | null;
-                } | null> | null;
-              }
-            | { __typename?: "Output" }
-            | {
-                __typename?: "Paragraph";
-                chunks: Array<{
-                  __typename?: "TextChunk";
-                  text: string | null;
-                  highlight: boolean | null;
-                  bold: boolean | null;
-                  hyperlinkUrl: string | null;
-                  strikeout: boolean | null;
-                } | null> | null;
-              }
-            | {
-                __typename?: "Video";
-                platform: VideoPlatform | null;
-                url: string | null;
-                caption: string | null;
-              }
-            | null
-          > | null;
-        }
-      | {
-          __typename?: "ImageGroup";
-          images: Array<{
-            __typename?: "Image";
-            url: string | null;
-            caption: string | null;
-          } | null> | null;
-        }
-      | { __typename?: "Output" }
-      | {
-          __typename?: "Paragraph";
-          chunks: Array<{
-            __typename?: "TextChunk";
-            text: string | null;
-            highlight: boolean | null;
-            bold: boolean | null;
-            hyperlinkUrl: string | null;
-            strikeout: boolean | null;
-          } | null> | null;
-        }
-      | {
-          __typename?: "Video";
-          platform: VideoPlatform | null;
-          url: string | null;
-          caption: string | null;
-        }
-      | null
-    > | null;
-  } | null;
-  pages: Array<{
-    __typename?: "Page";
-    title: string | null;
-    progress: {
-      __typename?: "Progress";
-      numPages: number | null;
-      currentPageNum: number | null;
-    } | null;
-    pageElements: Array<
-      | { __typename?: "Command" }
-      | {
-          __typename?: "Foldable";
-          shortDescription: string | null;
-          elements: Array<
-            | { __typename?: "Command" }
-            | {
-                __typename?: "ImageGroup";
-                images: Array<{
-                  __typename?: "Image";
-                  url: string | null;
-                  caption: string | null;
-                } | null> | null;
-              }
-            | { __typename?: "Output" }
-            | {
-                __typename?: "Paragraph";
-                chunks: Array<{
-                  __typename?: "TextChunk";
-                  text: string | null;
-                  highlight: boolean | null;
-                  bold: boolean | null;
-                  hyperlinkUrl: string | null;
-                  strikeout: boolean | null;
-                } | null> | null;
-              }
-            | {
-                __typename?: "Video";
-                platform: VideoPlatform | null;
-                url: string | null;
-                caption: string | null;
-              }
-            | null
-          > | null;
-        }
-      | {
-          __typename?: "ImageGroup";
-          images: Array<{
-            __typename?: "Image";
-            url: string | null;
-            caption: string | null;
-          } | null> | null;
-        }
-      | { __typename?: "Output" }
-      | {
-          __typename?: "Paragraph";
-          chunks: Array<{
-            __typename?: "TextChunk";
-            text: string | null;
-            highlight: boolean | null;
-            bold: boolean | null;
-            hyperlinkUrl: string | null;
-            strikeout: boolean | null;
-          } | null> | null;
-        }
-      | {
-          __typename?: "Video";
-          platform: VideoPlatform | null;
-          url: string | null;
-          caption: string | null;
-        }
-      | null
-    > | null;
-  } | null> | null;
-};
+export type ImageGroupComponentFragment = { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null };
 
-export type PageComponentFragment = {
-  __typename?: "Page";
-  title: string | null;
-  progress: {
-    __typename?: "Progress";
-    numPages: number | null;
-    currentPageNum: number | null;
-  } | null;
-  pageElements: Array<
-    | { __typename?: "Command" }
-    | {
-        __typename?: "Foldable";
-        shortDescription: string | null;
-        elements: Array<
-          | { __typename?: "Command" }
-          | {
-              __typename?: "ImageGroup";
-              images: Array<{
-                __typename?: "Image";
-                url: string | null;
-                caption: string | null;
-              } | null> | null;
-            }
-          | { __typename?: "Output" }
-          | {
-              __typename?: "Paragraph";
-              chunks: Array<{
-                __typename?: "TextChunk";
-                text: string | null;
-                highlight: boolean | null;
-                bold: boolean | null;
-                hyperlinkUrl: string | null;
-                strikeout: boolean | null;
-              } | null> | null;
-            }
-          | {
-              __typename?: "Video";
-              platform: VideoPlatform | null;
-              url: string | null;
-              caption: string | null;
-            }
-          | null
-        > | null;
-      }
-    | {
-        __typename?: "ImageGroup";
-        images: Array<{
-          __typename?: "Image";
-          url: string | null;
-          caption: string | null;
-        } | null> | null;
-      }
-    | { __typename?: "Output" }
-    | {
-        __typename?: "Paragraph";
-        chunks: Array<{
-          __typename?: "TextChunk";
-          text: string | null;
-          highlight: boolean | null;
-          bold: boolean | null;
-          hyperlinkUrl: string | null;
-          strikeout: boolean | null;
-        } | null> | null;
-      }
-    | {
-        __typename?: "Video";
-        platform: VideoPlatform | null;
-        url: string | null;
-        caption: string | null;
-      }
-    | null
-  > | null;
-};
+export type MainContainerFragment = { __typename?: 'Tutorial', progress: { __typename?: 'Progress', currentPageNum: number | null, numPages: number | null } | null, currentPage: { __typename?: 'Page', title: string | null, progress: { __typename?: 'Progress', numPages: number | null, currentPageNum: number | null } | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable', shortDescription: string | null, elements: Array<{ __typename?: 'Command' } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | null, pages: Array<{ __typename?: 'Page', title: string | null, progress: { __typename?: 'Progress', numPages: number | null, currentPageNum: number | null } | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable', shortDescription: string | null, elements: Array<{ __typename?: 'Command' } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | null> | null };
 
-export type PageTransitionComponentFragment = {
-  __typename?: "Progress";
-  numPages: number | null;
-  currentPageNum: number | null;
-};
+export type PageComponentFragment = { __typename?: 'Page', title: string | null, progress: { __typename?: 'Progress', numPages: number | null, currentPageNum: number | null } | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable', shortDescription: string | null, elements: Array<{ __typename?: 'Command' } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null };
 
-export type ParagraphComponentFragment = {
-  __typename?: "Paragraph";
-  chunks: Array<{
-    __typename?: "TextChunk";
-    text: string | null;
-    highlight: boolean | null;
-    bold: boolean | null;
-    hyperlinkUrl: string | null;
-    strikeout: boolean | null;
-  } | null> | null;
-};
+export type PageTransitionComponentFragment = { __typename?: 'Progress', numPages: number | null, currentPageNum: number | null };
 
-export type ProgressBarFragment = {
-  __typename?: "Progress";
-  currentPageNum: number | null;
-  numPages: number | null;
-};
+export type ParagraphComponentFragment = { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null };
 
-export type TextChunkComponentFragment = {
-  __typename?: "TextChunk";
-  text: string | null;
-  highlight: boolean | null;
-  bold: boolean | null;
-  hyperlinkUrl: string | null;
-  strikeout: boolean | null;
-};
+export type ProgressBarFragment = { __typename?: 'Progress', currentPageNum: number | null, numPages: number | null };
 
-export type VideoComponentFragment = {
-  __typename?: "Video";
-  platform: VideoPlatform | null;
-  url: string | null;
-  caption: string | null;
-};
+export type TextChunkComponentFragment = { __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null };
+
+export type VideoComponentFragment = { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null };
 
 export const TextChunkComponentFragmentDoc = gql`
-  fragment TextChunkComponent on TextChunk {
-    text
-    highlight
-    bold
-    hyperlinkUrl
-    strikeout
-  }
-`;
+    fragment TextChunkComponent on TextChunk {
+  text
+  highlight
+  bold
+  hyperlinkUrl
+  strikeout
+}
+    `;
 export const ParagraphComponentFragmentDoc = gql`
-  fragment ParagraphComponent on Paragraph {
-    chunks {
-      ...TextChunkComponent
-    }
+    fragment ParagraphComponent on Paragraph {
+  chunks {
+    ...TextChunkComponent
   }
-  ${TextChunkComponentFragmentDoc}
-`;
+}
+    ${TextChunkComponentFragmentDoc}`;
 export const ActionComponentFragmentDoc = gql`
-  fragment ActionComponent on Action {
-    paragraph {
+    fragment ActionComponent on Action {
+  paragraph {
+    ...ParagraphComponent
+  }
+}
+    ${ParagraphComponentFragmentDoc}`;
+export const HeaderContainerFragmentDoc = gql`
+    fragment HeaderContainer on Tutorial {
+  title
+}
+    `;
+export const ProgressBarFragmentDoc = gql`
+    fragment ProgressBar on Progress {
+  currentPageNum
+  numPages
+}
+    `;
+export const PageTransitionComponentFragmentDoc = gql`
+    fragment PageTransitionComponent on Progress {
+  numPages
+  currentPageNum
+}
+    `;
+export const VideoComponentFragmentDoc = gql`
+    fragment VideoComponent on Video {
+  platform
+  url
+  caption
+}
+    `;
+export const ImageComponentFragmentDoc = gql`
+    fragment ImageComponent on Image {
+  url
+  caption
+}
+    `;
+export const ImageGroupComponentFragmentDoc = gql`
+    fragment ImageGroupComponent on ImageGroup {
+  images {
+    ...ImageComponent
+  }
+}
+    ${ImageComponentFragmentDoc}`;
+export const FoldableComponentFragmentDoc = gql`
+    fragment FoldableComponent on Foldable {
+  shortDescription
+  elements {
+    ... on Video {
+      ...VideoComponent
+    }
+    ... on Paragraph {
       ...ParagraphComponent
     }
-  }
-  ${ParagraphComponentFragmentDoc}
-`;
-export const HeaderContainerFragmentDoc = gql`
-  fragment HeaderContainer on Tutorial {
-    title
-  }
-`;
-export const ProgressBarFragmentDoc = gql`
-  fragment ProgressBar on Progress {
-    currentPageNum
-    numPages
-  }
-`;
-export const PageTransitionComponentFragmentDoc = gql`
-  fragment PageTransitionComponent on Progress {
-    numPages
-    currentPageNum
-  }
-`;
-export const VideoComponentFragmentDoc = gql`
-  fragment VideoComponent on Video {
-    platform
-    url
-    caption
-  }
-`;
-export const ImageComponentFragmentDoc = gql`
-  fragment ImageComponent on Image {
-    url
-    caption
-  }
-`;
-export const ImageGroupComponentFragmentDoc = gql`
-  fragment ImageGroupComponent on ImageGroup {
-    images {
-      ...ImageComponent
+    ... on ImageGroup {
+      ...ImageGroupComponent
     }
   }
-  ${ImageComponentFragmentDoc}
-`;
-export const FoldableComponentFragmentDoc = gql`
-  fragment FoldableComponent on Foldable {
-    shortDescription
-    elements {
-      ... on Video {
-        ...VideoComponent
-      }
-      ... on Paragraph {
-        ...ParagraphComponent
-      }
-      ... on ImageGroup {
-        ...ImageGroupComponent
-      }
-    }
-  }
-  ${VideoComponentFragmentDoc}
-  ${ParagraphComponentFragmentDoc}
-  ${ImageGroupComponentFragmentDoc}
-`;
+}
+    ${VideoComponentFragmentDoc}
+${ParagraphComponentFragmentDoc}
+${ImageGroupComponentFragmentDoc}`;
 export const PageComponentFragmentDoc = gql`
-  fragment PageComponent on Page {
-    title
-    progress {
-      ...PageTransitionComponent
+    fragment PageComponent on Page {
+  title
+  progress {
+    ...PageTransitionComponent
+  }
+  pageElements {
+    ... on Video {
+      ...VideoComponent
     }
-    pageElements {
-      ... on Video {
-        ...VideoComponent
-      }
-      ... on Paragraph {
-        ...ParagraphComponent
-      }
-      ... on ImageGroup {
-        ...ImageGroupComponent
-      }
-      ... on Foldable {
-        ...FoldableComponent
-      }
+    ... on Paragraph {
+      ...ParagraphComponent
+    }
+    ... on ImageGroup {
+      ...ImageGroupComponent
+    }
+    ... on Foldable {
+      ...FoldableComponent
     }
   }
-  ${PageTransitionComponentFragmentDoc}
-  ${VideoComponentFragmentDoc}
-  ${ParagraphComponentFragmentDoc}
-  ${ImageGroupComponentFragmentDoc}
-  ${FoldableComponentFragmentDoc}
-`;
+}
+    ${PageTransitionComponentFragmentDoc}
+${VideoComponentFragmentDoc}
+${ParagraphComponentFragmentDoc}
+${ImageGroupComponentFragmentDoc}
+${FoldableComponentFragmentDoc}`;
 export const MainContainerFragmentDoc = gql`
-  fragment MainContainer on Tutorial {
-    progress {
-      ...ProgressBar
-    }
-    currentPage {
-      ...PageComponent
-    }
-    pages {
-      ...PageComponent
-    }
+    fragment MainContainer on Tutorial {
+  progress {
+    ...ProgressBar
   }
-  ${ProgressBarFragmentDoc}
-  ${PageComponentFragmentDoc}
-`;
+  currentPage {
+    ...PageComponent
+  }
+  pages {
+    ...PageComponent
+  }
+}
+    ${ProgressBarFragmentDoc}
+${PageComponentFragmentDoc}`;
 export const TopLevdelQueryDocument = gql`
-  query TopLevdelQuery($currentPageNum: Int!) {
-    tutorial(currentPageNum: $currentPageNum) {
-      ...HeaderContainer
-      ...MainContainer
-    }
+    query TopLevdelQuery($currentPageNum: Int!) {
+  tutorial(currentPageNum: $currentPageNum) {
+    ...HeaderContainer
+    ...MainContainer
   }
-  ${HeaderContainerFragmentDoc}
-  ${MainContainerFragmentDoc}
-`;
+}
+    ${HeaderContainerFragmentDoc}
+${MainContainerFragmentDoc}`;
 
 /**
  * __useTopLevdelQueryQuery__
@@ -788,37 +328,14 @@ export const TopLevdelQueryDocument = gql`
  *   },
  * });
  */
-export function useTopLevdelQueryQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    TopLevdelQueryQuery,
-    TopLevdelQueryQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<TopLevdelQueryQuery, TopLevdelQueryQueryVariables>(
-    TopLevdelQueryDocument,
-    options
-  );
-}
-export function useTopLevdelQueryLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    TopLevdelQueryQuery,
-    TopLevdelQueryQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<TopLevdelQueryQuery, TopLevdelQueryQueryVariables>(
-    TopLevdelQueryDocument,
-    options
-  );
-}
-export type TopLevdelQueryQueryHookResult = ReturnType<
-  typeof useTopLevdelQueryQuery
->;
-export type TopLevdelQueryLazyQueryHookResult = ReturnType<
-  typeof useTopLevdelQueryLazyQuery
->;
-export type TopLevdelQueryQueryResult = Apollo.QueryResult<
-  TopLevdelQueryQuery,
-  TopLevdelQueryQueryVariables
->;
+export function useTopLevdelQueryQuery(baseOptions: Apollo.QueryHookOptions<TopLevdelQueryQuery, TopLevdelQueryQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TopLevdelQueryQuery, TopLevdelQueryQueryVariables>(TopLevdelQueryDocument, options);
+      }
+export function useTopLevdelQueryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TopLevdelQueryQuery, TopLevdelQueryQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TopLevdelQueryQuery, TopLevdelQueryQueryVariables>(TopLevdelQueryDocument, options);
+        }
+export type TopLevdelQueryQueryHookResult = ReturnType<typeof useTopLevdelQueryQuery>;
+export type TopLevdelQueryLazyQueryHookResult = ReturnType<typeof useTopLevdelQueryLazyQuery>;
+export type TopLevdelQueryQueryResult = Apollo.QueryResult<TopLevdelQueryQuery, TopLevdelQueryQueryVariables>;

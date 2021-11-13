@@ -9,6 +9,7 @@ import React, { useState } from "react";
 import { FoldedIcon } from "./FoldedIcon";
 import { UnfoldedIcon } from "./UnFoldedIcon";
 import { switchExhaustivenessCheck } from "./switchExhaustivenessCheck";
+import { ActionComponent } from "./ActionComponent";
 
 export interface FoldableComponentProps {
   fragment: FoldableComponentFragment;
@@ -83,6 +84,8 @@ export const FoldableComponent = ({
                     return (
                       <ImageGroupComponent key={index} fragment={element} />
                     );
+                  case "Action":
+                    return <ActionComponent key={index} fragment={element} />;
                   default:
                     return switchExhaustivenessCheck(element.__typename);
                 }
@@ -112,10 +115,14 @@ FoldableComponent.fragments = gql`
       ... on ImageGroup {
         ...ImageGroupComponent
       }
+      ... on Action {
+        ...ActionComponent
+      }
     }
   }
 
   ${VideoComponent.fragments}
   ${ParagraphComponent.fragments}
   ${ImageGroupComponent.fragments}
+  ${ActionComponent.fragments}
 `;

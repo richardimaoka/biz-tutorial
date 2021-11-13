@@ -424,6 +424,11 @@
         "possibleTypes": [
           {
             "kind": "OBJECT",
+            "name": "Action",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
             "name": "Command",
             "ofType": null
           },
@@ -490,6 +495,11 @@
         "interfaces": null,
         "enumValues": null,
         "possibleTypes": [
+          {
+            "kind": "OBJECT",
+            "name": "Action",
+            "ofType": null
+          },
           {
             "kind": "OBJECT",
             "name": "Command",

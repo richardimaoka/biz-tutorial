@@ -10,6 +10,8 @@ import { FoldableComponent } from "./FoldableComponent";
 import { switchExhaustivenessCheck } from "./switchExhaustivenessCheck";
 import { PageTransitionComponent } from "./PageTransitionComponent";
 import { ProgressBar } from "./ProgressBar";
+import { Action } from "history";
+import { ActionComponent } from "./ActionComponent";
 
 export interface PageComponentProps {
   fragment: PageComponentFragment;
@@ -46,6 +48,8 @@ export const PageComponent = ({
                 return <ParagraphComponent key={index} fragment={element} />;
               case "ImageGroup":
                 return <ImageGroupComponent key={index} fragment={element} />;
+              case "Action":
+                return <ActionComponent key={index} fragment={element} />;
               default:
                 return switchExhaustivenessCheck(element.__typename);
             }
@@ -77,6 +81,9 @@ PageComponent.fragments = gql`
       ... on Foldable {
         ...FoldableComponent
       }
+      ... on Action {
+        ...ActionComponent
+      }
     }
   }
   ${PageTransitionComponent.fragments}
@@ -84,4 +91,5 @@ PageComponent.fragments = gql`
   ${ParagraphComponent.fragments}
   ${ImageGroupComponent.fragments}
   ${FoldableComponent.fragments}
+  ${ActionComponent.fragments}
 `;

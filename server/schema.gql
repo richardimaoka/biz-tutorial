@@ -18,8 +18,16 @@ type Page {
   id: ID!
 }
 
-union PageElement = Paragraph | Command | Output | Video | ImageGroup | Foldable
-union PlainElement = Paragraph | Command | Output | Video | ImageGroup
+union PageElement =
+    Paragraph
+  | Command
+  | Output
+  | Video
+  | Action
+  | ImageGroup
+  | Foldable
+
+union PlainElement = Paragraph | Command | Output | Video | Action | ImageGroup
 
 enum VideoPlatform {
   YOUTUBE

@@ -32,7 +32,7 @@ const server = new ApolloServer({
       const tutorial = await readJson("/data/tutorial.json");
       const page1 = await readJson("/data/page1.json");
       const page2 = await readJson("/data/page2.json");
-      const page3 = await readJson("/data/page2.json");
+      const page3 = await readJson("/data/page3.json");
 
       return {
         tutorial: tutorial,

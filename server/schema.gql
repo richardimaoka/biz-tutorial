@@ -1,5 +1,5 @@
 type Query {
-  tutorial(currentPageNum: Int!): Tutorial
+  tutorial(currentPageId: String!): Tutorial
 }
 
 type Tutorial {
@@ -44,7 +44,9 @@ type Output {
 
 type Progress {
   numPages: Int
-  currentPageNum: Int
+  currentPageId: String
+  nextPageId: String
+  prevPageId: String
 }
 
 type Paragraph {

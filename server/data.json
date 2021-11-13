@@ -5,7 +5,8 @@
       "title": "概要",
       "progress": {
         "numPages": 7,
-        "currentPageNum": 1
+        "currentPageId": 1,
+        "nextPageId": 2
       },
       "pageElements": [
         {
@@ -71,7 +72,7 @@
     },
     "progress": {
       "numPages": 7,
-      "currentPageNum": 1
+      "currentPageId": 1
     },
     "pages": [
       {

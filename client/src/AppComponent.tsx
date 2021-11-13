@@ -19,8 +19,8 @@ const client = new ApolloClient({
 });
 
 const TOP_LEVEL_QUERY = gql`
-  query TopLevdelQuery($currentPageNum: Int!) {
-    tutorial(currentPageNum: $currentPageNum) {
+  query TopLevdelQuery($currentPageId: String!) {
+    tutorial(currentPageId: $currentPageId) {
       ...HeaderContainer
       ...MainContainer
     }
@@ -32,7 +32,7 @@ const TOP_LEVEL_QUERY = gql`
 
 const InternalComponent = (): JSX.Element => {
   const { loading, error, data } = useTopLevdelQueryQuery({
-    variables: { currentPageNum: 1 },
+    variables: { currentPageId: "1" },
   });
 
   if (loading) {

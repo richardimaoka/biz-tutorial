@@ -28,7 +28,7 @@ export const PageTransitionComponent = ({
   const params = useParams<"pageNo">();
   console.log(params);
   const pageNo = params.pageNo ? params.pageNo.match(/\d+/)?.length : null;
-  const canRender = pageNo && fragment.currentPageNum && fragment.numPages;
+  const canRender = pageNo && fragment.currentPageId && fragment.numPages;
 
   return canRender ? (
     <div
@@ -39,7 +39,11 @@ export const PageTransitionComponent = ({
     >
       <PrevPageButton />
       {pageNo + 1}
-      <NextPageButton nextPage={(pageNo + 1).toString()} />
+      {fragment.nextPageNum ? (
+        <NextPageButton nextPage={fragment.nextPageNum} />
+      ) : (
+        <React.Fragment />
+      )}
     </div>
   ) : (
     <React.Fragment />
@@ -49,6 +53,8 @@ export const PageTransitionComponent = ({
 PageTransitionComponent.fragments = gql`
   fragment PageTransitionComponent on Progress {
     numPages
-    currentPageNum
+    currentPageId
+    nextPageId
+    prevPageId
   }
 `;

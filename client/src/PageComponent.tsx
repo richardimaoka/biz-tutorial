@@ -12,6 +12,7 @@ import { PageTransitionComponent } from "./PageTransitionComponent";
 import { ProgressBar } from "./ProgressBar";
 import { Action } from "history";
 import { ActionComponent } from "./ActionComponent";
+import { CommandComponent } from "./CommandComponent";
 
 export interface PageComponentProps {
   fragment: PageComponentFragment;
@@ -39,7 +40,7 @@ export const PageComponent = ({
               case "Video":
                 return <VideoComponent key={index} fragment={element} />;
               case "Command":
-                return <React.Fragment key={index} />;
+                return <CommandComponent key={index} fragment={element} />;
               case "Foldable":
                 return <FoldableComponent key={index} fragment={element} />;
               case "Output":
@@ -84,6 +85,9 @@ PageComponent.fragments = gql`
       ... on Action {
         ...ActionComponent
       }
+      ... on Command {
+        ...CommandComponent
+      }
     }
   }
   ${PageTransitionComponent.fragments}
@@ -92,4 +96,5 @@ PageComponent.fragments = gql`
   ${ImageGroupComponent.fragments}
   ${FoldableComponent.fragments}
   ${ActionComponent.fragments}
+  ${CommandComponent.fragments}
 `;

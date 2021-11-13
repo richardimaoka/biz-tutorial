@@ -164,6 +164,8 @@ export type GetTutorialQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetTutorialQuery = { __typename?: 'Query', tutorial: { __typename?: 'Tutorial', firstPageId: string | null, title: string | null } | null };
 
+export type CommandComponentFragment = { __typename?: 'Command', command: string | null };
+
 export type FoldableComponentFragment = { __typename?: 'Foldable', shortDescription: string | null, elements: Array<{ __typename?: 'Action', paragraph: { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null, inlineCode: boolean | null } | null> | null } | null } | { __typename?: 'Command' } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null, inlineCode: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null };
 
 export type HeaderContainerFragment = { __typename?: 'Tutorial', title: string | null };
@@ -177,14 +179,14 @@ export type GetPageQueryVariables = Exact<{
 }>;
 
 
-export type GetPageQuery = { __typename?: 'Query', tutorial: { __typename?: 'Tutorial', currentPage: { __typename?: 'Page', title: string | null, nextPageId: string | null, prevPageId: string | null, progress: { __typename?: 'Progress', currentPageNo: number | null, numPages: number | null } | null, pageElements: Array<{ __typename?: 'Action', paragraph: { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null, inlineCode: boolean | null } | null> | null } | null } | { __typename?: 'Command' } | { __typename?: 'Foldable', shortDescription: string | null, elements: Array<{ __typename?: 'Action', paragraph: { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null, inlineCode: boolean | null } | null> | null } | null } | { __typename?: 'Command' } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null, inlineCode: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null, inlineCode: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | null } | null };
+export type GetPageQuery = { __typename?: 'Query', tutorial: { __typename?: 'Tutorial', currentPage: { __typename?: 'Page', title: string | null, nextPageId: string | null, prevPageId: string | null, progress: { __typename?: 'Progress', currentPageNo: number | null, numPages: number | null } | null, pageElements: Array<{ __typename?: 'Action', paragraph: { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null, inlineCode: boolean | null } | null> | null } | null } | { __typename?: 'Command', command: string | null } | { __typename?: 'Foldable', shortDescription: string | null, elements: Array<{ __typename?: 'Action', paragraph: { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null, inlineCode: boolean | null } | null> | null } | null } | { __typename?: 'Command' } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null, inlineCode: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null, inlineCode: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | null } | null };
 
 export type GetFirstPageIdQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetFirstPageIdQuery = { __typename?: 'Query', tutorial: { __typename?: 'Tutorial', firstPageId: string | null } | null };
 
-export type PageComponentFragment = { __typename?: 'Page', title: string | null, nextPageId: string | null, prevPageId: string | null, progress: { __typename?: 'Progress', currentPageNo: number | null, numPages: number | null } | null, pageElements: Array<{ __typename?: 'Action', paragraph: { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null, inlineCode: boolean | null } | null> | null } | null } | { __typename?: 'Command' } | { __typename?: 'Foldable', shortDescription: string | null, elements: Array<{ __typename?: 'Action', paragraph: { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null, inlineCode: boolean | null } | null> | null } | null } | { __typename?: 'Command' } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null, inlineCode: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null, inlineCode: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null };
+export type PageComponentFragment = { __typename?: 'Page', title: string | null, nextPageId: string | null, prevPageId: string | null, progress: { __typename?: 'Progress', currentPageNo: number | null, numPages: number | null } | null, pageElements: Array<{ __typename?: 'Action', paragraph: { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null, inlineCode: boolean | null } | null> | null } | null } | { __typename?: 'Command', command: string | null } | { __typename?: 'Foldable', shortDescription: string | null, elements: Array<{ __typename?: 'Action', paragraph: { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null, inlineCode: boolean | null } | null> | null } | null } | { __typename?: 'Command' } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null, inlineCode: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null, inlineCode: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null };
 
 export type PageTransitionComponentFragment = { __typename?: 'Page', nextPageId: string | null, prevPageId: string | null };
 
@@ -279,6 +281,11 @@ export const FoldableComponentFragmentDoc = gql`
 ${ParagraphComponentFragmentDoc}
 ${ImageGroupComponentFragmentDoc}
 ${ActionComponentFragmentDoc}`;
+export const CommandComponentFragmentDoc = gql`
+    fragment CommandComponent on Command {
+  command
+}
+    `;
 export const PageComponentFragmentDoc = gql`
     fragment PageComponent on Page {
   title
@@ -302,6 +309,9 @@ export const PageComponentFragmentDoc = gql`
     ... on Action {
       ...ActionComponent
     }
+    ... on Command {
+      ...CommandComponent
+    }
   }
 }
     ${PageTransitionComponentFragmentDoc}
@@ -310,7 +320,8 @@ ${VideoComponentFragmentDoc}
 ${ParagraphComponentFragmentDoc}
 ${ImageGroupComponentFragmentDoc}
 ${FoldableComponentFragmentDoc}
-${ActionComponentFragmentDoc}`;
+${ActionComponentFragmentDoc}
+${CommandComponentFragmentDoc}`;
 export const GetTutorialDocument = gql`
     query GetTutorial {
   tutorial {

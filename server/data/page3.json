@@ -30,6 +30,29 @@
       "__typename": "Foldable",
       "shortDescription": "実行結果: ファイル構成の変化",
       "elements": []
+    },
+    {
+      "__typename": "Action",
+      "paragraph": {
+        "__typename": "Paragraph",
+        "chunks": [
+          {
+            "text": "以下の一連のコマンドを実行してください。"
+          }
+        ]
+      }
+    },
+    {
+      "__typename": "Command",
+      "command": "mkdir /your/project/path"
+    },
+    {
+      "__typename": "Command",
+      "command": "cd /your/project/path"
+    },
+    {
+      "__typename": "Command",
+      "command": "npm install cypress --save-dev"
     }
   ]
 }

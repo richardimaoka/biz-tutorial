@@ -8,8 +8,6 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     tutorial(parent: object, args: any, context: any, info: object) {
-      console.log(context);
-      console.log(args);
       const currentPage = context.pageMap[args.currentPageId];
       return { ...context.tutorial, currentPage };
     },

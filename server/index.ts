@@ -8,7 +8,8 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     tutorial(parent: object, args: object, context: any, info: object) {
-      return context.tutorial;
+      console.log(context);
+      return { ...context.tutorial, currentPage: context.pages[0] };
     },
   },
 };
@@ -23,7 +24,14 @@ const server = new ApolloServer({
         "utf8"
       );
       const tutorial = JSON.parse(tutorialFileContent);
-      return { tutorial: tutorial };
+
+      const page1FileContent = await fs.promises.readFile(
+        __dirname.concat("/data/page1.json"),
+        "utf8"
+      );
+      const page1 = JSON.parse(page1FileContent);
+
+      return { tutorial: tutorial, pages: [page1] };
     } catch (err) {
       console.log("***ERROR OCURRED***");
       console.log(err);

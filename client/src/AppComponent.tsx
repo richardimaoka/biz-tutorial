@@ -18,7 +18,8 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const GET_TUTORIAL = gql`
+//This is read by GraphQL codegen to generate types
+gql`
   query GetTutorial {
     tutorial {
       firstPageId

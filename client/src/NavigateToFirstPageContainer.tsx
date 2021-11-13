@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useGetFirstPageIdQuery } from "./generated/graphql";
 
-const GET_FIRST_PAGE_ID = gql`
+//This is read by GraphQL codegen to generate types
+gql`
   query GetFirstPageId {
     tutorial {
       firstPageId

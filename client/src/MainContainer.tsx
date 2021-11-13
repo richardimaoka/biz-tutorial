@@ -5,7 +5,8 @@ import { gql } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { useGetPageQuery } from "./generated/graphql";
 
-const GET_PAGE = gql`
+//This is read by GraphQL codegen to generate types
+gql`
   query GetPage($currentPageId: String!) {
     tutorial(currentPageId: $currentPageId) {
       currentPage {

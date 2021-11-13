@@ -4,7 +4,6 @@ type Query {
 
 type Tutorial {
   title: String
-  progress: Progress
   pages: [Page]
   currentPage: Page
 }
@@ -47,7 +46,7 @@ type Output {
 
 type Progress {
   numPages: Int
-  currentPageId: String
+  currentPageNo: Int
 }
 
 type Paragraph {

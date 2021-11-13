@@ -8,7 +8,7 @@ export interface ProgressBarProps {
 }
 
 export const ProgressBar = ({ fragment }: ProgressBarProps) => {
-  if (!fragment.currentPageId || !fragment.numPages) {
+  if (!fragment.currentPageNo || !fragment.numPages) {
     return <div />;
   } else {
     const arraySizeOfNumPages = new Array(fragment.numPages).fill("");
@@ -23,7 +23,7 @@ export const ProgressBar = ({ fragment }: ProgressBarProps) => {
           div:last-of-type {
             margin-right: 0px;
           }
-          div:nth-of-type(${fragment.currentPageId}) {
+          div:nth-of-type(${fragment.currentPageNo}) {
             background-color: #3edf33;
           }
         `}
@@ -47,7 +47,7 @@ export const ProgressBar = ({ fragment }: ProgressBarProps) => {
 
 ProgressBar.fragments = gql`
   fragment ProgressBar on Progress {
-    currentPageId
+    currentPageNo
     numPages
   }
 `;

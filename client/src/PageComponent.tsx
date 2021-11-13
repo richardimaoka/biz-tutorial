@@ -9,6 +9,7 @@ import { ImageGroupComponent } from "./ImageGroupComponent";
 import { FoldableComponent } from "./FoldableComponent";
 import { switchExhaustivenessCheck } from "./switchExhaustivenessCheck";
 import { PageTransitionComponent } from "./PageTransitionComponent";
+import { ProgressBar } from "./ProgressBar";
 
 export interface PageComponentProps {
   fragment: PageComponentFragment;
@@ -22,6 +23,11 @@ export const PageComponent = ({
   } else {
     return (
       <div>
+        {fragment.progress ? (
+          <ProgressBar fragment={fragment.progress} />
+        ) : (
+          <React.Fragment />
+        )}
         <PageTitle title={fragment.title} />
         {fragment.pageElements.map((element, index) => {
           if (!element || !element.__typename) {
@@ -55,6 +61,9 @@ PageComponent.fragments = gql`
   fragment PageComponent on Page {
     title
     ...PageTransitionComponent
+    progress {
+      ...ProgressBar
+    }
     pageElements {
       ... on Video {
         ...VideoComponent

@@ -24,11 +24,6 @@ export const MainContainer = ({ fragment }: MainProps) => {
             border: solid 1px #f9f9f9;
           `}
         >
-          {fragment.progress ? (
-            <ProgressBar fragment={fragment.progress} />
-          ) : (
-            <div />
-          )}
           {fragment.currentPage ? (
             <PageComponent fragment={fragment.currentPage} />
           ) : (
@@ -42,17 +37,10 @@ export const MainContainer = ({ fragment }: MainProps) => {
 
 MainContainer.fragments = gql`
   fragment MainContainer on Tutorial {
-    progress {
-      ...ProgressBar
-    }
     currentPage {
-      ...PageComponent
-    }
-    pages {
       ...PageComponent
     }
   }
 
-  ${ProgressBar.fragments}
   ${PageComponent.fragments}
 `;

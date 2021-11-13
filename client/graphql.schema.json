@@ -509,12 +509,12 @@
         "description": null,
         "fields": [
           {
-            "name": "currentPageId",
+            "name": "currentPageNo",
             "description": null,
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Int",
               "ofType": null
             },
             "isDeprecated": false,
@@ -870,18 +870,6 @@
                 "name": "Page",
                 "ofType": null
               }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "progress",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "Progress",
-              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null

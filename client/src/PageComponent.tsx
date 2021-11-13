@@ -45,11 +45,7 @@ export const PageComponent = ({
             }
           }
         })}
-        {fragment.progress ? (
-          <PageTransitionComponent fragment={fragment.progress} />
-        ) : (
-          <React.Fragment />
-        )}
+        <PageTransitionComponent fragment={fragment} />
       </div>
     );
   }
@@ -58,9 +54,7 @@ export const PageComponent = ({
 PageComponent.fragments = gql`
   fragment PageComponent on Page {
     title
-    progress {
-      ...PageTransitionComponent
-    }
+    ...PageTransitionComponent
     pageElements {
       ... on Video {
         ...VideoComponent

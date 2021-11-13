@@ -2,11 +2,7 @@
 import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 
-export interface NextPageButtonProps {
-  nextPage: string;
-}
-
-export const NextPageButton = ({ nextPage }: NextPageButtonProps) => (
+export const NextPageButton = () => (
   <div
     css={css`
       width: 60px;
@@ -18,18 +14,16 @@ export const NextPageButton = ({ nextPage }: NextPageButtonProps) => (
       align-items: center;
     `}
   >
-    <Link to={nextPage}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 40 40"
-        height="40px"
-        width="40px"
-        css={css`
-          fill: white;
-        `}
-      >
-        <path d="M15.06,39.36a4.8,4.8,0,0,1-3.48-8.11L22.31,20,11.59,8.76a4.8,4.8,0,1,1,6.93-6.64L32.41,16.64a4.8,4.8,0,0,1,0,6.62L18.54,37.87A4.8,4.8,0,0,1,15.06,39.36Z" />
-      </svg>
-    </Link>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 40 40"
+      height="40px"
+      width="40px"
+      css={css`
+        fill: white;
+      `}
+    >
+      <path d="M15.06,39.36a4.8,4.8,0,0,1-3.48-8.11L22.31,20,11.59,8.76a4.8,4.8,0,1,1,6.93-6.64L32.41,16.64a4.8,4.8,0,0,1,0,6.62L18.54,37.87A4.8,4.8,0,0,1,15.06,39.36Z" />
+    </svg>
   </div>
 );

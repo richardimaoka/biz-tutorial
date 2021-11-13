@@ -13,6 +13,9 @@ type Page {
   title: String
   progress: Progress
   pageElements: [PageElement]
+  nextPageId: String
+  prevPageId: String
+  pageId: String
 }
 
 union PageElement = Paragraph | Command | Output | Video | ImageGroup | Foldable
@@ -45,8 +48,6 @@ type Output {
 type Progress {
   numPages: Int
   currentPageId: String
-  nextPageId: String
-  prevPageId: String
 }
 
 type Paragraph {

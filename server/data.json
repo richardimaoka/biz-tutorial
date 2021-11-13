@@ -3,10 +3,11 @@
     "title": "CypressをWSL2上で動かすために必要な作業",
     "currentPage": {
       "title": "概要",
+      "currentPageId": 1,
+      "nextPageId": 2,
       "progress": {
         "numPages": 7,
-        "currentPageId": 1,
-        "nextPageId": 2
+        "currentPageId": 1
       },
       "pageElements": [
         {

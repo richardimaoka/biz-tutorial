@@ -8,7 +8,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     tutorial(parent: object, args: object, context: any, info: object) {
-      return context.data.tutorial;
+      return context.tutorial;
     },
   },
 };
@@ -18,12 +18,12 @@ const server = new ApolloServer({
   resolvers,
   context: async ({ req }: any) => {
     try {
-      const dataFileContent = await fs.promises.readFile(
-        __dirname.concat("/data.json"),
+      const tutorialFileContent = await fs.promises.readFile(
+        __dirname.concat("/tutorial.json"),
         "utf8"
       );
-      const data = JSON.parse(dataFileContent);
-      return { data: data };
+      const tutorial = JSON.parse(tutorialFileContent);
+      return { tutorial: tutorial };
     } catch (err) {
       console.log("***ERROR OCURRED***");
       console.log(err);

@@ -8,7 +8,8 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     tutorial(parent: object, args: any, context: any, info: object) {
-      const currentPage = context.pageMap[args.currentPageId];
+      const mappedPage = context.pageMap[args.currentPageId];
+      const currentPage = mappedPage ? mappedPage : null;
       return { ...context.tutorial, currentPage };
     },
   },
@@ -31,8 +32,12 @@ const server = new ApolloServer({
       const tutorial = await readJson("/data/tutorial.json");
       const page1 = await readJson("/data/page1.json");
       const page2 = await readJson("/data/page2.json");
+      const page3 = await readJson("/data/page2.json");
 
-      return { tutorial: tutorial, pageMap: { "1": page1, "2": page2 } };
+      return {
+        tutorial: tutorial,
+        pageMap: { "1": page1, "2": page2, "3": page3 },
+      };
     } catch (err) {
       console.log("***ERROR OCURRED***");
       console.log(err);

@@ -178,6 +178,11 @@ export type GetPageQueryVariables = Exact<{
 
 export type GetPageQuery = { __typename?: 'Query', tutorial: { __typename?: 'Tutorial', currentPage: { __typename?: 'Page', title: string | null, nextPageId: string | null, prevPageId: string | null, progress: { __typename?: 'Progress', currentPageNo: number | null, numPages: number | null } | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable', shortDescription: string | null, elements: Array<{ __typename?: 'Command' } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | null } | null };
 
+export type GetFirstPageIdQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetFirstPageIdQuery = { __typename?: 'Query', tutorial: { __typename?: 'Tutorial', firstPageId: string | null } | null };
+
 export type PageComponentFragment = { __typename?: 'Page', title: string | null, nextPageId: string | null, prevPageId: string | null, progress: { __typename?: 'Progress', currentPageNo: number | null, numPages: number | null } | null, pageElements: Array<{ __typename?: 'Command' } | { __typename?: 'Foldable', shortDescription: string | null, elements: Array<{ __typename?: 'Command' } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null } | { __typename?: 'ImageGroup', images: Array<{ __typename?: 'Image', url: string | null, caption: string | null } | null> | null } | { __typename?: 'Output' } | { __typename?: 'Paragraph', chunks: Array<{ __typename?: 'TextChunk', text: string | null, highlight: boolean | null, bold: boolean | null, hyperlinkUrl: string | null, strikeout: boolean | null } | null> | null } | { __typename?: 'Video', platform: VideoPlatform | null, url: string | null, caption: string | null } | null> | null };
 
 export type PageTransitionComponentFragment = { __typename?: 'Page', nextPageId: string | null, prevPageId: string | null };
@@ -368,3 +373,37 @@ export function useGetPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Ge
 export type GetPageQueryHookResult = ReturnType<typeof useGetPageQuery>;
 export type GetPageLazyQueryHookResult = ReturnType<typeof useGetPageLazyQuery>;
 export type GetPageQueryResult = Apollo.QueryResult<GetPageQuery, GetPageQueryVariables>;
+export const GetFirstPageIdDocument = gql`
+    query GetFirstPageId {
+  tutorial {
+    firstPageId
+  }
+}
+    `;
+
+/**
+ * __useGetFirstPageIdQuery__
+ *
+ * To run a query within a React component, call `useGetFirstPageIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetFirstPageIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetFirstPageIdQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetFirstPageIdQuery(baseOptions?: Apollo.QueryHookOptions<GetFirstPageIdQuery, GetFirstPageIdQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetFirstPageIdQuery, GetFirstPageIdQueryVariables>(GetFirstPageIdDocument, options);
+      }
+export function useGetFirstPageIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetFirstPageIdQuery, GetFirstPageIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetFirstPageIdQuery, GetFirstPageIdQueryVariables>(GetFirstPageIdDocument, options);
+        }
+export type GetFirstPageIdQueryHookResult = ReturnType<typeof useGetFirstPageIdQuery>;
+export type GetFirstPageIdLazyQueryHookResult = ReturnType<typeof useGetFirstPageIdLazyQuery>;
+export type GetFirstPageIdQueryResult = Apollo.QueryResult<GetFirstPageIdQuery, GetFirstPageIdQueryVariables>;

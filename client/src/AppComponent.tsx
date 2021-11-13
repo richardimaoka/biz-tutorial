@@ -18,6 +18,7 @@ import {
   useParams,
 } from "react-router-dom";
 import { useGetTutorialQuery } from "./generated/graphql";
+import { NavigateToFirstPageContainer } from "./NavigateToFirstPageContainer";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000",
@@ -60,6 +61,7 @@ const AppComponent = (): JSX.Element => (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<TutorialComponent />}>
+          <Route index element={<NavigateToFirstPageContainer />} />
           <Route path=":pageId" element={<MainContainer />} />
         </Route>
         <Route path="*" element={<div>404</div>} />

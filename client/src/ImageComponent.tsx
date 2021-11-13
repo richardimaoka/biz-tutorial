@@ -20,7 +20,7 @@ export const ImageComponent = ({
           justify-content: center;
         `}
       >
-        <img src={fragment.url} alt="" />;
+        <img src={fragment.url} alt="" />
       </div>
       {fragment.caption ? <div>{fragment.caption}</div> : <React.Fragment />}
     </div>

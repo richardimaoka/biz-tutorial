@@ -57,7 +57,9 @@ const AppComponent = (): JSX.Element => (
   <ApolloProvider client={client}>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<InternalComponent />} />
+        <Route path="/" element={<InternalComponent />}>
+          <Route path=":pageNo" element={<InternalComponent />} />
+        </Route>
         <Route path="*" element={<div>404</div>} />
       </Routes>
     </BrowserRouter>

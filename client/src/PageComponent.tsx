@@ -29,17 +29,17 @@ export const PageComponent = ({
           } else {
             switch (element.__typename) {
               case "Video":
-                return <VideoComponent fragment={element} />;
+                return <VideoComponent key={index} fragment={element} />;
               case "Command":
-                return <React.Fragment />;
+                return <React.Fragment key={index} />;
               case "Foldable":
-                return <FoldableComponent fragment={element} />;
+                return <FoldableComponent key={index} fragment={element} />;
               case "Output":
-                return <React.Fragment />;
+                return <React.Fragment key={index} />;
               case "Paragraph":
-                return <ParagraphComponent fragment={element} />;
+                return <ParagraphComponent key={index} fragment={element} />;
               case "ImageGroup":
-                return <ImageGroupComponent fragment={element} />;
+                return <ImageGroupComponent key={index} fragment={element} />;
               default:
                 return switchExhaustivenessCheck(element.__typename);
             }

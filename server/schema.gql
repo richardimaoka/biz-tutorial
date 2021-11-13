@@ -1,11 +1,11 @@
 type Query {
-  tutorial(currentPageId: String!): Tutorial
+  tutorial(currentPageId: String): Tutorial
 }
 
 type Tutorial {
   title: String
   pages: [Page]
-  firstPageId: Page
+  firstPageId: String
   currentPage: Page
 }
 

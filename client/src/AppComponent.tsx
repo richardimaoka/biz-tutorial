@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 //import { css } from "@emotion/react";
 import { HeaderContainer } from "./HeaderContainer";
-import { MainContainer, MainProps } from "./MainContainer";
+import { MainContainer } from "./MainContainer";
 import {
   InMemoryCache,
   ApolloClient,
@@ -10,36 +10,32 @@ import {
   useQuery,
 } from "@apollo/client";
 import React from "react";
-import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
-import { useTopLevdelQueryQuery } from "./generated/graphql";
+import {
+  BrowserRouter,
+  Outlet,
+  Route,
+  Routes,
+  useParams,
+} from "react-router-dom";
+import { useGetTutorialQuery } from "./generated/graphql";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000",
   cache: new InMemoryCache(),
 });
 
-const TOP_LEVEL_QUERY = gql`
-  query TopLevdelQuery($currentPageId: String!) {
-    tutorial(currentPageId: $currentPageId) {
+const GET_TUTORIAL = gql`
+  query GetTutorial {
+    tutorial {
+      firstPageId
       ...HeaderContainer
-      ...MainContainer
     }
+    ${HeaderContainer.fragments}
   }
-
-  ${HeaderContainer.fragments}
-  ${MainContainer.fragments}
 `;
 
-const InternalComponent = (): JSX.Element => {
-  const params = useParams<"pageNo">();
-
-  if (!params.pageNo) {
-    return <div>no page number</div>;
-  }
-
-  const { loading, error, data } = useTopLevdelQueryQuery({
-    variables: { currentPageId: params.pageNo },
-  });
+const TutorialComponent = (): JSX.Element => {
+  const { loading, error, data } = useGetTutorialQuery();
 
   if (loading) {
     return <div>{"Loading..."}</div>;
@@ -53,7 +49,7 @@ const InternalComponent = (): JSX.Element => {
     return (
       <React.Fragment>
         <HeaderContainer fragment={data.tutorial}></HeaderContainer>
-        <MainContainer fragment={data.tutorial}></MainContainer>
+        <Outlet />
       </React.Fragment>
     );
   }
@@ -63,8 +59,8 @@ const AppComponent = (): JSX.Element => (
   <ApolloProvider client={client}>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<InternalComponent />}>
-          <Route path=":pageNo" element={<InternalComponent />} />
+        <Route path="/" element={<TutorialComponent />}>
+          <Route path=":pageId" element={<MainContainer />} />
         </Route>
         <Route path="*" element={<div>404</div>} />
       </Routes>

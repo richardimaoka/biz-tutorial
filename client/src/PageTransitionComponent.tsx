@@ -23,14 +23,14 @@ export const PageTransitionComponent = ({
       `}
     >
       {fragment.prevPageId ? (
-        <Link to={fragment.prevPageId}>
+        <Link to={"/" + fragment.prevPageId}>
           <PrevPageButton />
         </Link>
       ) : (
         <div />
       )}
       {fragment.nextPageId ? (
-        <Link to={fragment.nextPageId}>
+        <Link to={"/" + fragment.nextPageId}>
           <NextPageButton />
         </Link>
       ) : (

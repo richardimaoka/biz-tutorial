@@ -2,7 +2,6 @@
   "title": "Cypressのintallとverify",
   "id": "3",
   "prevPageId": "2",
-  "nextPageId": "3",
   "progress": {
     "numPages": 7,
     "currentPageNo": 3
@@ -18,7 +17,14 @@
     },
     {
       "__typename": "Action",
-      "text": "以下のコマンドを実行してください。"
+      "paragraph": {
+        "__typename": "Paragraph",
+        "chunks": [
+          {
+            "text": "以下のコマンドを実行してください。"
+          }
+        ]
+      }
     },
     {
       "__typename": "Foldable",

@@ -25,7 +25,7 @@ export const ActionComponent = ({ fragment }: ActionProps): JSX.Element => {
             border: solid 1px #eecf33;
           `}
         >
-          <ParagraphComponent fragment={fragment.paragraph} /> :
+          <ParagraphComponent fragment={fragment.paragraph} />
         </div>
       </div>
     );

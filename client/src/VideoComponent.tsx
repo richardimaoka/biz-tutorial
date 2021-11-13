@@ -8,7 +8,9 @@ export interface VideoComponentProps {
   fragment: VideoComponentFragment;
 }
 
-export const VideoComponent = ({ fragment }: VideoComponentProps) => {
+export const VideoComponent = ({
+  fragment,
+}: VideoComponentProps): JSX.Element => {
   if (!fragment.url || !fragment.platform) {
     return <React.Fragment />;
   } else {

@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-export const HeaderIcon = () => (
+export const HeaderIcon = (): JSX.Element => (
   <div
     css={css`
       padding-right: 10px;

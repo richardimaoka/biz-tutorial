@@ -7,16 +7,9 @@ import {
   ApolloClient,
   ApolloProvider,
   gql,
-  useQuery,
 } from "@apollo/client";
 import React from "react";
-import {
-  BrowserRouter,
-  Outlet,
-  Route,
-  Routes,
-  useParams,
-} from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { useGetTutorialQuery } from "./generated/graphql";
 import { NavigateToFirstPageContainer } from "./NavigateToFirstPageContainer";
 

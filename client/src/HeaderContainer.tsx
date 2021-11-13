@@ -9,7 +9,9 @@ export interface HeaderContainerProps {
   fragment: HeaderContainerFragment;
 }
 
-export const HeaderContainer = ({ fragment }: HeaderContainerProps) => (
+export const HeaderContainer = ({
+  fragment,
+}: HeaderContainerProps): JSX.Element => (
   <header>
     <div
       css={css`

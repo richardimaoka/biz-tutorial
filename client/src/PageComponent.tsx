@@ -10,7 +10,6 @@ import { FoldableComponent } from "./FoldableComponent";
 import { switchExhaustivenessCheck } from "./switchExhaustivenessCheck";
 import { PageTransitionComponent } from "./PageTransitionComponent";
 import { ProgressBar } from "./ProgressBar";
-import { Action } from "history";
 import { ActionComponent } from "./ActionComponent";
 import { CommandComponent } from "./CommandComponent";
 

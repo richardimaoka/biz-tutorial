@@ -1,8 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { Link } from "react-router-dom";
 
-export const NextPageButton = () => (
+export const NextPageButton = (): JSX.Element => (
   <div
     css={css`
       width: 60px;

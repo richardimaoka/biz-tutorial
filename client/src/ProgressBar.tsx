@@ -7,7 +7,7 @@ export interface ProgressBarProps {
   fragment: ProgressBarFragment;
 }
 
-export const ProgressBar = ({ fragment }: ProgressBarProps) => {
+export const ProgressBar = ({ fragment }: ProgressBarProps): JSX.Element => {
   if (!fragment.currentPageNo || !fragment.numPages) {
     return <div />;
   } else {

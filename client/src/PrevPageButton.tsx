@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-export const PrevPageButton = () => (
+export const PrevPageButton = (): JSX.Element => (
   <div
     css={css`
       width: 60px;

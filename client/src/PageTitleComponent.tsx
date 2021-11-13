@@ -5,7 +5,7 @@ interface PageTitleProps {
   title: string;
 }
 
-export const PageTitle = ({ title }: PageTitleProps) => (
+export const PageTitle = ({ title }: PageTitleProps): JSX.Element => (
   <div
     css={css`
       padding: 4px;

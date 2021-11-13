@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { TextChunkComponent, TextChunkProps } from "./TextChunkComponent";
+import { TextChunkComponent } from "./TextChunkComponent";
 import { gql } from "@apollo/client";
 import { ParagraphComponentFragment } from "./generated/graphql";
 import React from "react";

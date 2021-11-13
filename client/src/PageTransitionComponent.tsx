@@ -5,7 +5,6 @@ import { PageTransitionComponentFragment } from "./generated/graphql";
 import React from "react";
 import { NextPageButton } from "./NextPageButton";
 import { PrevPageButton } from "./PrevPageButton";
-import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
 export interface PageTransitionComponentProps {
@@ -14,7 +13,7 @@ export interface PageTransitionComponentProps {
 
 export const PageTransitionComponent = ({
   fragment,
-}: PageTransitionComponentProps) => {
+}: PageTransitionComponentProps): JSX.Element => {
   return fragment.prevPageId || fragment.nextPageId ? (
     <div
       css={css`

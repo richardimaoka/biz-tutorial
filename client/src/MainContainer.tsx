@@ -57,7 +57,7 @@ const InnerComponent = ({ pageId }: { pageId: string }) => {
   }
 };
 
-export const MainContainer = () => {
+export const MainContainer = (): JSX.Element => {
   const params = useParams<"pageId">();
   return params.pageId ? (
     <InnerComponent pageId={params.pageId} />

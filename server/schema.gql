@@ -64,6 +64,7 @@ type TextChunk {
   bold: Boolean
   hyperlinkUrl: String
   strikeout: Boolean
+  inlineCode: Boolean
 }
 
 type Foldable {

@@ -10,7 +10,7 @@ import {
   useQuery,
 } from "@apollo/client";
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
 import { useTopLevdelQueryQuery } from "./generated/graphql";
 
 const client = new ApolloClient({
@@ -31,8 +31,14 @@ const TOP_LEVEL_QUERY = gql`
 `;
 
 const InternalComponent = (): JSX.Element => {
+  const params = useParams<"pageNo">();
+
+  if (!params.pageNo) {
+    return <div>no page number</div>;
+  }
+
   const { loading, error, data } = useTopLevdelQueryQuery({
-    variables: { currentPageId: "1" },
+    variables: { currentPageId: params.pageNo },
   });
 
   if (loading) {

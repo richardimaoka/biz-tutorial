@@ -75,9 +75,9 @@ export type Output = {
 
 export type Page = {
   __typename?: "Page";
+  id: Scalars["ID"];
   nextPageId: Maybe<Scalars["String"]>;
   pageElements: Maybe<Array<Maybe<PageElement>>>;
-  pageId: Maybe<Scalars["String"]>;
   prevPageId: Maybe<Scalars["String"]>;
   progress: Maybe<Progress>;
   title: Maybe<Scalars["String"]>;
@@ -151,6 +151,7 @@ export type TextChunkWithOperation = {
 export type Tutorial = {
   __typename?: "Tutorial";
   currentPage: Maybe<Page>;
+  firstPageId: Maybe<Page>;
   pages: Maybe<Array<Maybe<Page>>>;
   title: Maybe<Scalars["String"]>;
   unusedParam: Maybe<Scalars["Int"]>;

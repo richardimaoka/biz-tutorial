@@ -5,6 +5,7 @@ type Query {
 type Tutorial {
   title: String
   pages: [Page]
+  firstPageId: Page
   currentPage: Page
 }
 
@@ -14,7 +15,7 @@ type Page {
   pageElements: [PageElement]
   nextPageId: String
   prevPageId: String
-  pageId: String
+  id: ID!
 }
 
 union PageElement = Paragraph | Command | Output | Video | ImageGroup | Foldable

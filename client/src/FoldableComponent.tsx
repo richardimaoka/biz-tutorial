@@ -28,23 +28,33 @@ export const FoldableComponent = ({
 
   return fragment.shortDescription ? (
     <div>
-      <div
-        css={css`
-          background-color: #aed5f3;
-          display: flex;
-        `}
-      >
-        {folded ? (
-          <div onClick={unfold}>
+      {folded ? (
+        <div
+          css={css`
+            background-color: #aed5f3;
+            display: flex;
+          `}
+          onClick={unfold}
+        >
+          <div>
             <FoldedIcon />
           </div>
-        ) : (
-          <div onClick={fold}>
+          {fragment.shortDescription}
+        </div>
+      ) : (
+        <div
+          css={css`
+            background-color: #aed5f3;
+            display: flex;
+          `}
+          onClick={fold}
+        >
+          <div>
             <UnfoldedIcon />
           </div>
-        )}
-        {fragment.shortDescription}
-      </div>
+          {fragment.shortDescription}
+        </div>
+      )}
       {folded ? (
         <React.Fragment />
       ) : (

@@ -7,11 +7,22 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    tutorial(parent: object, args: object, context: any, info: object) {
+    tutorial(parent: object, args: any, context: any, info: object) {
       console.log(context);
-      return { ...context.tutorial, currentPage: context.pages[0] };
+      console.log(args);
+      const currentPage = context.pageMap[args.currentPageId];
+      return { ...context.tutorial, currentPage };
     },
   },
+};
+
+const readJson = async (filename: string): Promise<any> => {
+  const fileContent = await fs.promises.readFile(
+    __dirname.concat(filename),
+    "utf8"
+  );
+  const jsonData = JSON.parse(fileContent);
+  return jsonData;
 };
 
 const server = new ApolloServer({
@@ -19,19 +30,11 @@ const server = new ApolloServer({
   resolvers,
   context: async ({ req }: any) => {
     try {
-      const tutorialFileContent = await fs.promises.readFile(
-        __dirname.concat("/data/tutorial.json"),
-        "utf8"
-      );
-      const tutorial = JSON.parse(tutorialFileContent);
+      const tutorial = await readJson("/data/tutorial.json");
+      const page1 = await readJson("/data/page1.json");
+      const page2 = await readJson("/data/page2.json");
 
-      const page1FileContent = await fs.promises.readFile(
-        __dirname.concat("/data/page1.json"),
-        "utf8"
-      );
-      const page1 = JSON.parse(page1FileContent);
-
-      return { tutorial: tutorial, pages: [page1] };
+      return { tutorial: tutorial, pageMap: { "1": page1, "2": page2 } };
     } catch (err) {
       console.log("***ERROR OCURRED***");
       console.log(err);

@@ -1,0 +1,59 @@
+{
+  "title": "Prerequisites",
+  "currentPageId": "2",
+  "nextPageId": "2",
+  "progress": {
+    "numPages": 7,
+    "currentPageNo": 1
+  },
+  "pageElements": [
+    {
+      "__typename": "Paragraph",
+      "chunks": [
+        {
+          "text": "Windows PC"
+        }
+      ]
+    },
+    {
+      "__typename": "Paragraph",
+      "chunks": [
+        {
+          "text": "WSL install (confirmation first)"
+        }
+      ]
+    },
+    {
+      "__typename": "Paragraph",
+      "chunks": [
+        {
+          "text": "node install (confirmation first)"
+        }
+      ]
+    },
+    {
+      "__typename": "Paragraph",
+      "chunks": [
+        {
+          "text": "npm install (confirmation first)"
+        }
+      ]
+    },
+    {
+      "__typename": "Paragraph",
+      "chunks": [
+        {
+          "text": "(docker setup)"
+        }
+      ]
+    },
+    {
+      "__typename": "Paragraph",
+      "chunks": [
+        {
+          "text": "(nvm install) (confirmation first)"
+        }
+      ]
+    }
+  ]
+}

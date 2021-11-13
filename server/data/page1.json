@@ -1,7 +1,7 @@
 {
   "title": "概要",
-  "currentPageId": 1,
-  "nextPageId": 2,
+  "pageId": "1",
+  "nextPageId": "2",
   "progress": {
     "numPages": 7,
     "currentPageNo": 1

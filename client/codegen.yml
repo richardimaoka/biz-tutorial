@@ -1,6 +1,6 @@
 overwrite: true
 schema:
-  - "http://localhost:4000"
+  - ../server/schema.gql
   - src/clientSideSchema.gql
 documents: "src/**/*.tsx"
 generates:
@@ -14,3 +14,6 @@ generates:
   ./graphql.schema.json:
     plugins:
       - "introspection"
+hooks:
+  afterOneFileWrite:
+    - prettier --write

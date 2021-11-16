@@ -373,7 +373,7 @@ export type GetPageQuery = {
               caption: string | null;
             } | null> | null;
           }
-        | { __typename?: "Output" }
+        | { __typename?: "Output"; body: string | null }
         | {
             __typename?: "Paragraph";
             chunks: Array<{
@@ -403,6 +403,11 @@ export type GetFirstPageIdQueryVariables = Exact<{ [key: string]: never }>;
 export type GetFirstPageIdQuery = {
   __typename?: "Query";
   tutorial: { __typename?: "Tutorial"; firstPageId: string | null } | null;
+};
+
+export type OutputComponentFragment = {
+  __typename?: "Output";
+  body: string | null;
 };
 
 export type PageComponentFragment = {
@@ -490,7 +495,7 @@ export type PageComponentFragment = {
           caption: string | null;
         } | null> | null;
       }
-    | { __typename?: "Output" }
+    | { __typename?: "Output"; body: string | null }
     | {
         __typename?: "Paragraph";
         chunks: Array<{
@@ -647,6 +652,11 @@ export const CommandComponentFragmentDoc = gql`
     command
   }
 `;
+export const OutputComponentFragmentDoc = gql`
+  fragment OutputComponent on Output {
+    body
+  }
+`;
 export const PageComponentFragmentDoc = gql`
   fragment PageComponent on Page {
     title
@@ -673,6 +683,9 @@ export const PageComponentFragmentDoc = gql`
       ... on Command {
         ...CommandComponent
       }
+      ... on Output {
+        ...OutputComponent
+      }
     }
   }
   ${PageTransitionComponentFragmentDoc}
@@ -683,6 +696,7 @@ export const PageComponentFragmentDoc = gql`
   ${FoldableComponentFragmentDoc}
   ${ActionComponentFragmentDoc}
   ${CommandComponentFragmentDoc}
+  ${OutputComponentFragmentDoc}
 `;
 export const GetTutorialDocument = gql`
   query GetTutorial {

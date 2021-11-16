@@ -16,4 +16,4 @@ generates:
       - "introspection"
 hooks:
   afterOneFileWrite:
-    - prettier --write
+    - npx prettier --write

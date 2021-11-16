@@ -12,6 +12,7 @@ import { PageTransitionComponent } from "./PageTransitionComponent";
 import { ProgressBar } from "./ProgressBar";
 import { ActionComponent } from "./ActionComponent";
 import { CommandComponent } from "./CommandComponent";
+import { OutputComponent } from "./OutputComponent";
 
 export interface PageComponentProps {
   fragment: PageComponentFragment;
@@ -43,7 +44,7 @@ export const PageComponent = ({
               case "Foldable":
                 return <FoldableComponent key={index} fragment={element} />;
               case "Output":
-                return <React.Fragment key={index} />;
+                return <OutputComponent key={index} fragment={element} />;
               case "Paragraph":
                 return <ParagraphComponent key={index} fragment={element} />;
               case "ImageGroup":
@@ -87,6 +88,9 @@ PageComponent.fragments = gql`
       ... on Command {
         ...CommandComponent
       }
+      ... on Output {
+        ...OutputComponent
+      }
     }
   }
   ${PageTransitionComponent.fragments}
@@ -96,4 +100,5 @@ PageComponent.fragments = gql`
   ${FoldableComponent.fragments}
   ${ActionComponent.fragments}
   ${CommandComponent.fragments}
+  ${OutputComponent.fragments}
 `;

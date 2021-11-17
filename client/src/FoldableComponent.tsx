@@ -10,6 +10,7 @@ import { FoldedIcon } from "./FoldedIcon";
 import { UnfoldedIcon } from "./UnFoldedIcon";
 import { switchExhaustivenessCheck } from "./switchExhaustivenessCheck";
 import { ActionComponent } from "./ActionComponent";
+import { ImageComponent } from "./ImageComponent";
 
 export interface FoldableComponentProps {
   fragment: FoldableComponentFragment;
@@ -84,6 +85,8 @@ export const FoldableComponent = ({
                     return (
                       <ImageGroupComponent key={index} fragment={element} />
                     );
+                  case "Image":
+                    return <ImageComponent key={index} fragment={element} />;
                   case "Action":
                     return <ActionComponent key={index} fragment={element} />;
                   default:
@@ -115,6 +118,9 @@ FoldableComponent.fragments = gql`
       ... on ImageGroup {
         ...ImageGroupComponent
       }
+      ... on Image {
+        ...ImageComponent
+      }
       ... on Action {
         ...ActionComponent
       }
@@ -125,4 +131,5 @@ FoldableComponent.fragments = gql`
   ${ParagraphComponent.fragments}
   ${ImageGroupComponent.fragments}
   ${ActionComponent.fragments}
+  ${ImageComponent.fragments}
 `;

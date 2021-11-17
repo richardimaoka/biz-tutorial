@@ -13,6 +13,7 @@ import { ProgressBar } from "./ProgressBar";
 import { ActionComponent } from "./ActionComponent";
 import { CommandComponent } from "./CommandComponent";
 import { OutputComponent } from "./OutputComponent";
+import { ImageComponent } from "./ImageComponent";
 
 export interface PageComponentProps {
   fragment: PageComponentFragment;
@@ -49,6 +50,8 @@ export const PageComponent = ({
                 return <ParagraphComponent key={index} fragment={element} />;
               case "ImageGroup":
                 return <ImageGroupComponent key={index} fragment={element} />;
+              case "Image":
+                return <ImageComponent key={index} fragment={element} />;
               case "Action":
                 return <ActionComponent key={index} fragment={element} />;
               default:
@@ -91,6 +94,9 @@ PageComponent.fragments = gql`
       ... on Output {
         ...OutputComponent
       }
+      ... on Image {
+        ...ImageComponent
+      }
     }
   }
   ${PageTransitionComponent.fragments}
@@ -101,4 +107,5 @@ PageComponent.fragments = gql`
   ${ActionComponent.fragments}
   ${CommandComponent.fragments}
   ${OutputComponent.fragments}
+  ${ImageComponent.fragments}
 `;

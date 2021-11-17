@@ -25,9 +25,17 @@ union PageElement =
   | Video
   | Action
   | ImageGroup
+  | Image
   | Foldable
 
-union PlainElement = Paragraph | Command | Output | Video | Action | ImageGroup
+union PlainElement =
+    Paragraph
+  | Command
+  | Output
+  | Video
+  | Action
+  | ImageGroup
+  | Image
 
 enum VideoPlatform {
   YOUTUBE

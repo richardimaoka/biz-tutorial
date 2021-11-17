@@ -87,6 +87,7 @@ export type PageElement =
   | Action
   | Command
   | Foldable
+  | Image
   | ImageGroup
   | Output
   | Paragraph
@@ -100,6 +101,7 @@ export type Paragraph = {
 export type PlainElement =
   | Action
   | Command
+  | Image
   | ImageGroup
   | Output
   | Paragraph
@@ -229,6 +231,7 @@ export type FoldableComponentFragment = {
         } | null;
       }
     | { __typename?: "Command" }
+    | { __typename?: "Image"; url: string | null; caption: string | null }
     | {
         __typename?: "ImageGroup";
         images: Array<{
@@ -336,6 +339,11 @@ export type GetPageQuery = {
                 }
               | { __typename?: "Command" }
               | {
+                  __typename?: "Image";
+                  url: string | null;
+                  caption: string | null;
+                }
+              | {
                   __typename?: "ImageGroup";
                   images: Array<{
                     __typename?: "Image";
@@ -365,6 +373,7 @@ export type GetPageQuery = {
               | null
             > | null;
           }
+        | { __typename?: "Image"; url: string | null; caption: string | null }
         | {
             __typename?: "ImageGroup";
             images: Array<{
@@ -457,6 +466,7 @@ export type PageComponentFragment = {
               } | null;
             }
           | { __typename?: "Command" }
+          | { __typename?: "Image"; url: string | null; caption: string | null }
           | {
               __typename?: "ImageGroup";
               images: Array<{
@@ -487,6 +497,7 @@ export type PageComponentFragment = {
           | null
         > | null;
       }
+    | { __typename?: "Image"; url: string | null; caption: string | null }
     | {
         __typename?: "ImageGroup";
         images: Array<{
@@ -637,6 +648,9 @@ export const FoldableComponentFragmentDoc = gql`
       ... on ImageGroup {
         ...ImageGroupComponent
       }
+      ... on Image {
+        ...ImageComponent
+      }
       ... on Action {
         ...ActionComponent
       }
@@ -645,6 +659,7 @@ export const FoldableComponentFragmentDoc = gql`
   ${VideoComponentFragmentDoc}
   ${ParagraphComponentFragmentDoc}
   ${ImageGroupComponentFragmentDoc}
+  ${ImageComponentFragmentDoc}
   ${ActionComponentFragmentDoc}
 `;
 export const CommandComponentFragmentDoc = gql`
@@ -686,6 +701,9 @@ export const PageComponentFragmentDoc = gql`
       ... on Output {
         ...OutputComponent
       }
+      ... on Image {
+        ...ImageComponent
+      }
     }
   }
   ${PageTransitionComponentFragmentDoc}
@@ -697,6 +715,7 @@ export const PageComponentFragmentDoc = gql`
   ${ActionComponentFragmentDoc}
   ${CommandComponentFragmentDoc}
   ${OutputComponentFragmentDoc}
+  ${ImageComponentFragmentDoc}
 `;
 export const GetTutorialDocument = gql`
   query GetTutorial {

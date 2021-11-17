@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { CarouselControlLeftButton } from "./CarouselControlLeftButton";
 import { CarouselControlRightButton } from "./CarouselControlRightButton";
 
-export const CarouselControlBar = () => (
+export const CarouselControlBar = (): JSX.Element => (
   <div
     css={css`
       background-color: #414141;

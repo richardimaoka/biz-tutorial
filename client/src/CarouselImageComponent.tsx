@@ -1,11 +1,17 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
+import { gql } from "@apollo/client";
+import React from "react";
+import { CarouselImageFragment } from "./generated/graphql";
 
 interface CarouselImageProps {
-  src: string;
-  fit: "fit2width" | "fit2height" | "originalsize";
+  fragment: CarouselImageFragment;
 }
 
-export const CarouselImage = ({ src }: CarouselImageProps) => (
-  <img src={src} alt="" />
-);
+export const CarouselImage = ({ fragment }: CarouselImageProps): JSX.Element =>
+  fragment.url ? <img src={fragment.url} alt="" /> : <React.Fragment />;
+
+CarouselImage.fragments = gql`
+  fragment CarouselImage on Image {
+    url
+  }
+`;

@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-export const CarouselDescription = () => (
+export const CarouselDescription = (): JSX.Element => (
   <div
     css={css`
       padding: 8px;

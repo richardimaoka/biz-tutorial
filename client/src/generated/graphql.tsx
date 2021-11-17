@@ -206,6 +206,23 @@ export type GetTutorialQuery = {
   } | null;
 };
 
+export type CarouselComponentFragment = {
+  __typename?: "ImageGroup";
+  images: Array<{ __typename?: "Image"; url: string | null } | null> | null;
+};
+
+export type CarouselContentFragment = {
+  __typename?: "ImageGroup";
+  images: Array<{ __typename?: "Image"; url: string | null } | null> | null;
+};
+
+export type CarouselImageFragment = {
+  __typename?: "Image";
+  url: string | null;
+};
+
+export type CarouselItemFragment = { __typename?: "Image"; url: string | null };
+
 export type CommandComponentFragment = {
   __typename?: "Command";
   command: string | null;
@@ -571,6 +588,31 @@ export type VideoComponentFragment = {
   caption: string | null;
 };
 
+export const CarouselImageFragmentDoc = gql`
+  fragment CarouselImage on Image {
+    url
+  }
+`;
+export const CarouselItemFragmentDoc = gql`
+  fragment CarouselItem on Image {
+    ...CarouselImage
+  }
+  ${CarouselImageFragmentDoc}
+`;
+export const CarouselContentFragmentDoc = gql`
+  fragment CarouselContent on ImageGroup {
+    images {
+      ...CarouselItem
+    }
+  }
+  ${CarouselItemFragmentDoc}
+`;
+export const CarouselComponentFragmentDoc = gql`
+  fragment CarouselComponent on ImageGroup {
+    ...CarouselContent
+  }
+  ${CarouselContentFragmentDoc}
+`;
 export const HeaderContainerFragmentDoc = gql`
   fragment HeaderContainer on Tutorial {
     title

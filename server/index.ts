@@ -34,10 +34,11 @@ const server = new ApolloServer({
       const page2 = await readJson("/data/page2.json");
       const page3 = await readJson("/data/page3.json");
       const page4 = await readJson("/data/page4.json");
+      const page5 = await readJson("/data/page5.json");
 
       return {
         tutorial: tutorial,
-        pageMap: { "1": page1, "2": page2, "3": page3, "4": page4 },
+        pageMap: { "1": page1, "2": page2, "3": page3, "4": page4, "5": page5 },
       };
     } catch (err) {
       console.log("***ERROR OCURRED***");

@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import { gql } from "@apollo/client";
-import { ImageComponentFragment } from "./generated/graphql";
+import { css } from "@emotion/react";
 import React from "react";
+import { ImageComponentFragment } from "./generated/graphql";
 
 export interface ImageComponentProps {
   fragment: ImageComponentFragment;

@@ -1,8 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { gql } from "@apollo/client";
-import { ImageComponent } from "./ImageComponent";
-import { ImageGroupComponentFragment } from "./generated/graphql";
 import React from "react";
+import { CarouselComponent } from "./CarouselComponent";
+import { ImageGroupComponentFragment } from "./generated/graphql";
+import { ImageComponent } from "./ImageComponent";
 
 export interface ImageGroupComponentProps {
   fragment: ImageGroupComponentFragment;
@@ -15,10 +16,18 @@ export const ImageGroupComponent = ({
 
   if (!groupFragment.images) {
     return <React.Fragment />;
-  } else if (groupFragment.images.length == 1 && groupFragment.images[0]) {
-    return <ImageComponent fragment={groupFragment.images[0]} />;
+  } else if (groupFragment.images.length == 1) {
+    return (
+      <div>
+        {groupFragment.images[0] ? (
+          <ImageComponent fragment={groupFragment.images[0]} />
+        ) : (
+          <React.Fragment />
+        )}
+      </div>
+    );
   } else {
-    return <div></div>;
+    return <CarouselComponent fragment={groupFragment} />;
   }
 };
 

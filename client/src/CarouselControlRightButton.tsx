@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-export const CarouselControlRightButton = () => (
+export const CarouselControlRightButton = (): JSX.Element => (
   <div
     css={css`
       width: 30px;

@@ -1,26 +1,44 @@
 /** @jsxImportSource @emotion/react */
+import { gql } from "@apollo/client";
 import { css } from "@emotion/react";
+import React from "react";
 import { CarouselItem } from "./CarouselItemComponent";
-
-interface Item {
-  id: string;
-  src: string;
-}
+import { CarouselContentFragment } from "./generated/graphql";
 
 interface CarouselContentProps {
-  items: Item[];
+  fragment: CarouselContentFragment;
 }
 
-export const CarouselContent = ({ items }: CarouselContentProps) => (
-  <div
-    css={css`
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-    `}
-  >
-    {items.map((item) => (
-      <CarouselItem key={item.id} src={item.src} />
-    ))}
-  </div>
-);
+export const CarouselContent = ({
+  fragment,
+}: CarouselContentProps): JSX.Element => {
+  return fragment.images ? (
+    <div
+      css={css`
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+      `}
+    >
+      {fragment.images.map((image, index) =>
+        image ? (
+          <CarouselItem key={index} fragment={image} />
+        ) : (
+          <React.Fragment />
+        )
+      )}
+    </div>
+  ) : (
+    <React.Fragment />
+  );
+};
+
+CarouselContent.fragments = gql`
+  fragment CarouselContent on ImageGroup {
+    images {
+      ...CarouselItem
+
+    }
+    ${CarouselItem.fragments}
+  }
+`;

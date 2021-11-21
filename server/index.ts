@@ -8,7 +8,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     tutorial(parent: object, args: any, context: any, info: object) {
-      const mappedPage = context.pageMap[args.currentPageNum];
+      const mappedPage = context.mapping["wsl"][args.currentPageNum];
       const currentPage = mappedPage ? mappedPage : null;
       return { ...context.tutorial, currentPage };
     },
@@ -30,15 +30,23 @@ const server = new ApolloServer({
   context: async ({ req }: any) => {
     try {
       const tutorial = await readJson("/data/tutorial.json");
-      const page1 = await readJson("/data/page1.json");
-      const page2 = await readJson("/data/page2.json");
-      const page3 = await readJson("/data/page3.json");
-      const page4 = await readJson("/data/page4.json");
-      const page5 = await readJson("/data/page5.json");
+      const wslPage1 = await readJson("/data/page1.json");
+      const wslPage2 = await readJson("/data/page2.json");
+      const wslPage3 = await readJson("/data/page3.json");
+      const wslPage4 = await readJson("/data/page4.json");
+      const wslPage5 = await readJson("/data/page5.json");
 
       return {
         tutorial: tutorial,
-        pageMap: { "1": page1, "2": page2, "3": page3, "4": page4, "5": page5 },
+        mapping: {
+          wsl: {
+            "1": wslPage1,
+            "2": wslPage2,
+            "3": wslPage3,
+            "4": wslPage4,
+            "5": wslPage5,
+          },
+        },
       };
     } catch (err) {
       console.log("***ERROR OCURRED***");

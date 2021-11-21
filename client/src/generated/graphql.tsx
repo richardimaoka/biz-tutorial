@@ -163,7 +163,6 @@ export type TextChunkWithOperation = {
 export type Tutorial = {
   __typename?: "Tutorial";
   currentPage: Maybe<Page>;
-  firstPageNum: Maybe<Scalars["String"]>;
   id: Maybe<Scalars["ID"]>;
   pages: Maybe<Array<Maybe<Page>>>;
   title: Maybe<Scalars["String"]>;
@@ -202,11 +201,7 @@ export type GetTutorialQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetTutorialQuery = {
   __typename?: "Query";
-  tutorial: {
-    __typename?: "Tutorial";
-    firstPageNum: string | null;
-    title: string | null;
-  } | null;
+  tutorial: { __typename?: "Tutorial"; title: string | null } | null;
 };
 
 export type CarouselComponentFragment = {
@@ -426,13 +421,6 @@ export type GetPageQuery = {
       > | null;
     } | null;
   } | null;
-};
-
-export type GetFirstPageNumQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetFirstPageNumQuery = {
-  __typename?: "Query";
-  tutorial: { __typename?: "Tutorial"; firstPageNum: string | null } | null;
 };
 
 export type OutputComponentFragment = {
@@ -766,7 +754,6 @@ export const PageComponentFragmentDoc = gql`
 export const GetTutorialDocument = gql`
   query GetTutorial {
     tutorial(id: "") {
-      firstPageNum
       ...HeaderContainer
     }
   }
@@ -871,61 +858,4 @@ export type GetPageLazyQueryHookResult = ReturnType<typeof useGetPageLazyQuery>;
 export type GetPageQueryResult = Apollo.QueryResult<
   GetPageQuery,
   GetPageQueryVariables
->;
-export const GetFirstPageNumDocument = gql`
-  query GetFirstPageNum {
-    tutorial(id: "") {
-      firstPageNum
-    }
-  }
-`;
-
-/**
- * __useGetFirstPageNumQuery__
- *
- * To run a query within a React component, call `useGetFirstPageNumQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetFirstPageNumQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetFirstPageNumQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetFirstPageNumQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetFirstPageNumQuery,
-    GetFirstPageNumQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetFirstPageNumQuery, GetFirstPageNumQueryVariables>(
-    GetFirstPageNumDocument,
-    options
-  );
-}
-export function useGetFirstPageNumLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetFirstPageNumQuery,
-    GetFirstPageNumQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    GetFirstPageNumQuery,
-    GetFirstPageNumQueryVariables
-  >(GetFirstPageNumDocument, options);
-}
-export type GetFirstPageNumQueryHookResult = ReturnType<
-  typeof useGetFirstPageNumQuery
->;
-export type GetFirstPageNumLazyQueryHookResult = ReturnType<
-  typeof useGetFirstPageNumLazyQuery
->;
-export type GetFirstPageNumQueryResult = Apollo.QueryResult<
-  GetFirstPageNumQuery,
-  GetFirstPageNumQueryVariables
 >;

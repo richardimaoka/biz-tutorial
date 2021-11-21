@@ -6,7 +6,7 @@ import { useGetFirstPageIdQuery } from "./generated/graphql";
 //This is read by GraphQL codegen to generate types
 gql`
   query GetFirstPageId {
-    tutorial {
+    tutorial(id: "") {
       firstPageId
     }
   }

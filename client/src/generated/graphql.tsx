@@ -75,9 +75,10 @@ export type Output = {
 
 export type Page = {
   __typename?: "Page";
-  id: Scalars["ID"];
+  id: Maybe<Scalars["ID"]>;
   nextPageId: Maybe<Scalars["String"]>;
   pageElements: Maybe<Array<Maybe<PageElement>>>;
+  pageNo: Maybe<Scalars["String"]>;
   prevPageId: Maybe<Scalars["String"]>;
   progress: Maybe<Progress>;
   title: Maybe<Scalars["String"]>;
@@ -120,6 +121,7 @@ export type Query = {
 
 export type QueryTutorialArgs = {
   currentPageId: Maybe<Scalars["String"]>;
+  id: Scalars["String"];
 };
 
 export type TextChunk = {
@@ -162,6 +164,7 @@ export type Tutorial = {
   __typename?: "Tutorial";
   currentPage: Maybe<Page>;
   firstPageId: Maybe<Scalars["String"]>;
+  id: Maybe<Scalars["ID"]>;
   pages: Maybe<Array<Maybe<Page>>>;
   title: Maybe<Scalars["String"]>;
   unusedParam: Maybe<Scalars["Int"]>;
@@ -301,6 +304,7 @@ export type ImageGroupComponentFragment = {
 };
 
 export type GetPageQueryVariables = Exact<{
+  tutorialId: Scalars["String"];
   currentPageId: Scalars["String"];
 }>;
 
@@ -761,7 +765,7 @@ export const PageComponentFragmentDoc = gql`
 `;
 export const GetTutorialDocument = gql`
   query GetTutorial {
-    tutorial {
+    tutorial(id: "") {
       firstPageId
       ...HeaderContainer
     }
@@ -817,8 +821,8 @@ export type GetTutorialQueryResult = Apollo.QueryResult<
   GetTutorialQueryVariables
 >;
 export const GetPageDocument = gql`
-  query GetPage($currentPageId: String!) {
-    tutorial(currentPageId: $currentPageId) {
+  query GetPage($tutorialId: String!, $currentPageId: String!) {
+    tutorial(id: $tutorialId, currentPageId: $currentPageId) {
       currentPage {
         ...PageComponent
       }
@@ -839,6 +843,7 @@ export const GetPageDocument = gql`
  * @example
  * const { data, loading, error } = useGetPageQuery({
  *   variables: {
+ *      tutorialId: // value for 'tutorialId'
  *      currentPageId: // value for 'currentPageId'
  *   },
  * });
@@ -869,7 +874,7 @@ export type GetPageQueryResult = Apollo.QueryResult<
 >;
 export const GetFirstPageIdDocument = gql`
   query GetFirstPageId {
-    tutorial {
+    tutorial(id: "") {
       firstPageId
     }
   }

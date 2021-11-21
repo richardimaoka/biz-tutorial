@@ -20,7 +20,7 @@ const client = new ApolloClient({
 //This is read by GraphQL codegen to generate types
 gql`
   query GetTutorial {
-    tutorial {
+    tutorial (id: ""){
       firstPageId
       ...HeaderContainer
     }
@@ -55,7 +55,7 @@ const AppComponent = (): JSX.Element => (
       <Routes>
         <Route path="/" element={<TutorialComponent />}>
           <Route index element={<NavigateToFirstPageContainer />} />
-          <Route path=":pageId" element={<MainContainer />} />
+          <Route path=":pageNo" element={<MainContainer />} />
         </Route>
         <Route path="*" element={<div>404</div>} />
       </Routes>

@@ -7,8 +7,8 @@ import { useGetPageQuery } from "./generated/graphql";
 
 //This is read by GraphQL codegen to generate types
 gql`
-  query GetPage($currentPageId: String!) {
-    tutorial(currentPageId: $currentPageId) {
+  query GetPage($tutorialId: String!, $currentPageId: String!) {
+    tutorial(id: $tutorialId, currentPageId: $currentPageId) {
       currentPage {
         ...PageComponent
       }
@@ -18,9 +18,9 @@ gql`
   ${PageComponent.fragments}
 `;
 
-const InnerComponent = ({ pageId }: { pageId: string }) => {
+const InnerComponent = ({ pageNo }: { pageNo: string }) => {
   const { loading, error, data } = useGetPageQuery({
-    variables: { currentPageId: pageId },
+    variables: { tutorialId: "", currentPageId: pageNo },
   });
 
   if (loading) {
@@ -59,10 +59,10 @@ const InnerComponent = ({ pageId }: { pageId: string }) => {
 };
 
 export const MainContainer = (): JSX.Element => {
-  const params = useParams<"pageId">();
-  return params.pageId ? (
-    <InnerComponent pageId={params.pageId} />
+  const params = useParams<"pageNo">();
+  return params.pageNo ? (
+    <InnerComponent pageNo={params.pageNo} />
   ) : (
-    <div>invalid page id</div>
+    <div>invalid page no</div>
   );
 };

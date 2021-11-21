@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { gql } from "@apollo/client";
 import { css } from "@emotion/react";
-import React from "react";
 import { CarouselItem } from "./CarouselItemComponent";
 import { CarouselContentFragment } from "./generated/graphql";
 
@@ -21,15 +20,11 @@ export const CarouselContent = ({
       `}
     >
       {fragment.images.map((image, index) =>
-        image ? (
-          <CarouselItem key={index} fragment={image} />
-        ) : (
-          <React.Fragment />
-        )
+        image ? <CarouselItem key={index} fragment={image} /> : <></>
       )}
     </div>
   ) : (
-    <React.Fragment />
+    <></>
   );
 };
 

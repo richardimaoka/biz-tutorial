@@ -2,7 +2,6 @@
 import { PageTitle } from "./PageTitleComponent";
 import { gql } from "@apollo/client";
 import { PageComponentFragment } from "./generated/graphql";
-import React from "react";
 import { VideoComponent } from "./VideoComponent";
 import { ParagraphComponent } from "./ParagraphComponent";
 import { ImageGroupComponent } from "./ImageGroupComponent";
@@ -23,19 +22,19 @@ export const PageComponent = ({
   fragment,
 }: PageComponentProps): JSX.Element => {
   if (!fragment.title || !fragment.pageElements) {
-    return <React.Fragment />;
+    return <></>;
   } else {
     return (
       <div>
         {fragment.progress ? (
           <ProgressBar fragment={fragment.progress} />
         ) : (
-          <React.Fragment />
+          <></>
         )}
         <PageTitle title={fragment.title} />
         {fragment.pageElements.map((element, index) => {
           if (!element || !element.__typename) {
-            return <React.Fragment key={index} />;
+            return <></>;
           } else {
             switch (element.__typename) {
               case "Video":

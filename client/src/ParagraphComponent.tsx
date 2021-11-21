@@ -1,9 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
-import { TextChunkComponent } from "./TextChunkComponent";
 import { gql } from "@apollo/client";
+import { css } from "@emotion/react";
 import { ParagraphComponentFragment } from "./generated/graphql";
-import React from "react";
+import { TextChunkComponent } from "./TextChunkComponent";
 
 interface ParagraphProps {
   fragment: ParagraphComponentFragment;
@@ -13,7 +12,7 @@ export const ParagraphComponent = ({
   fragment,
 }: ParagraphProps): JSX.Element => {
   if (!fragment.chunks) {
-    return <React.Fragment />;
+    return <></>;
   } else {
     return (
       <div
@@ -29,11 +28,7 @@ export const ParagraphComponent = ({
           contentEditable={false}
         >
           {fragment.chunks.map((chunk, index) =>
-            chunk ? (
-              <TextChunkComponent key={index} fragment={chunk} />
-            ) : (
-              <React.Fragment />
-            )
+            chunk ? <TextChunkComponent key={index} fragment={chunk} /> : <></>
           )}
         </p>
       </div>

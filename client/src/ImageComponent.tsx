@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { gql } from "@apollo/client";
 import { css } from "@emotion/react";
-import React from "react";
 import { ImageComponentFragment } from "./generated/graphql";
 
 export interface ImageComponentProps {
@@ -22,10 +21,10 @@ export const ImageComponent = ({
       >
         <img width="640" src={fragment.url} alt="" />
       </div>
-      {fragment.caption ? <div>{fragment.caption}</div> : <React.Fragment />}
+      {fragment.caption ? <div>{fragment.caption}</div> : <></>}
     </div>
   ) : (
-    <React.Fragment />
+    <></>
   );
 };
 

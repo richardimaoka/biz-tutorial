@@ -1,11 +1,10 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import { gql } from "@apollo/client";
+import { css } from "@emotion/react";
+import { Link } from "react-router-dom";
 import { PageTransitionComponentFragment } from "./generated/graphql";
-import React from "react";
 import { NextPageButton } from "./NextPageButton";
 import { PrevPageButton } from "./PrevPageButton";
-import { Link } from "react-router-dom";
 
 export interface PageTransitionComponentProps {
   fragment: PageTransitionComponentFragment;
@@ -37,7 +36,7 @@ export const PageTransitionComponent = ({
       )}
     </div>
   ) : (
-    <React.Fragment />
+    <></>
   );
 };
 

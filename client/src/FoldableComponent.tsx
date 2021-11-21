@@ -58,7 +58,7 @@ export const FoldableComponent = ({
         </div>
       )}
       {folded ? (
-        <React.Fragment />
+        <></>
       ) : (
         <div
           css={css`
@@ -73,9 +73,9 @@ export const FoldableComponent = ({
                   case "Video":
                     return <VideoComponent key={index} fragment={element} />;
                   case "Command":
-                    return <React.Fragment key={index} />;
+                    return <></>;
                   case "Output":
-                    return <React.Fragment key={index} />;
+                    return <></>;
                   case "Paragraph":
                     console.log(element);
                     return (
@@ -92,16 +92,16 @@ export const FoldableComponent = ({
                   default:
                     return switchExhaustivenessCheck(element.__typename);
                 }
-              } else <React.Fragment key={index} />;
+              } else <></>;
             })
           ) : (
-            <React.Fragment />
+            <></>
           )}
         </div>
       )}
     </div>
   ) : (
-    <React.Fragment />
+    <></>
   );
 };
 

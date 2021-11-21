@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import { gql } from "@apollo/client";
-import React from "react";
 import { CarouselImageFragment } from "./generated/graphql";
 
 interface CarouselImageProps {
@@ -8,7 +7,7 @@ interface CarouselImageProps {
 }
 
 export const CarouselImage = ({ fragment }: CarouselImageProps): JSX.Element =>
-  fragment.url ? <img src={fragment.url} alt="" /> : <React.Fragment />;
+  fragment.url ? <img src={fragment.url} alt="" /> : <></>;
 
 CarouselImage.fragments = gql`
   fragment CarouselImage on Image {

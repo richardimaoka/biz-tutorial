@@ -1,5 +1,4 @@
 import { gql } from "@apollo/client";
-import React from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useGetFirstPageIdQuery } from "./generated/graphql";
@@ -19,7 +18,7 @@ const InnerNavigate = ({ firstPageId }: { firstPageId: string }) => {
     navigate("/" + firstPageId);
   });
 
-  return <React.Fragment />;
+  return <></>;
 };
 
 export const NavigateToFirstPageContainer = (): JSX.Element => {
@@ -37,7 +36,7 @@ export const NavigateToFirstPageContainer = (): JSX.Element => {
     return data.tutorial.firstPageId ? (
       <InnerNavigate firstPageId={data.tutorial.firstPageId} />
     ) : (
-      <React.Fragment />
+      <></>
     );
   }
 };

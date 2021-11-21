@@ -1,16 +1,15 @@
 /** @jsxImportSource @emotion/react */
 //import { css } from "@emotion/react";
-import { HeaderContainer } from "./HeaderContainer";
-import { MainContainer } from "./MainContainer";
 import {
-  InMemoryCache,
   ApolloClient,
   ApolloProvider,
   gql,
+  InMemoryCache,
 } from "@apollo/client";
-import React from "react";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { useGetTutorialQuery } from "./generated/graphql";
+import { HeaderContainer } from "./HeaderContainer";
+import { MainContainer } from "./MainContainer";
 import { NavigateToFirstPageContainer } from "./NavigateToFirstPageContainer";
 
 const client = new ApolloClient({
@@ -42,10 +41,10 @@ const TutorialComponent = (): JSX.Element => {
     return <div>{`Error! returned data.tutorial is undefined or null`}</div>;
   } else {
     return (
-      <React.Fragment>
+      <>
         <HeaderContainer fragment={data.tutorial}></HeaderContainer>
         <Outlet />
-      </React.Fragment>
+      </>
     );
   }
 };

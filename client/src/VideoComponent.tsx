@@ -1,8 +1,7 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import { gql } from "@apollo/client";
+import { css } from "@emotion/react";
 import { VideoComponentFragment } from "./generated/graphql";
-import React from "react";
 
 export interface VideoComponentProps {
   fragment: VideoComponentFragment;
@@ -12,7 +11,7 @@ export const VideoComponent = ({
   fragment,
 }: VideoComponentProps): JSX.Element => {
   if (!fragment.url || !fragment.platform) {
-    return <React.Fragment />;
+    return <></>;
   } else {
     return (
       <div>

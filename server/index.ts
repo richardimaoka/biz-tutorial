@@ -29,12 +29,12 @@ const server = new ApolloServer({
   resolvers,
   context: async ({ req }: any) => {
     try {
-      const tutorial = await readJson("/data/tutorial.json");
-      const wslPage1 = await readJson("/data/page1.json");
-      const wslPage2 = await readJson("/data/page2.json");
-      const wslPage3 = await readJson("/data/page3.json");
-      const wslPage4 = await readJson("/data/page4.json");
-      const wslPage5 = await readJson("/data/page5.json");
+      const tutorial = await readJson("/data/wsl/tutorial.json");
+      const wslPage1 = await readJson("/data/wsl/page1.json");
+      const wslPage2 = await readJson("/data/wsl/page2.json");
+      const wslPage3 = await readJson("/data/wsl/page3.json");
+      const wslPage4 = await readJson("/data/wsl/page4.json");
+      const wslPage5 = await readJson("/data/wsl/page5.json");
 
       return {
         tutorial: tutorial,

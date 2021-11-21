@@ -20,7 +20,7 @@ gql`
 
 const InnerComponent = ({ pageNum }: { pageNum: string }) => {
   const { loading, error, data } = useGetPageQuery({
-    variables: { tutorialId: "", currentPageNum: pageNum },
+    variables: { tutorialId: "wsl", currentPageNum: pageNum },
   });
 
   if (loading) {

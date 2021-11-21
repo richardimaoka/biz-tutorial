@@ -753,7 +753,7 @@ export const PageComponentFragmentDoc = gql`
 `;
 export const GetTutorialDocument = gql`
   query GetTutorial {
-    tutorial(id: "") {
+    tutorial(id: "wsl") {
       ...HeaderContainer
     }
   }

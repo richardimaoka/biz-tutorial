@@ -20,7 +20,7 @@ const client = new ApolloClient({
 //This is read by GraphQL codegen to generate types
 gql`
   query GetTutorial {
-    tutorial (id: ""){
+    tutorial (id: "wsl"){
       ...HeaderContainer
     }
     ${HeaderContainer.fragments}

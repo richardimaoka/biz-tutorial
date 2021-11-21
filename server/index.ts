@@ -8,12 +8,11 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     tutorial(parent: object, args: any, context: any, info: object) {
-      const mappedTutorial = context.mapping["wsl"];
-      const mappedPage = mappedTutorial
-        ? mappedTutorial[args.currentPageNum]
-        : undefined;
-      const currentPage = mappedPage ? mappedPage : null;
-      return { ...context.tutorial, currentPage };
+      const entry = context.mapping[args.id];
+      const tutorial = entry ? entry["tutorial"] : undefined;
+      const currentPage =
+        entry && entry.pages ? entry.pages[args.currentPageNum] : undefined;
+      return { ...tutorial, currentPage };
     },
   },
 };
@@ -40,14 +39,16 @@ const server = new ApolloServer({
       const wslPage5 = await readJson("/data/wsl/page5.json");
 
       return {
-        tutorial: tutorial,
         mapping: {
           wsl: {
-            "1": wslPage1,
-            "2": wslPage2,
-            "3": wslPage3,
-            "4": wslPage4,
-            "5": wslPage5,
+            tutorial: tutorial,
+            pages: {
+              "1": wslPage1,
+              "2": wslPage2,
+              "3": wslPage3,
+              "4": wslPage4,
+              "5": wslPage5,
+            },
           },
         },
       };

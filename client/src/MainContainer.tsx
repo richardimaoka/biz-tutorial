@@ -7,8 +7,8 @@ import { useGetPageQuery } from "./generated/graphql";
 
 //This is read by GraphQL codegen to generate types
 gql`
-  query GetPage($tutorialId: String!, $currentPageId: String!) {
-    tutorial(id: $tutorialId, currentPageId: $currentPageId) {
+  query GetPage($tutorialId: String!, $currentPageNum: String!) {
+    tutorial(id: $tutorialId, currentPageNum: $currentPageNum) {
       currentPage {
         ...PageComponent
       }
@@ -20,7 +20,7 @@ gql`
 
 const InnerComponent = ({ pageNum }: { pageNum: string }) => {
   const { loading, error, data } = useGetPageQuery({
-    variables: { tutorialId: "", currentPageId: pageNum },
+    variables: { tutorialId: "", currentPageNum: pageNum },
   });
 
   if (loading) {

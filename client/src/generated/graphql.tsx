@@ -76,10 +76,10 @@ export type Output = {
 export type Page = {
   __typename?: "Page";
   id: Maybe<Scalars["ID"]>;
-  nextPageId: Maybe<Scalars["String"]>;
+  nextPageNum: Maybe<Scalars["String"]>;
   pageElements: Maybe<Array<Maybe<PageElement>>>;
   pageNum: Maybe<Scalars["String"]>;
-  prevPageId: Maybe<Scalars["String"]>;
+  prevPageNum: Maybe<Scalars["String"]>;
   progress: Maybe<Progress>;
   title: Maybe<Scalars["String"]>;
 };
@@ -110,7 +110,7 @@ export type PlainElement =
 
 export type Progress = {
   __typename?: "Progress";
-  currentPageNo: Maybe<Scalars["Int"]>;
+  currentPageNum: Maybe<Scalars["Int"]>;
   numPages: Maybe<Scalars["Int"]>;
 };
 
@@ -120,7 +120,7 @@ export type Query = {
 };
 
 export type QueryTutorialArgs = {
-  currentPageId: Maybe<Scalars["String"]>;
+  currentPageNum: Maybe<Scalars["String"]>;
   id: Scalars["String"];
 };
 
@@ -163,7 +163,7 @@ export type TextChunkWithOperation = {
 export type Tutorial = {
   __typename?: "Tutorial";
   currentPage: Maybe<Page>;
-  firstPageId: Maybe<Scalars["String"]>;
+  firstPageNum: Maybe<Scalars["String"]>;
   id: Maybe<Scalars["ID"]>;
   pages: Maybe<Array<Maybe<Page>>>;
   title: Maybe<Scalars["String"]>;
@@ -204,7 +204,7 @@ export type GetTutorialQuery = {
   __typename?: "Query";
   tutorial: {
     __typename?: "Tutorial";
-    firstPageId: string | null;
+    firstPageNum: string | null;
     title: string | null;
   } | null;
 };
@@ -305,7 +305,7 @@ export type ImageGroupComponentFragment = {
 
 export type GetPageQueryVariables = Exact<{
   tutorialId: Scalars["String"];
-  currentPageId: Scalars["String"];
+  currentPageNum: Scalars["String"];
 }>;
 
 export type GetPageQuery = {
@@ -315,11 +315,11 @@ export type GetPageQuery = {
     currentPage: {
       __typename?: "Page";
       title: string | null;
-      nextPageId: string | null;
-      prevPageId: string | null;
+      nextPageNum: string | null;
+      prevPageNum: string | null;
       progress: {
         __typename?: "Progress";
-        currentPageNo: number | null;
+        currentPageNum: number | null;
         numPages: number | null;
       } | null;
       pageElements: Array<
@@ -428,11 +428,11 @@ export type GetPageQuery = {
   } | null;
 };
 
-export type GetFirstPageIdQueryVariables = Exact<{ [key: string]: never }>;
+export type GetFirstPageNumQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetFirstPageIdQuery = {
+export type GetFirstPageNumQuery = {
   __typename?: "Query";
-  tutorial: { __typename?: "Tutorial"; firstPageId: string | null } | null;
+  tutorial: { __typename?: "Tutorial"; firstPageNum: string | null } | null;
 };
 
 export type OutputComponentFragment = {
@@ -443,11 +443,11 @@ export type OutputComponentFragment = {
 export type PageComponentFragment = {
   __typename?: "Page";
   title: string | null;
-  nextPageId: string | null;
-  prevPageId: string | null;
+  nextPageNum: string | null;
+  prevPageNum: string | null;
   progress: {
     __typename?: "Progress";
-    currentPageNo: number | null;
+    currentPageNum: number | null;
     numPages: number | null;
   } | null;
   pageElements: Array<
@@ -552,8 +552,8 @@ export type PageComponentFragment = {
 
 export type PageTransitionComponentFragment = {
   __typename?: "Page";
-  nextPageId: string | null;
-  prevPageId: string | null;
+  nextPageNum: string | null;
+  prevPageNum: string | null;
 };
 
 export type ParagraphComponentFragment = {
@@ -571,7 +571,7 @@ export type ParagraphComponentFragment = {
 
 export type ProgressBarFragment = {
   __typename?: "Progress";
-  currentPageNo: number | null;
+  currentPageNum: number | null;
   numPages: number | null;
 };
 
@@ -624,13 +624,13 @@ export const HeaderContainerFragmentDoc = gql`
 `;
 export const PageTransitionComponentFragmentDoc = gql`
   fragment PageTransitionComponent on Page {
-    nextPageId
-    prevPageId
+    nextPageNum
+    prevPageNum
   }
 `;
 export const ProgressBarFragmentDoc = gql`
   fragment ProgressBar on Progress {
-    currentPageNo
+    currentPageNum
     numPages
   }
 `;
@@ -766,7 +766,7 @@ export const PageComponentFragmentDoc = gql`
 export const GetTutorialDocument = gql`
   query GetTutorial {
     tutorial(id: "") {
-      firstPageId
+      firstPageNum
       ...HeaderContainer
     }
   }
@@ -821,8 +821,8 @@ export type GetTutorialQueryResult = Apollo.QueryResult<
   GetTutorialQueryVariables
 >;
 export const GetPageDocument = gql`
-  query GetPage($tutorialId: String!, $currentPageId: String!) {
-    tutorial(id: $tutorialId, currentPageId: $currentPageId) {
+  query GetPage($tutorialId: String!, $currentPageNum: String!) {
+    tutorial(id: $tutorialId, currentPageNum: $currentPageNum) {
       currentPage {
         ...PageComponent
       }
@@ -844,7 +844,7 @@ export const GetPageDocument = gql`
  * const { data, loading, error } = useGetPageQuery({
  *   variables: {
  *      tutorialId: // value for 'tutorialId'
- *      currentPageId: // value for 'currentPageId'
+ *      currentPageNum: // value for 'currentPageNum'
  *   },
  * });
  */
@@ -872,60 +872,60 @@ export type GetPageQueryResult = Apollo.QueryResult<
   GetPageQuery,
   GetPageQueryVariables
 >;
-export const GetFirstPageIdDocument = gql`
-  query GetFirstPageId {
+export const GetFirstPageNumDocument = gql`
+  query GetFirstPageNum {
     tutorial(id: "") {
-      firstPageId
+      firstPageNum
     }
   }
 `;
 
 /**
- * __useGetFirstPageIdQuery__
+ * __useGetFirstPageNumQuery__
  *
- * To run a query within a React component, call `useGetFirstPageIdQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetFirstPageIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetFirstPageNumQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetFirstPageNumQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetFirstPageIdQuery({
+ * const { data, loading, error } = useGetFirstPageNumQuery({
  *   variables: {
  *   },
  * });
  */
-export function useGetFirstPageIdQuery(
+export function useGetFirstPageNumQuery(
   baseOptions?: Apollo.QueryHookOptions<
-    GetFirstPageIdQuery,
-    GetFirstPageIdQueryVariables
+    GetFirstPageNumQuery,
+    GetFirstPageNumQueryVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetFirstPageIdQuery, GetFirstPageIdQueryVariables>(
-    GetFirstPageIdDocument,
+  return Apollo.useQuery<GetFirstPageNumQuery, GetFirstPageNumQueryVariables>(
+    GetFirstPageNumDocument,
     options
   );
 }
-export function useGetFirstPageIdLazyQuery(
+export function useGetFirstPageNumLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
-    GetFirstPageIdQuery,
-    GetFirstPageIdQueryVariables
+    GetFirstPageNumQuery,
+    GetFirstPageNumQueryVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetFirstPageIdQuery, GetFirstPageIdQueryVariables>(
-    GetFirstPageIdDocument,
-    options
-  );
+  return Apollo.useLazyQuery<
+    GetFirstPageNumQuery,
+    GetFirstPageNumQueryVariables
+  >(GetFirstPageNumDocument, options);
 }
-export type GetFirstPageIdQueryHookResult = ReturnType<
-  typeof useGetFirstPageIdQuery
+export type GetFirstPageNumQueryHookResult = ReturnType<
+  typeof useGetFirstPageNumQuery
 >;
-export type GetFirstPageIdLazyQueryHookResult = ReturnType<
-  typeof useGetFirstPageIdLazyQuery
+export type GetFirstPageNumLazyQueryHookResult = ReturnType<
+  typeof useGetFirstPageNumLazyQuery
 >;
-export type GetFirstPageIdQueryResult = Apollo.QueryResult<
-  GetFirstPageIdQuery,
-  GetFirstPageIdQueryVariables
+export type GetFirstPageNumQueryResult = Apollo.QueryResult<
+  GetFirstPageNumQuery,
+  GetFirstPageNumQueryVariables
 >;

@@ -21,7 +21,7 @@ const client = new ApolloClient({
 gql`
   query GetTutorial {
     tutorial (id: ""){
-      firstPageId
+      firstPageNum
       ...HeaderContainer
     }
     ${HeaderContainer.fragments}

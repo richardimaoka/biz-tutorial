@@ -2,10 +2,10 @@
   "title": "Windows Defender FireWallの設定",
   "id": "5",
   "pageNum": "5",
-  "prevPageId": "4",
+  "prevPageNum": "4",
   "progress": {
     "numPages": 7,
-    "currentPageNo": 5
+    "currentPageNum": 5
   },
   "pageElements": [
     {

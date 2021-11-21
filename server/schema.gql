@@ -1,23 +1,22 @@
 type Query {
-  tutorial(id: String!, currentPageId: String): Tutorial
+  tutorial(id: String!, currentPageNum: String): Tutorial
 }
 
 type Tutorial {
   id: ID
   title: String
   pages: [Page]
-  firstPageId: String
   currentPage: Page
 }
 
 type Page {
   id: ID
   pageNum: String
+  nextPageNum: String
+  prevPageNum: String
   title: String
   progress: Progress
   pageElements: [PageElement]
-  nextPageId: String
-  prevPageId: String
 }
 
 union PageElement =
@@ -65,7 +64,7 @@ type Output {
 
 type Progress {
   numPages: Int
-  currentPageNo: Int
+  currentPageNum: Int
 }
 
 type Paragraph {

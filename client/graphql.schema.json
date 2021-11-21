@@ -340,7 +340,7 @@
             "deprecationReason": null
           },
           {
-            "name": "nextPageId",
+            "name": "nextPageNum",
             "description": null,
             "args": [],
             "type": {
@@ -380,7 +380,7 @@
             "deprecationReason": null
           },
           {
-            "name": "prevPageId",
+            "name": "prevPageNum",
             "description": null,
             "args": [],
             "type": {
@@ -551,7 +551,7 @@
         "description": null,
         "fields": [
           {
-            "name": "currentPageNo",
+            "name": "currentPageNum",
             "description": null,
             "args": [],
             "type": {
@@ -590,7 +590,7 @@
             "description": null,
             "args": [
               {
-                "name": "currentPageId",
+                "name": "currentPageNum",
                 "description": null,
                 "type": {
                   "kind": "SCALAR",
@@ -925,7 +925,7 @@
             "deprecationReason": null
           },
           {
-            "name": "firstPageId",
+            "name": "firstPageNum",
             "description": null,
             "args": [],
             "type": {

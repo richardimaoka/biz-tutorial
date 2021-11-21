@@ -8,7 +8,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     tutorial(parent: object, args: any, context: any, info: object) {
-      const mappedPage = context.pageMap[args.currentPageId];
+      const mappedPage = context.pageMap[args.currentPageNum];
       const currentPage = mappedPage ? mappedPage : null;
       return { ...context.tutorial, currentPage };
     },

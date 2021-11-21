@@ -2,11 +2,11 @@
   "title": "VcXsrvのインストール",
   "id": "4",
   "pageNum": "4",
-  "prevPageId": "3",
-  "nextPageId": "5",
+  "prevPageNum": "3",
+  "nextPageNum": "5",
   "progress": {
     "numPages": 7,
-    "currentPageNo": 4
+    "currentPageNum": 4
   },
   "pageElements": [
     {

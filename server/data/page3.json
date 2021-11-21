@@ -2,11 +2,11 @@
   "title": "Cypressのintallとverify",
   "id": "3",
   "pageNum": "3",
-  "prevPageId": "2",
-  "nextPageId": "4",
+  "prevPageNum": "2",
+  "nextPageNum": "4",
   "progress": {
     "numPages": 7,
-    "currentPageNo": 3
+    "currentPageNum": 3
   },
   "pageElements": [
     {

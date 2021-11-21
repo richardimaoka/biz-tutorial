@@ -2,10 +2,10 @@
   "title": "概要",
   "id": "1",
   "pageNum": "1",
-  "nextPageId": "2",
+  "nextPageNum": "2",
   "progress": {
     "numPages": 7,
-    "currentPageNo": 1
+    "currentPageNum": 1
   },
   "pageElements": [
     {

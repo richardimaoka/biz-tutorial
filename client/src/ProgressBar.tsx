@@ -8,7 +8,7 @@ export interface ProgressBarProps {
 }
 
 export const ProgressBar = ({ fragment }: ProgressBarProps): JSX.Element => {
-  if (!fragment.currentPageNo || !fragment.numPages) {
+  if (!fragment.currentPageNum || !fragment.numPages) {
     return <div />;
   } else {
     const arraySizeOfNumPages = new Array(fragment.numPages).fill("");
@@ -23,7 +23,7 @@ export const ProgressBar = ({ fragment }: ProgressBarProps): JSX.Element => {
           div:last-of-type {
             margin-right: 0px;
           }
-          div:nth-of-type(${fragment.currentPageNo}) {
+          div:nth-of-type(${fragment.currentPageNum}) {
             background-color: #3edf33;
           }
         `}
@@ -47,7 +47,7 @@ export const ProgressBar = ({ fragment }: ProgressBarProps): JSX.Element => {
 
 ProgressBar.fragments = gql`
   fragment ProgressBar on Progress {
-    currentPageNo
+    currentPageNum
     numPages
   }
 `;

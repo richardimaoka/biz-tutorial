@@ -13,22 +13,22 @@ export interface PageTransitionComponentProps {
 export const PageTransitionComponent = ({
   fragment,
 }: PageTransitionComponentProps): JSX.Element => {
-  return fragment.prevPageId || fragment.nextPageId ? (
+  return fragment.prevPageNum || fragment.nextPageNum ? (
     <div
       css={css`
         display: flex;
         justify-content: space-between;
       `}
     >
-      {fragment.prevPageId ? (
-        <Link to={"/" + fragment.prevPageId}>
+      {fragment.prevPageNum ? (
+        <Link to={"/" + fragment.prevPageNum}>
           <PrevPageButton />
         </Link>
       ) : (
         <div />
       )}
-      {fragment.nextPageId ? (
-        <Link to={"/" + fragment.nextPageId}>
+      {fragment.nextPageNum ? (
+        <Link to={"/" + fragment.nextPageNum}>
           <NextPageButton />
         </Link>
       ) : (
@@ -42,7 +42,7 @@ export const PageTransitionComponent = ({
 
 PageTransitionComponent.fragments = gql`
   fragment PageTransitionComponent on Page {
-    nextPageId
-    prevPageId
+    nextPageNum
+    prevPageNum
   }
 `;

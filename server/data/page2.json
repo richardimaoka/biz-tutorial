@@ -2,11 +2,11 @@
   "title": "Prerequisites",
   "id": "2",
   "pageNum": "2",
-  "prevPageId": "1",
-  "nextPageId": "3",
+  "prevPageNum": "1",
+  "nextPageNum": "3",
   "progress": {
     "numPages": 7,
-    "currentPageNo": 2
+    "currentPageNum": 2
   },
   "pageElements": [
     {

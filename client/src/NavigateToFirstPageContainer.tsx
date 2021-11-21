@@ -1,28 +1,28 @@
 import { gql } from "@apollo/client";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
-import { useGetFirstPageIdQuery } from "./generated/graphql";
+import { useGetFirstPageNumQuery } from "./generated/graphql";
 
 //This is read by GraphQL codegen to generate types
 gql`
-  query GetFirstPageId {
+  query GetFirstPageNum {
     tutorial(id: "") {
-      firstPageId
+      firstPageNum
     }
   }
 `;
 
-const InnerNavigate = ({ firstPageId }: { firstPageId: string }) => {
+const InnerNavigate = ({ firstPageNum }: { firstPageNum: string }) => {
   const navigate = useNavigate();
   useEffect(() => {
-    navigate("/" + firstPageId);
+    navigate("/" + firstPageNum);
   });
 
   return <></>;
 };
 
 export const NavigateToFirstPageContainer = (): JSX.Element => {
-  const { loading, error, data } = useGetFirstPageIdQuery();
+  const { loading, error, data } = useGetFirstPageNumQuery();
 
   if (loading) {
     return <div>{"Loading..."}</div>;
@@ -33,8 +33,8 @@ export const NavigateToFirstPageContainer = (): JSX.Element => {
   } else if (!data.tutorial) {
     return <div>{`Error! returned data.tutorial is undefined or null`}</div>;
   } else {
-    return data.tutorial.firstPageId ? (
-      <InnerNavigate firstPageId={data.tutorial.firstPageId} />
+    return data.tutorial.firstPageNum ? (
+      <InnerNavigate firstPageNum={data.tutorial.firstPageNum} />
     ) : (
       <></>
     );

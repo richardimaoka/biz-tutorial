@@ -1,8 +1,9 @@
 type Query {
-  tutorial(currentPageId: String): Tutorial
+  tutorial(id: String!, currentPageId: String): Tutorial
 }
 
 type Tutorial {
+  id: ID
   title: String
   pages: [Page]
   firstPageId: String
@@ -10,12 +11,13 @@ type Tutorial {
 }
 
 type Page {
+  id: ID
+  pageNo: String
   title: String
   progress: Progress
   pageElements: [PageElement]
   nextPageId: String
   prevPageId: String
-  id: ID!
 }
 
 union PageElement =

@@ -55,7 +55,7 @@ const AppComponent = (): JSX.Element => (
       <Routes>
         <Route path="/" element={<TutorialComponent />}>
           <Route index element={<NavigateToFirstPageContainer />} />
-          <Route path=":pageNo" element={<MainContainer />} />
+          <Route path=":pageNum" element={<MainContainer />} />
         </Route>
         <Route path="*" element={<div>404</div>} />
       </Routes>

@@ -78,7 +78,7 @@ export type Page = {
   id: Maybe<Scalars["ID"]>;
   nextPageId: Maybe<Scalars["String"]>;
   pageElements: Maybe<Array<Maybe<PageElement>>>;
-  pageNo: Maybe<Scalars["String"]>;
+  pageNum: Maybe<Scalars["String"]>;
   prevPageId: Maybe<Scalars["String"]>;
   progress: Maybe<Progress>;
   title: Maybe<Scalars["String"]>;

@@ -18,9 +18,9 @@ gql`
   ${PageComponent.fragments}
 `;
 
-const InnerComponent = ({ pageNo }: { pageNo: string }) => {
+const InnerComponent = ({ pageNum }: { pageNum: string }) => {
   const { loading, error, data } = useGetPageQuery({
-    variables: { tutorialId: "", currentPageId: pageNo },
+    variables: { tutorialId: "", currentPageId: pageNum },
   });
 
   if (loading) {
@@ -59,9 +59,9 @@ const InnerComponent = ({ pageNo }: { pageNo: string }) => {
 };
 
 export const MainContainer = (): JSX.Element => {
-  const params = useParams<"pageNo">();
-  return params.pageNo ? (
-    <InnerComponent pageNo={params.pageNo} />
+  const params = useParams<"pageNum">();
+  return params.pageNum ? (
+    <InnerComponent pageNum={params.pageNum} />
   ) : (
     <div>invalid page no</div>
   );

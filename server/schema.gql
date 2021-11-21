@@ -12,7 +12,7 @@ type Tutorial {
 
 type Page {
   id: ID
-  pageNo: String
+  pageNum: String
   title: String
   progress: Progress
   pageElements: [PageElement]

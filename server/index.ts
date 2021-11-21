@@ -8,7 +8,10 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     tutorial(parent: object, args: any, context: any, info: object) {
-      const mappedPage = context.mapping["wsl"][args.currentPageNum];
+      const mappedTutorial = context.mapping["wsl"];
+      const mappedPage = mappedTutorial
+        ? mappedTutorial[args.currentPageNum]
+        : undefined;
       const currentPage = mappedPage ? mappedPage : null;
       return { ...context.tutorial, currentPage };
     },

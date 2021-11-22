@@ -197,13 +197,6 @@ export type ActionComponentFragment = {
   } | null;
 };
 
-export type GetTutorialQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetTutorialQuery = {
-  __typename?: "Query";
-  tutorial: { __typename?: "Tutorial"; title: string | null } | null;
-};
-
 export type CarouselComponentFragment = {
   __typename?: "ImageGroup";
   images: Array<{ __typename?: "Image"; url: string | null } | null> | null;
@@ -573,6 +566,13 @@ export type TextChunkComponentFragment = {
   inlineCode: boolean | null;
 };
 
+export type GetTutorialQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetTutorialQuery = {
+  __typename?: "Query";
+  tutorial: { __typename?: "Tutorial"; title: string | null } | null;
+};
+
 export type VideoComponentFragment = {
   __typename?: "Video";
   platform: VideoPlatform | null;
@@ -751,6 +751,58 @@ export const PageComponentFragmentDoc = gql`
   ${OutputComponentFragmentDoc}
   ${ImageComponentFragmentDoc}
 `;
+export const GetPageDocument = gql`
+  query GetPage($tutorialId: String!, $currentPageNum: String!) {
+    tutorial(id: $tutorialId, currentPageNum: $currentPageNum) {
+      currentPage {
+        ...PageComponent
+      }
+    }
+  }
+  ${PageComponentFragmentDoc}
+`;
+
+/**
+ * __useGetPageQuery__
+ *
+ * To run a query within a React component, call `useGetPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPageQuery({
+ *   variables: {
+ *      tutorialId: // value for 'tutorialId'
+ *      currentPageNum: // value for 'currentPageNum'
+ *   },
+ * });
+ */
+export function useGetPageQuery(
+  baseOptions: Apollo.QueryHookOptions<GetPageQuery, GetPageQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetPageQuery, GetPageQueryVariables>(
+    GetPageDocument,
+    options
+  );
+}
+export function useGetPageLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetPageQuery, GetPageQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetPageQuery, GetPageQueryVariables>(
+    GetPageDocument,
+    options
+  );
+}
+export type GetPageQueryHookResult = ReturnType<typeof useGetPageQuery>;
+export type GetPageLazyQueryHookResult = ReturnType<typeof useGetPageLazyQuery>;
+export type GetPageQueryResult = Apollo.QueryResult<
+  GetPageQuery,
+  GetPageQueryVariables
+>;
 export const GetTutorialDocument = gql`
   query GetTutorial {
     tutorial(id: "wsl") {
@@ -806,56 +858,4 @@ export type GetTutorialLazyQueryHookResult = ReturnType<
 export type GetTutorialQueryResult = Apollo.QueryResult<
   GetTutorialQuery,
   GetTutorialQueryVariables
->;
-export const GetPageDocument = gql`
-  query GetPage($tutorialId: String!, $currentPageNum: String!) {
-    tutorial(id: $tutorialId, currentPageNum: $currentPageNum) {
-      currentPage {
-        ...PageComponent
-      }
-    }
-  }
-  ${PageComponentFragmentDoc}
-`;
-
-/**
- * __useGetPageQuery__
- *
- * To run a query within a React component, call `useGetPageQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetPageQuery({
- *   variables: {
- *      tutorialId: // value for 'tutorialId'
- *      currentPageNum: // value for 'currentPageNum'
- *   },
- * });
- */
-export function useGetPageQuery(
-  baseOptions: Apollo.QueryHookOptions<GetPageQuery, GetPageQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetPageQuery, GetPageQueryVariables>(
-    GetPageDocument,
-    options
-  );
-}
-export function useGetPageLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetPageQuery, GetPageQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetPageQuery, GetPageQueryVariables>(
-    GetPageDocument,
-    options
-  );
-}
-export type GetPageQueryHookResult = ReturnType<typeof useGetPageQuery>;
-export type GetPageLazyQueryHookResult = ReturnType<typeof useGetPageLazyQuery>;
-export type GetPageQueryResult = Apollo.QueryResult<
-  GetPageQuery,
-  GetPageQueryVariables
 >;
